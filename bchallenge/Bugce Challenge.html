@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<title>Buğçe Challenge</title>
+<meta name="viewport" content="width=1280" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #8a9a7c;
+    --green-deep: #6e7f60;
+    --green-soft: #e3ebd9;
+    --pink: #e9b5b5;
+    --pink-soft: #f7e1e1;
+    --pink-deep: #d99a9a;
+    --cream: #f5ede0;
+    --cream-deep: #ece0cc;
+    --paper: #fdfaf3;
+    --ink: #2d2a26;
+    --ink-soft: #5d574e;
+    --ink-mute: #9a9286;
+    --line: #ebe2d1;
+  }
+  html, body {
+    margin: 0; padding: 0;
+    background:
+      radial-gradient(1200px 700px at 20% 0%, #f3eada 0%, transparent 60%),
+      radial-gradient(900px 600px at 90% 100%, #f5e2e2 0%, transparent 60%),
+      #f8f1e3;
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; }
+  .stage {
+    min-height: 100vh;
+    display: flex; gap: 56px; align-items: center; justify-content: center;
+    padding: 56px 32px 80px;
+  }
+  .brand {
+    width: 280px; flex-shrink: 0;
+    text-align: left;
+  }
+  .brand .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 64px; line-height: 1;
+    color: var(--green-deep); letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .brand .logo .leaf { display: inline-block; transform: translateY(-6px) rotate(-12deg); }
+  .brand .script {
+    font-family: 'Caveat', cursive;
+    font-size: 56px; color: var(--pink-deep); line-height: 1;
+    margin: -4px 0 0 60px; transform: rotate(-3deg);
+  }
+  .brand .tagline {
+    margin-top: 36px; font-size: 19px; color: var(--ink-soft);
+    line-height: 1.45; max-width: 240px;
+  }
+  .brand .heart {
+    margin-top: 18px; color: var(--pink-deep); width: 90px; opacity: 0.7;
+  }
+  .brand .signature {
+    margin-top: 80px;
+    font-family: 'Caveat', cursive;
+    font-size: 36px; color: var(--ink-soft);
+    transform: rotate(-4deg);
+  }
+  .phones { display: flex; gap: 36px; }
+  .opt-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green); color: white;
+    padding: 8px 16px; border-radius: 999px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    margin-bottom: 36px;
+  }
+
+  /* loading state to avoid FOUC */
+  #app:empty::before {
+    content: 'Yükleniyor…';
+    display: block; text-align: center; padding: 200px 0; color: var(--ink-mute);
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="ui.jsx"></script>
+<script type="text/babel" src="screens-home.jsx"></script>
+<script type="text/babel" src="screens-coach.jsx"></script>
+<script type="text/babel" src="screens-recipes.jsx"></script>
+<script type="text/babel" src="screens-videos.jsx"></script>
+<script type="text/babel" src="screens-community.jsx"></script>
+<script type="text/babel" src="screens-profile.jsx"></script>
+<script type="text/babel" src="screens-host.jsx"></script>
+<script type="text/babel" src="screens-booking.jsx"></script>
+<script type="text/babel" src="screens-onboarding.jsx"></script>
+<script type="text/babel" src="screens-plus.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+
+</body>
+</html>
