@@ -15,6 +15,10 @@ const PALETTES = {
 };
 
 function App() {
+  const isMobileShell =
+    window.__BCLUB_MOBILE__ ||
+    typeof window.ReactNativeWebView !== 'undefined' ||
+    new URLSearchParams(window.location.search).get('mobile') === '1';
   const [tweak, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [active, setActive] = React.useState('host');
   const [active2, setActive2] = React.useState('onboarding');
@@ -90,6 +94,23 @@ function App() {
       </IOSDevice>
     </div>;
 
+  if (isMobileShell) {
+    return (
+      <div style={{
+        width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden',
+        background: 'var(--paper)', fontFamily: "'Nunito', system-ui, sans-serif",
+      }}>
+        {renderScreen(2)}
+        <BottomNav
+          active={active2}
+          onChange={makeNav(setActive2)}
+          membership={membership}
+          accent={palette.accent}
+          accentDeep={palette.deep}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="stage" data-screen-label="Buğçe Challenge App">

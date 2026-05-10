@@ -1,0 +1,21 @@
+{
+  "name": "bclub-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "web": "expo start --web",
+    "build:html": "node scripts/build-app-html.mjs"
+  },
+  "dependencies": {
+    "expo": "latest",
+    "expo-status-bar": "latest",
+    "react": "latest",
+    "react-native": "latest",
+    "react-native-webview": "latest"
+  },
+  "devDependencies": {}
+}
