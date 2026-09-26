@@ -1,0 +1,1597 @@
+<title>Antrenör Defteri · Hafta 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --bg:#e8edf0; --surface:#ffffff; --surface-2:#f2f6f8; --sunken:#dde5ea;
+  --ink:#0f1a21; --ink-2:#2d3d49; --muted:#5a6b78; --line:#c9d5dd; --line-soft:#e0e8ed;
+  --accent:#0a5c6b; --accent-ink:#ffffff; --accent-soft:#d6ecef;
+  --z1:#7d95a4; --z2:#2b7fb8; --z3:#2d9c6c; --z4:#d99a1c; --z5:#c74331;
+  --ok:#1f7a4d; --warn:#b9761a; --bad:#b53a2a;
+  --shadow:0 1px 2px rgba(15,26,33,.06), 0 8px 24px -12px rgba(15,26,33,.18);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0a1117; --surface:#121c24; --surface-2:#18242e; --sunken:#0d161d;
+    --ink:#e2ecf2; --ink-2:#c2d2dd; --muted:#8da0ae; --line:#26343f; --line-soft:#1d2a34;
+    --accent:#4ec7d6; --accent-ink:#06222a; --accent-soft:#12333c;
+    --z1:#8ba3b2; --z2:#4f9ed4; --z3:#44b986; --z4:#e9b13c; --z5:#e0614c;
+    --ok:#4dc186; --warn:#e0a13f; --bad:#e8705c;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0a1117; --surface:#121c24; --surface-2:#18242e; --sunken:#0d161d;
+  --ink:#e2ecf2; --ink-2:#c2d2dd; --muted:#8da0ae; --line:#26343f; --line-soft:#1d2a34;
+  --accent:#4ec7d6; --accent-ink:#06222a; --accent-soft:#12333c;
+  --z1:#8ba3b2; --z2:#4f9ed4; --z3:#44b986; --z4:#e9b13c; --z5:#e0614c;
+  --ok:#4dc186; --warn:#e0a13f; --bad:#e8705c;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--sans);text-wrap:balance;line-height:1.15;margin:0}
+a{color:var(--accent)}
+code,kbd{font-family:var(--mono);font-size:.88em}
+
+/* ---------- shell ---------- */
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+.rail{max-width:660px}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar{display:flex;align-items:center;gap:14px;padding-block:10px;flex-wrap:wrap}
+.mark{display:flex;align-items:baseline;gap:9px;font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:15px}
+.mark .wk{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:2px 6px}
+nav.chips{display:flex;gap:6px;overflow-x:auto;flex:1 1 320px;scrollbar-width:thin;padding-block:2px}
+nav.chips a{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-decoration:none;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:4px 10px;white-space:nowrap;background:var(--surface)}
+nav.chips a:hover,nav.chips a:focus-visible{color:var(--accent);border-color:var(--accent)}
+.themebtn{flex:none;font-family:var(--mono);font-size:11px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:100px;padding:5px 11px;cursor:pointer}
+.themebtn:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:44px 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero h1{font-size:clamp(34px,7vw,58px);font-weight:800;letter-spacing:-.035em}
+.hero .lede{font-size:clamp(17px,2.4vw,20px);color:var(--ink-2);max-width:56ch;margin-top:16px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.fact{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:6px 10px;background:var(--surface)}
+.fact b{color:var(--ink);font-weight:600}
+
+/* ---------- sections ---------- */
+section{padding-block:40px;border-bottom:1px solid var(--line-soft);scroll-margin-top:76px}
+.sechead{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+.secnum{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);border-top:2px solid var(--accent);padding-top:6px;min-width:34px;flex:none;letter-spacing:.06em}
+.sechead h2{font-size:clamp(23px,3.6vw,31px);font-weight:700;letter-spacing:-.02em}
+.sechead .sub{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:7px}
+section p{margin:0 0 15px}
+section h3{font-size:16px;font-weight:700;letter-spacing:-.005em;margin:26px 0 10px}
+section ul,section ol{margin:0 0 15px;padding-left:20px}
+section li{margin-bottom:7px}
+strong{font-weight:600;color:var(--ink)}
+
+/* ---------- components ---------- */
+.formula{font-family:var(--mono);font-size:13.5px;line-height:1.85;background:var(--sunken);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:5px;padding:14px 16px;margin:0 0 16px;overflow-x:auto;white-space:pre;color:var(--ink)}
+.note{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;border-radius:0 5px 5px 0;margin:0 0 16px;font-size:15.5px}
+.note.warn{border-left-color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,var(--surface))}
+.note.bad{border-left-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+.note .lbl{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+
+.tablewrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2);border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:0 0 18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:16px 17px;box-shadow:var(--shadow)}
+.card h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.card p{font-size:14.5px;margin-bottom:0;color:var(--ink-2)}
+.card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
+
+figure{margin:0 0 20px;background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:18px 16px 14px;box-shadow:var(--shadow)}
+figure svg{display:block;width:100%;height:auto;max-width:100%}
+figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.55;margin-top:12px;padding-top:10px;border-top:1px solid var(--line-soft)}
+
+/* tool */
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden;margin:0 0 20px}
+.tool-hd{padding:13px 17px;border-bottom:1px solid var(--line);background:var(--surface-2);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tool-hd h4{font-size:13.5px;font-weight:700}
+.tool-hd .hint{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em}
+.tool-bd{padding:17px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:11px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{font-family:var(--mono);font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:5px;background:var(--sunken);color:var(--ink);width:100%}
+.field input:focus,.field select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.out div{background:var(--surface-2);padding:11px 13px}
+.out .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+.out .v{font-family:var(--sans);font-size:21px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.out .u{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-left:3px;font-weight:400}
+.verdict{margin-top:14px;font-family:var(--sans);font-size:14px;padding:11px 14px;border-radius:5px;border:1px solid var(--line);background:var(--sunken)}
+.verdict b{font-weight:700}
+.verdict.ok{border-color:var(--ok);color:var(--ok)}
+.verdict.warn{border-color:var(--warn);color:var(--warn)}
+.verdict.bad{border-color:var(--bad);color:var(--bad)}
+
+/* zone scale */
+.zscale{display:flex;height:34px;border-radius:5px;overflow:hidden;border:1px solid var(--line);margin:16px 0 8px}
+.zscale span{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10.5px;font-weight:600;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);min-width:0;overflow:hidden}
+.zlegend{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px}
+.zrow{display:flex;align-items:center;gap:9px;font-family:var(--sans);font-size:12.5px;padding:6px 9px;border:1px solid var(--line);border-radius:5px;background:var(--surface-2)}
+.dot{width:10px;height:10px;border-radius:2px;flex:none}
+.zrow .bpm{margin-left:auto;font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* flashcards */
+.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:11px}
+.fc{background:none;border:0;padding:0;font:inherit;text-align:left;cursor:pointer;perspective:900px;min-height:132px}
+.fc-in{position:relative;width:100%;height:100%;min-height:132px;transition:transform .5s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d}
+.fc[aria-pressed="true"] .fc-in{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;backface-visibility:hidden;border-radius:7px;border:1px solid var(--line);padding:13px 14px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.fc-f{background:var(--surface)}
+.fc-b{background:var(--accent);color:var(--accent-ink);transform:rotateY(180deg);border-color:var(--accent)}
+.fc-f .q{font-family:var(--sans);font-size:14px;font-weight:600;line-height:1.35}
+.fc-f .n{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.fc-b .a{font-family:var(--mono);font-size:13px;line-height:1.5;word-break:break-word}
+@media (prefers-reduced-motion:reduce){.fc-in{transition:none}}
+
+/* quiz */
+.q{border:1px solid var(--line);border-radius:7px;background:var(--surface);padding:15px 16px;margin-bottom:11px;box-shadow:var(--shadow)}
+.q .qh{display:flex;gap:10px;align-items:flex-start;margin-bottom:11px}
+.q .qn{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);flex:none;padding-top:2px}
+.q .qt{font-family:var(--sans);font-size:14.5px;font-weight:600;line-height:1.4}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;gap:9px;align-items:flex-start;font-family:var(--sans);font-size:13.5px;border:1px solid var(--line);border-radius:5px;padding:8px 11px;cursor:pointer;background:var(--surface-2);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin:3px 0 0;accent-color:var(--accent);flex:none}
+.opt.correct{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--surface))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--surface))}
+.qexp{margin-top:10px;font-size:13.5px;font-family:var(--sans);color:var(--ink-2);border-left:3px solid var(--accent);padding:8px 12px;background:var(--sunken);border-radius:0 4px 4px 0}
+.qbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:7px;background:var(--surface-2)}
+.btn{font-family:var(--sans);font-size:13.5px;font-weight:600;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:5px;padding:9px 17px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.score{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* checklist */
+.chk{display:grid;gap:7px}
+.chk label{display:flex;gap:11px;align-items:flex-start;font-family:var(--sans);font-size:14px;border:1px solid var(--line);border-radius:6px;padding:11px 13px;background:var(--surface);cursor:pointer}
+.chk input{margin:3px 0 0;accent-color:var(--accent);flex:none;width:16px;height:16px}
+.chk input:checked+span{color:var(--muted);text-decoration:line-through}
+.chk .d{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;text-decoration:none!important}
+.prog{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:11px}
+
+footer{padding-block:34px 44px;font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.7}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+/* terim işaretleme + tanım paneli */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0 1px;margin:0;cursor:help;
+  border-bottom:1.5px dotted var(--accent);text-underline-offset:2px}
+.term:hover,.term:focus-visible{background:var(--accent-soft);border-bottom-style:solid}
+.term::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;
+  background:var(--accent);vertical-align:super;margin-left:2px;opacity:.6}
+#sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);
+  transition:transform .28s cubic-bezier(.3,.9,.3,1);pointer-events:none}
+#sheet.open{transform:translateY(0);pointer-events:auto}
+@media (prefers-reduced-motion:reduce){#sheet{transition:none}}
+.sheet-in{max-width:700px;margin:0 auto;background:var(--surface);border:1px solid var(--line);
+  border-bottom:0;border-radius:11px 11px 0 0;padding:17px 18px calc(17px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 -6px 40px -10px rgba(15,26,33,.35)}
+.sheet-hd{display:flex;align-items:flex-start;gap:12px;margin-bottom:9px}
+.sheet-hd h5{font-family:var(--sans);font-size:16px;font-weight:700;margin:0;letter-spacing:-.01em;flex:1}
+.sheet-hd .g{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:3px 6px;flex:none;margin-top:2px}
+.sheet-close{flex:none;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);
+  border-radius:5px;width:28px;height:28px;font-size:15px;line-height:1;cursor:pointer;font-family:var(--sans)}
+.sheet-close:hover{color:var(--accent);border-color:var(--accent)}
+.sheet-in .d{font-size:15.5px;margin:0}
+.sheet-in .x{font-size:14px;color:var(--ink-2);border-left:3px solid var(--accent);background:var(--sunken);
+  padding:9px 12px;border-radius:0 4px 4px 0;margin:11px 0 0}
+.sheet-in .x b{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:3px}
+/* sözlük */
+.gsearch{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.gsearch input{flex:1 1 220px;font-family:var(--mono);font-size:14px;padding:9px 12px;
+  border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.gsearch .cnt{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.gfilters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.gfilters button{font-family:var(--mono);font-size:11px;border:1px solid var(--line);background:var(--surface);
+  color:var(--muted);border-radius:100px;padding:5px 11px;cursor:pointer}
+.gfilters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:11px}
+.gi{border:1px solid var(--line);border-radius:7px;background:var(--surface);padding:14px 15px;box-shadow:var(--shadow)}
+.gi h4{font-size:14.5px;font-weight:700;margin-bottom:6px}
+.gi .g{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);
+  display:block;margin-bottom:6px}
+.gi p{font-size:14px;margin:0;color:var(--ink-2)}
+.gi .x{font-size:13px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft)}
+.gempty{font-family:var(--mono);font-size:13px;color:var(--muted);padding:18px 0}
+.gold{counter-reset:g;list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.gold li{counter-increment:g;display:flex;gap:12px;font-size:15px;border-bottom:1px solid var(--line-soft);padding-bottom:9px;margin:0}
+.gold li::before{content:counter(g,decimal-leading-zero);font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);flex:none;padding-top:4px}
+</style>
+
+<header class="top">
+  <div class="wrap topbar">
+    <div class="mark"><span class="wk">Hafta 01</span><span>Antrenör Defteri</span></div>
+    <nav class="chips" aria-label="Modüller">
+      <a href="#bmr">BMR</a><a href="#android">Merkez yağ</a><a href="#gynoid">Uzuv yağ</a>
+      <a href="#eklem">Eklem yükü</a><a href="#nabiz">Nabız zonları</a><a href="#fatmax">Fatmax</a>
+      <a href="#vo2">VO2max</a><a href="#esneklik">Esneklik</a><a href="#laktat">Laktat</a>
+      <a href="#opt">OPT modeli</a><a href="#sozluk">Sözlük</a><a href="#kartlar">Kartlar</a><a href="#quiz">Sınav</a>
+    </nav>
+    <button class="themebtn" id="themeBtn" type="button">tema</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="hero rail">
+  <div class="eyebrow">Spor Bilimleri Müfredatı · Modül 1–11</div>
+  <h1>Metabolizma, Nabız ve Antrenman Temelleri</h1>
+  <p class="lede">Bir danışan karşına oturduğunda: kaç kalori yaktığını hesapla, yağlanma tipini
+  oku, eklemini riske atmadan hangi nabız aralığında ne kadar çalışacağına karar ver, sonra bunu
+  NASM OPT modeline oturt.</p>
+  <div class="facts">
+    <span class="fact"><b>11</b> modül</span>
+    <span class="fact"><b>3</b> hesap makinesi</span>
+    <span class="fact"><b>89</b> terim sözlüğü</span>
+    <span class="fact"><b>12</b> hafıza kartı</span>
+    <span class="fact"><b>15</b> soruluk sınav</span>
+    <span class="fact">Geçme notu <b>80</b></span>
+  </div>
+  <div class="note" style="margin-top:22px"><span class="lbl">Nasıl okunur</span>
+    Metinde <button class="term" data-t="visseral">altı noktalı</button> görünen her kelime bir
+    teknik terimdir — üstüne dokun, günlük dildeki karşılığı açılır. Hepsini bir arada görmek
+    istersen <a href="#sozluk">Terim Sözlüğü</a> bölümüne git.</div>
+</div>
+
+<!-- ============ 1 BMR ============ -->
+<section id="bmr">
+  <div class="sechead"><div class="secnum">01</div><div>
+    <h2>Bazal Metabolizma Hızı</h2>
+    <div class="sub">Enerjinin nereye gittiğini bilmeden açık yazılmaz</div></div></div>
+  <div class="rail">
+    <p><strong>BMR</strong>, vücudun tam dinlenmede, aç ve uyanık halde harcadığı minimum enerjidir.
+    <strong>RMR</strong> aynı şeyin gevşek koşullardaki ölçümüdür ve BMR'den %5–10 yüksek çıkar.
+    Günlük konuşmada ikisi aynı kullanılır; sen farkı bil.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 150" role="img" aria-label="Günlük enerji harcamasının bileşenleri: BMR yüzde 60-75, NEAT yüzde 15-30, TEF yüzde 10, EAT yüzde 5">
+      <text x="0" y="14" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">GÜNLÜK ENERJİ HARCAMASI (TDEE)</text>
+      <rect x="0" y="28" width="418" height="46" rx="3" fill="var(--accent)"/>
+      <rect x="420" y="28" width="132" height="46" fill="var(--z2)"/>
+      <rect x="554" y="28" width="58" height="46" fill="var(--z3)"/>
+      <rect x="614" y="28" width="26" height="46" rx="3" fill="var(--z4)"/>
+      <text x="14" y="50" font-family="Archivo, sans-serif" font-size="14" font-weight="700" fill="#fff">BMR / RMR</text>
+      <text x="14" y="66" font-family="IBM Plex Mono, monospace" font-size="11" fill="#fff" opacity=".85">%60–75</text>
+      <text x="432" y="50" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="#fff">NEAT</text>
+      <text x="432" y="66" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity=".85">%15–30</text>
+      <text x="562" y="50" font-family="Archivo, sans-serif" font-size="12" font-weight="700" fill="#fff">TEF</text>
+      <text x="562" y="66" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity=".85">%10</text>
+      <text x="618" y="94" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--z4)" text-anchor="end">EAT %5</text>
+      <line x1="627" y1="78" x2="627" y2="86" stroke="var(--z4)" stroke-width="1.5"/>
+      <text x="0" y="118" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">NEAT = egzersiz dışı aktivite: yürümek, ayakta durmak, kıpırdanmak, ev işi.</text>
+      <text x="0" y="136" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Diyette duraklamanın 1 numaralı sebebi genelde NEAT'in sessizce düşmesidir.</text>
+    </svg>
+    <figcaption>Sedanter bir yetişkinde tipik dağılım. Sporcuda EAT payı %15–30'a çıkar, BMR payı düşer.</figcaption>
+  </figure>
+
+  <div class="rail">
+    <h3>Formüller</h3>
+    <div class="formula">Mifflin-St Jeor  (varsayılan seçimin bu olsun)
+  Erkek : (10 × kg) + (6.25 × boy_cm) − (5 × yaş) + 5
+  Kadın : (10 × kg) + (6.25 × boy_cm) − (5 × yaş) − 161
+
+Katch-McArdle   (yağsız kütleyi biliyorsan en iyisi)
+  LBM = kg × (1 − yağ%/100)
+  BMR = 370 + (21.6 × LBM)
+
+TDEE = BMR × aktivite katsayısı
+  1.20 sedanter · 1.375 hafif · 1.55 orta · 1.725 yüksek · 1.90 çok yüksek</div>
+  </div>
+
+  <div class="tool">
+    <div class="tool-hd"><h4>BMR / TDEE hesap makinesi</h4>
+      <span class="hint">örnek veri yüklü — kendi değerlerini gir</span></div>
+    <div class="tool-bd">
+      <div class="fields">
+        <div class="field"><label for="bSex">Cinsiyet</label>
+          <select id="bSex"><option value="f" selected>Kadın</option><option value="m">Erkek</option></select></div>
+        <div class="field"><label for="bAge">Yaş</label><input id="bAge" type="number" value="34" min="10" max="100"></div>
+        <div class="field"><label for="bW">Kilo (kg)</label><input id="bW" type="number" value="78" min="30" max="250"></div>
+        <div class="field"><label for="bH">Boy (cm)</label><input id="bH" type="number" value="165" min="120" max="220"></div>
+        <div class="field"><label for="bBf">Yağ % (ops.)</label><input id="bBf" type="number" value="34" min="3" max="65"></div>
+        <div class="field"><label for="bAct">Aktivite</label>
+          <select id="bAct">
+            <option value="1.2">1.20 · Sedanter</option>
+            <option value="1.375">1.375 · Hafif</option>
+            <option value="1.55" selected>1.55 · Orta</option>
+            <option value="1.725">1.725 · Yüksek</option>
+            <option value="1.9">1.90 · Çok yüksek</option>
+          </select></div>
+      </div>
+      <div class="out">
+        <div><span class="k">Mifflin BMR</span><span class="v" id="oMif">–</span></div>
+        <div><span class="k">Katch BMR</span><span class="v" id="oKat">–</span></div>
+        <div><span class="k">TDEE</span><span class="v" id="oTdee">–</span></div>
+        <div><span class="k">Hedef (−%20)</span><span class="v" id="oCut">–</span></div>
+        <div><span class="k">Protein 1.8 g/kg</span><span class="v" id="oPro">–</span></div>
+      </div>
+      <div class="verdict" id="bVerdict"></div>
+    </div>
+  </div>
+
+  <div class="rail">
+    <div class="note bad"><span class="lbl">Kırmızı çizgi</span>
+      Hiçbir yetişkin kadına BMR'sinin altında, hiçbir yetişkin erkeğe 1500 kcal altında plan
+      yazılmaz. Bu antrenörün işi değil, hekim/diyetisyen işidir.</div>
+    <div class="note"><span class="lbl">Efsane avı</span>
+      <strong>"1 kg kas günde 100 kalori yakar."</strong> Yanlış. 1 kg kas dinlenimde
+      <strong>~13 kcal/gün</strong>, 1 kg yağ ~4.5 kcal yakar. Kasın değeri dinlenim yakımında değil;
+      glikoz deposu, insülin duyarlılığı, fonksiyon ve yaralanma korumasındadır.</div>
+  </div>
+</section>
+
+<!-- ============ 2 ANDROID ============ -->
+<section id="android">
+  <div class="sechead"><div class="secnum">02</div><div>
+    <h2>Merkez ağırlıklı yağlanma</h2>
+    <div class="sub">Android · elma tip · visseral · metabolik acil</div></div></div>
+
+  <div class="rail">
+    <p><strong>Android</strong> ("elma tip") yağlanmada yağ karında ve belde toplanır. Bunun bir
+    kısmı derinin altındadır, parmakla tutabilirsin — buna <strong>subkutan</strong> yağ denir.
+    Asıl mesele diğer kısmıdır: karın kaslarının arkasında, organların arasına dolan
+    <strong>visseral</strong> yağ. Onu tutamazsın ama metabolizmanı o yönetir.</p>
+    <p>Visseral yağ pasif bir depo değil, hormon salgılayan bir organ gibi davranır. Karın
+    organlarından toplanan kan, kalbe uğramadan önce <strong>portal ven</strong> denen damarla
+    doğrudan karaciğere gider. Yani visseral yağın saldığı her şey, seyrelmeden karaciğerin
+    kapısına düşer. İki şey salar:</p>
+    <ul>
+      <li><strong>Serbest yağ asidi (FFA)</strong> — depodaki yağın kana salınmış, yakılmaya hazır
+        hali. Kanda sürekli yüksek kalırsa kas ve karaciğer hücreleri insüline sağırlaşır.</li>
+      <li><strong>İltihap habercisi proteinler (sitokinler)</strong> — hücrelerin birbirine mesaj
+        yollamak için kullandığı moleküller. Bunların en bilinen ikisi <strong>IL-6</strong> ve
+        <strong>TNF-α</strong>'dır. Görevleri bağışıklık sistemine "burada bir sorun var" demektir.
+        Yağ dokusu bu mesajı durmadan yollayınca, vücutta hiç sönmeyen kısık bir alarm kurulur:
+        <strong>kronik düşük dereceli iltihap</strong>. TNF-α ayrıca insülinin hücre içindeki
+        sinyal hattını doğrudan bozar.</li>
+    </ul>
+    <p>Sonuç zinciri: <strong>insülin direnci</strong> (şekeri hücreye sokan anahtar kapıyı zor
+    açar) → pankreas daha çok insülin salgılar → kan yağları bozulur, tansiyon yükselir.
+    Bu tabloya birlikte görüldüğünde <strong>metabolik sendrom</strong> denir. Yani merkez yağlanma
+    bir estetik konusu değil, <strong>metabolik risk konusudur</strong>.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 230" role="img" aria-label="Android ve gynoid yağ dağılımının karşılaştırmalı şeması">
+      <!-- android -->
+      <text x="62" y="16" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">ANDROID · ELMA</text>
+      <text x="62" y="32" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)" text-anchor="middle">visseral · merkez</text>
+      <ellipse cx="62" cy="58" rx="15" ry="16" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+      <path d="M40 82 h44 v14 h-44 z" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+      <ellipse cx="62" cy="128" rx="34" ry="30" fill="var(--z5)" opacity=".85"/>
+      <path d="M46 158 l-6 54 M78 158 l6 54" stroke="var(--ink-2)" stroke-width="2" fill="none"/>
+      <text x="62" y="133" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" text-anchor="middle">yağ</text>
+      <!-- gynoid -->
+      <text x="196" y="16" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">GYNOID · ARMUT</text>
+      <text x="196" y="32" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)" text-anchor="middle">subkutan · periferik</text>
+      <ellipse cx="196" cy="58" rx="15" ry="16" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+      <path d="M176 82 h40 v14 h-40 z" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+      <ellipse cx="196" cy="118" rx="20" ry="24" fill="none" stroke="var(--ink-2)" stroke-width="2"/>
+      <ellipse cx="196" cy="160" rx="38" ry="26" fill="var(--z2)" opacity=".85"/>
+      <path d="M180 184 q-8 28 -6 40 M212 184 q8 28 6 40" stroke="var(--z2)" stroke-width="13" fill="none" opacity=".85" stroke-linecap="round"/>
+      <text x="196" y="164" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" text-anchor="middle">yağ</text>
+      <!-- compare -->
+      <line x1="300" y1="28" x2="300" y2="214" stroke="var(--line)" stroke-width="1"/>
+      <text x="322" y="46" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--z5)">● ANDROID</text>
+      <text x="322" y="66" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Karaciğere doğrudan yağ ve iltihap sinyali</text>
+      <text x="322" y="84" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">gönderir → kan şekeri kontrolü bozulur</text>
+      <text x="322" y="102" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Öncelik: kuvvet + Zon 2 + uyku/kortizol</text>
+      <text x="322" y="138" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--z2)">● GYNOID</text>
+      <text x="322" y="158" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Depolama kapısı geniş, yakım freni sıkı</text>
+      <text x="322" y="176" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">→ son boşalan depo, metabolik koruyucu</text>
+      <text x="322" y="194" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Öncelik: süre + düşük darbe + sabır</text>
+    </svg>
+    <figcaption>Aynı yağ oranında android tip, gynoid tipe göre belirgin biçimde daha yüksek kardiyometabolik risk taşır. Dağılım, toplam yağdan bağımsız bir risk bilgisidir.</figcaption>
+  </figure>
+
+  <div class="rail"><h3>Ölçüm ve eşikler</h3></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Ölçü</th><th class="num">Erkek</th><th class="num">Kadın</th></tr></thead>
+    <tbody>
+      <tr><td>Bel çevresi — risk artışı</td><td class="num">&gt; 94 cm</td><td class="num">&gt; 80 cm</td></tr>
+      <tr><td>Bel çevresi — yüksek risk</td><td class="num">&gt; 102 cm</td><td class="num">&gt; 88 cm</td></tr>
+      <tr><td>Bel/kalça oranı (WHR)</td><td class="num">&gt; 0.90</td><td class="num">&gt; 0.85</td></tr>
+      <tr><td><strong>Bel/boy oranı (WHtR)</strong></td><td class="num"><strong>&gt; 0.50</strong></td><td class="num"><strong>&gt; 0.50</strong></td></tr>
+    </tbody></table></div>
+
+  <div class="tool">
+    <div class="tool-hd"><h4>Bel oranı ve risk taraması</h4><span class="hint">WHtR = bel ÷ boy</span></div>
+    <div class="tool-bd">
+      <div class="fields">
+        <div class="field"><label for="wSex">Cinsiyet</label>
+          <select id="wSex"><option value="f" selected>Kadın</option><option value="m">Erkek</option></select></div>
+        <div class="field"><label for="wWaist">Bel (cm)</label><input id="wWaist" type="number" value="96" min="40" max="200"></div>
+        <div class="field"><label for="wHip">Kalça (cm)</label><input id="wHip" type="number" value="108" min="50" max="220"></div>
+        <div class="field"><label for="wH">Boy (cm)</label><input id="wH" type="number" value="165" min="120" max="220"></div>
+      </div>
+      <div class="out">
+        <div><span class="k">WHtR</span><span class="v" id="oWhtr">–</span></div>
+        <div><span class="k">WHR</span><span class="v" id="oWhr">–</span></div>
+        <div><span class="k">Dağılım</span><span class="v" id="oType" style="font-size:16px">–</span></div>
+      </div>
+      <div class="verdict" id="wVerdict"></div>
+    </div>
+  </div>
+
+  <div class="rail">
+    <h3>Haftalık iskelet — 4–5 gün</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Gün</th><th>İçerik</th><th>Gerekçe</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Tam vücut kuvvet A — 6–8 hareket, 8–12 tekrar, 3 set</td><td>Kas = glikoz deposu; insülinden bağımsız GLUT4</td></tr>
+        <tr><td>2</td><td>Zon 2 aerobik 40–50 dk</td><td>Visseral yağ, kilo kaybı olmasa bile aerobiğe yanıt verir</td></tr>
+        <tr><td>3</td><td>Tam vücut kuvvet B</td><td>Açıkta kas kaybını engeller</td></tr>
+        <tr><td>4</td><td>İnterval: 8 × 1 dk yüksek / 2 dk kolay</td><td>Zaman verimi + EPOC. <strong>Haftada 1–2, fazlası değil</strong></td></tr>
+        <tr><td>5</td><td>Tam vücut kuvvet C + 20 dk Zon 2</td><td>Haftalık hacmi tamamlar</td></tr>
+        <tr><td>6–7</td><td>8–10 bin adım, mobilite</td><td>NEAT, toparlanma</td></tr>
+      </tbody></table></div>
+
+    <div class="note warn"><span class="lbl">Kortizol kolu — atlanırsa plan çalışmaz</span>
+      Uyku 7–9 saat · kalori açığı %15–25 · haftada en az 1 tam dinlenme · 6–8 haftada bir deload
+      (hacim −%40–50) · protein 1.6–2.2 g/kg. 5 saat uyuyan birine kalori açığı yazmak,
+      delik kovaya su doldurmaktır.</div>
+    <div class="note bad"><span class="lbl">Bölgesel yağ yakımı yoktur</span>
+      Günde 300 mekik göbek yağını eritmez; karın kasını çalıştırır. Yağ sistemik olarak
+      seferber edilir ve nereden gideceğine genetik ile hormonal profil karar verir.</div>
+  </div>
+</section>
+
+<!-- ============ 3 GYNOID ============ -->
+<section id="gynoid">
+  <div class="sechead"><div class="secnum">03</div><div>
+    <h2>Uzuv ağırlıklı yağlanma</h2>
+    <div class="sub">Gynoid · armut tip · gluteofemoral · sabır işi</div></div></div>
+  <div class="rail">
+    <p><strong>Gynoid</strong> ("armut tip") yağlanmada yağ kalça, basen ve uylukta, derinin
+    hemen altında (<strong>subkutan</strong>) toplanır. Anatomide bu bölgenin tek kelimelik adı
+    <strong>gluteofemoral</strong>dir: kalça + uyluk.</p>
+    <p>Bu bölgenin neden inatçı olduğunu iki mekanizma açıklar — ikisi de senin çabanla ilgili değil:</p>
+    <ul>
+      <li><strong>Depolama kapısı geniş.</strong> Kandaki yağı parçalayıp hücrenin içine sokan enzime
+        <strong>LPL (lipoprotein lipaz)</strong> denir. Kalça-uyluk yağ dokusunda bu enzim çok
+        aktiftir, yani bölge depolamaya meyillidir.</li>
+      <li><strong>Yakım freni sıkı.</strong> Yağ hücresinin yüzeyinde adrenalini algılayan antenler
+        vardır (<strong>adrenerjik reseptörler</strong>). Beta tipi anten "yağı çöz ve sal" der;
+        <strong>alfa-2</strong> tipi anten "dur, salma" der. Kalça-uyluk yağında alfa-2 baskındır.
+        Yani fren, gazdan güçlüdür.</li>
+    </ul>
+    <p>Bu yüzden gluteofemoral yağ vücudun <strong>son boşalan deposudur</strong>. Ama bu bir
+    hastalık değil, bir dağılım biçimidir — ve metabolik olarak <em>koruyucudur</em>: aynı yağ
+    oranında armut tip, elma tipe göre daha düşük kalp-damar ve şeker riski taşır.</p>
+
+    <div class="note bad"><span class="lbl">Ayırıcı tanı — kaçırma</span>
+      Bacaklarda simetrik, orantısız, <strong>dokunmakla ağrılı</strong>, kolay morarabilen,
+      diyete cevapsız ve <strong>ayak bileğinde keskin sınırla biten</strong> (ayaklar korunmuş)
+      yağlanma → <strong>lipödem</strong> olabilir. Tek taraflı, gode bırakan şişlik →
+      lenfödem/venöz yetmezlik şüphesi. Her iki durumda da hekime yönlendir; "daha çok çalış" deme.</div>
+
+    <h3>Metodun 6 gerekçesi</h3>
+    <ol>
+      <li><strong>Toplam enerji açığı yine belirleyicidir.</strong> Bölgesel yağ yakımı burada da yok.</li>
+      <li><strong>Süre &gt; şiddet.</strong> 45–60 dk Zon 2, kan akımını ve yağ asidi taşınmasını destekler.</li>
+      <li><strong>Düşük darbeli seçim.</strong> Bisiklet, eliptik, kürek, yüzme, yokuş yürüyüşü.</li>
+      <li><strong>İlk 6–8 hafta yüksek tekrar.</strong> 12–20 tekrar, süperset, 30–45 sn dinlenme.
+        Ağır hipertrofi erken verilirse uyluk çevresi <em>geçici olarak büyür</em> ve danışan bırakır.</li>
+      <li><strong>Kalçaya yatırım yap.</strong> Hip thrust, RDL, abduksiyon, adımlama — hem form hem diz/bel sağlığı.</li>
+      <li><strong>Dolaşım ve ödem.</strong> Oturmayı saatte 3–5 dk böl, gün sonu 10–15 dk bacak yukarı,
+        ayak bileği pompası, su ve sodyum dengesi.</li>
+    </ol>
+
+    <div class="note"><span class="lbl">Cümlen hazır olsun</span>
+      "Ağırlık seni kalınlaştırmaz; kalınlaştıran, kas olmadan yağ oranının yerinde saymasıdır."
+      Kadınlarda testosteron erkeklerin yaklaşık 1/15–1/20'sidir; istemeden hızlı hacim kazanmak
+      fizyolojik olarak mümkün değildir.</div>
+  </div>
+</section>
+
+<!-- ============ 4 EKLEM ============ -->
+<section id="eklem">
+  <div class="sechead"><div class="secnum">04</div><div>
+    <h2>Eklem yükü olan kilolu bireyde başlangıç</h2>
+    <div class="sub">Ne zaman, neyle, hangi dozla</div></div></div>
+
+  <div class="rail">
+    <div class="note"><span class="lbl">Bu cümleyi ezberle</span>
+      Yürürken dizin üzerinden geçen kuvvet vücut ağırlığının <strong>3–4 katıdır</strong>.
+      Yani <strong>1 kg kilo kaybı ≈ her adımda dizden 3–4 kg daha az yük.</strong>
+      5 kg verirse, günde 6.000 adımda <strong>~120 ton</strong> daha az yük demektir.
+      Bu cümle "biraz kilo ver" cümlesinden yüz kat güçlüdür.</div>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 250" role="img" aria-label="Eklem yükü olan bireyde dört basamaklı ilerleme şeması">
+      <text x="0" y="14" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">İLERLEME BASAMAKLARI · SIKLIK → SÜRE → ŞİDDET</text>
+      <g>
+        <rect x="0" y="176" width="148" height="46" rx="4" fill="var(--z1)"/>
+        <rect x="156" y="132" width="148" height="90" rx="4" fill="var(--z2)"/>
+        <rect x="312" y="88" width="148" height="134" rx="4" fill="var(--z3)"/>
+        <rect x="468" y="44" width="148" height="178" rx="4" fill="var(--z4)"/>
+      </g>
+      <text x="10" y="196" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity=".9">HAFTA 0–2</text>
+      <text x="10" y="212" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="#fff">Yükü azalt</text>
+      <text x="166" y="152" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity=".9">HAFTA 2–6</text>
+      <text x="166" y="168" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="#fff">Kası güçlendir</text>
+      <text x="166" y="186" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">İzometrik, kapalı zincir</text>
+      <text x="166" y="202" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">ağrısız açıklıkta</text>
+      <text x="322" y="108" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity=".9">HAFTA 6–12</text>
+      <text x="322" y="124" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="#fff">Hacmi büyüt</text>
+      <text x="322" y="142" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">10 dk blok → 30 dk</text>
+      <text x="322" y="158" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">kesintisiz. Tavan +%10/hafta</text>
+      <text x="478" y="64" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity=".9">HAFTA 12+</text>
+      <text x="478" y="80" font-family="Archivo, sans-serif" font-size="13" font-weight="700" fill="#fff">Fonksiyon</text>
+      <text x="478" y="98" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">Merdiven, yokuş, taşıma.</text>
+      <text x="478" y="114" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">Koşu ancak kriterler</text>
+      <text x="478" y="130" font-family="Source Serif 4, serif" font-size="11.5" fill="#fff" opacity=".92">karşılanınca.</text>
+      <text x="10" y="240" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">Havuz (bel hizası yükü ~%50 azaltır) · yatar bisiklet · eliptik · 2–3 × 10 dk, RPE 3–4/10</text>
+    </svg>
+    <figcaption>Aynı anda iki değişken artırılmaz. Sıklık oturmadan süre, süre oturmadan şiddet artırılmaz.</figcaption>
+  </figure>
+
+  <div class="grid2">
+    <div class="card"><span class="tag">Durdur · hekime yönlendir</span>
+      <h4>Akut eklem tablosu</h4>
+      <p>Sıcak, kızarık, şiş eklem · istirahatte veya gece ağrı · kilitlenme, boşalma hissi ·
+      yeni travma (&lt;6 hafta). Bu tabloda antrenman başlamaz.</p></div>
+    <div class="card"><span class="tag">Başla · egzersiz tedavinin kendisi</span>
+      <h4>Kronik, stabil ağrı</h4>
+      <p>Örn. diz osteoartriti, istirahatte rahat. Egzersiz kontrendike değil,
+      <strong>birinci basamak tedavidir</strong> (OARSI, NICE, ACR). Yanlış olan egzersiz değil,
+      yanlış dozdur.</p></div>
+  </div>
+
+  <div class="rail">
+    <div class="note warn"><span class="lbl">Ağrı kuralı — danışana ezberlet</span>
+      <strong>"10 üzerinden 4'ü geçmesin, ertesi güne sarkmasın."</strong><br>
+      Egzersiz sırasında ağrı ≤ 4/10 · 24 saat sonra başlangıç seviyesine dönmüş olmalı ·
+      dönmediyse bir sonraki seansta hacmi %20–30 azalt, <em>bırakma</em> · eklem şişti/ısındı/kilitlendi → dur, hekim.</div>
+    <p><strong>Hekim onayı şart olan durumlar (ACSM ön katılım algoritması):</strong> bilinen
+    kardiyovasküler, metabolik veya böbrek hastalığı olup hâlihazırda egzersiz yapmayan kişi;
+    ya da hastalıktan bağımsız olarak <strong>semptom varsa</strong> — göğüs ağrısı, olağandışı
+    nefes darlığı, baş dönmesi/bayılma, çarpıntı, ayak bileği ödemi, gece nefes darlığıyla uyanma.</p>
+  </div>
+</section>
+
+<!-- ============ 5 NABIZ ============ -->
+<section id="nabiz">
+  <div class="sechead"><div class="secnum">05</div><div>
+    <h2>Aerobik ve anaerobik nabız aralıkları</h2>
+    <div class="sub">220−yaş'ı bırak · Karvonen'i kullan</div></div></div>
+
+  <div class="rail">
+    <div class="formula">HRmax
+  220 − yaş            ✗ En yaygın, EN HATALI (SD ±10–12 atım)
+  208 − (0.7 × yaş)    ✓ Tanaka (2001) — bunu kullan
+
+Karvonen (Nabız Rezervi)
+  HRR = HRmax − HRrest
+  Hedef = (HRR × şiddet%) + HRrest</div>
+    <p>Aynı kişi için 34 yaş, HRrest 68 → %60 şiddet, Karvonen ile <strong>138</strong>,
+    düz %HRmax ile <strong>110</strong> çıkar. <strong>28 atımlık bu fark, yanlış programlanmış
+    bir antrenman demektir.</strong></p>
+  </div>
+
+  <div class="tool">
+    <div class="tool-hd"><h4>Karvonen zon hesaplayıcı</h4><span class="hint">ölçek gerçek bpm aralığına göre çizilir</span></div>
+    <div class="tool-bd">
+      <div class="fields">
+        <div class="field"><label for="hAge">Yaş</label><input id="hAge" type="number" value="34" min="10" max="100"></div>
+        <div class="field"><label for="hRest">Dinlenim nabzı</label><input id="hRest" type="number" value="68" min="30" max="120"></div>
+        <div class="field"><label for="hForm">HRmax formülü</label>
+          <select id="hForm"><option value="tanaka" selected>Tanaka 208−0.7×yaş</option><option value="classic">220−yaş</option></select></div>
+      </div>
+      <div class="out">
+        <div><span class="k">HRmax</span><span class="v" id="oHrmax">–</span><span class="u">bpm</span></div>
+        <div><span class="k">HRR</span><span class="v" id="oHrr">–</span><span class="u">bpm</span></div>
+        <div><span class="k">Zon 2 aralığı</span><span class="v" id="oZ2" style="font-size:17px">–</span></div>
+      </div>
+      <div class="zscale" id="zscale" role="img" aria-label="Nabız zonlarının dinlenim ve maksimum nabız arasındaki ölçekli dağılımı"></div>
+      <div class="zlegend" id="zlegend"></div>
+    </div>
+  </div>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Zon</th><th class="num">%HRmax</th><th class="num">%HRR</th><th class="num">Laktat</th><th>Konuşma testi</th><th>Amaç</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Z1</strong> Toparlanma</td><td class="num">50–60</td><td class="num">&lt;40</td><td class="num">~1</td><td>Şarkı söyleyebilir</td><td>Aktif dinlenme, ısınma</td></tr>
+      <tr><td><strong>Z2</strong> Aerobik taban</td><td class="num">60–70</td><td class="num">40–59</td><td class="num">1–2</td><td>Cümle kurabilir</td><td>Mitokondri, kapiller, yağ oksidasyonu</td></tr>
+      <tr><td><strong>Z3</strong> Tempo</td><td class="num">70–80</td><td class="num">60–74</td><td class="num">2–4</td><td>Kısa cümleler</td><td>Aerobik kapasite · "gri bölge"</td></tr>
+      <tr><td><strong>Z4</strong> Eşik</td><td class="num">80–90</td><td class="num">75–89</td><td class="num">4–6</td><td>2–3 kelime</td><td>Laktat eşiği, yarış temposu</td></tr>
+      <tr><td><strong>Z5</strong> VO2max</td><td class="num">90–100</td><td class="num">≥90</td><td class="num">&gt;6</td><td>Konuşamaz</td><td>Maksimal aerobik güç, anaerobik</td></tr>
+    </tbody></table></div>
+
+  <div class="rail">
+    <p><strong>Aerobik aralık</strong> kabaca Z1–Z3 ve Z4'ün altı, yani anaerobik eşiğin altıdır.
+    <strong>Anaerobik aralık</strong> eşiğin üstü — pratikte ~%85–90 HRmax ve yukarısı.
+    Ama dikkat: <strong>anaerobik eşik sabit bir yüzde değildir.</strong> Antrenmansızda
+    %60–70 VO2max'ta, elit sporcuda %85–90 VO2max'ta gerçekleşir. Yüzdeler harita; hakikat kişinin kendi testidir.</p>
+    <div class="note warn"><span class="lbl">Beta bloker uyarısı</span>
+      Beta bloker kullanan danışanda nabız hedefi <strong>geçersizdir</strong>. Şiddeti
+      <strong>Borg RPE (6–20 skalasında 11–14)</strong> ve konuşma testiyle yönet. Nabzı yine kaydet —
+      hedef koymak için değil, kişinin kendi eğilimini izlemek için.</div>
+    <div class="note"><span class="lbl">Polarize 80/20</span>
+      Haftalık hacmin ~%80'i Z1–Z2, ~%20'si Z4–Z5. Z3'te ("gri bölge") çok zaman geçirmek yorgunluğu
+      toplar, gelişimi durdurur. Amatörün en yaygın hatası her antrenmanı orta-zor yapmaktır.
+      <strong>Kolay günü gerçekten kolay yap.</strong></div>
+  </div>
+</section>
+
+<!-- ============ 6 FATMAX ============ -->
+<section id="fatmax">
+  <div class="sechead"><div class="secnum">06</div><div>
+    <h2>Yağ yakım aralığının önemi — ve yalanı</h2>
+    <div class="sub">Crossover kavramı · Fatmax · 24 saatlik enerji dengesi</div></div></div>
+
+  <figure>
+    <svg viewBox="0 0 640 300" id="crossChart" role="img" aria-label="Şiddet arttıkça yağ ve karbonhidrat oksidasyonunun yer değiştirdiğini gösteren crossover grafiği"></svg>
+    <figcaption>Şiddet arttıkça yakıt tercihi yağdan karbonhidrata kayar (Brooks &amp; Mercier, crossover kavramı). Fatmax, dakikada yakılan <em>mutlak</em> yağ miktarının zirvesidir — antrenmansızda ~%45–55 VO2max, yani kabaca Zon 2.</figcaption>
+  </figure>
+
+  <div class="rail"><h3>Neden yanıltıcı — rakamla göster</h3>
+    <p>70 kg bir danışan, 45 dakika:</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Senaryo</th><th class="num">Toplam kcal</th><th class="num">Yağdan %</th><th class="num">Yağdan kcal</th></tr></thead>
+    <tbody>
+      <tr><td>%60 HRmax, 45 dk</td><td class="num">300</td><td class="num">60</td><td class="num"><strong>180</strong></td></tr>
+      <tr><td>%80 HRmax, 45 dk</td><td class="num">500</td><td class="num">35</td><td class="num"><strong>175</strong></td></tr>
+    </tbody></table></div>
+
+  <div class="rail">
+    <div class="note"><span class="lbl">Anlaşılması gereken tek cümle</span>
+      Yağ kaybını belirleyen şey antrenman sırasında hangi yakıtı kullandığın değil,
+      <strong>24 saatlik enerji dengendir.</strong> Vücut yakıtı gün içinde sürekli takas eder.</div>
+    <h3>O zaman Zon 2 niye bu kadar değerli?</h3>
+    <p>Bölge yanlış pazarlanıyor ama kendisi çok değerli:</p>
+    <ol>
+      <li><strong>Sürdürülebilirlik.</strong> Sedanter danışan Zon 2'de 45 dk yapar, Zon 4'te 6 dakikada bırakır.</li>
+      <li><strong>Düşük eklem ve sinir sistemi yükü</strong> → toparlanma ucuz → haftalık hacim artar.</li>
+      <li><strong>Metabolik altyapı.</strong> Mitokondri yoğunluğu, kapiller ağ, FAT/CD36 ve CPT-1 taşıyıcıları, metabolik esneklik.</li>
+      <li><strong>Taban olmadan tavan olmaz.</strong> Zayıf aerobik tabanla HIIT yapan kişi toparlanamaz, sakatlanır.</li>
+      <li><strong>Bağlılık.</strong> Danışan antrenmandan nefret etmeden çıkar ve ertesi gün yine gelir.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 7 VO2 ============ -->
+<section id="vo2">
+  <div class="sechead"><div class="secnum">07</div><div>
+    <h2>VO2 max</h2>
+    <div class="sub">Aerobik kapasitenin tavanı · ml/kg/dk</div></div></div>
+  <div class="rail">
+    <div class="formula">Fick denklemi
+  VO2 = Kalp Debisi × (a-v)O2 farkı
+      = (Kalp Atım Hızı × Atım Hacmi) × (arter−ven O2 farkı)
+
+  Merkezi faktör   : Atım hacmi  → antrenmanla en çok gelişen, en büyük pay
+  Periferik faktör : Kapiller yoğunluk, mitokondri, myoglobin, oksidatif enzimler
+
+1 MET = 3.5 ml/kg/dk</div>
+    <p>Denklemin düz Türkçesi: <strong>kalbinin pompaladığı kan</strong> çarpı
+    <strong>kasının o kandan çekebildiği oksijen</strong>. İlk yarısı kalple ilgilidir —
+    <strong>atım hacmi</strong>, kalbin her vuruşta gönderdiği kan miktarıdır ve antrenmanla en çok
+    gelişen değişken budur. İkinci yarısı kasla ilgilidir: <strong>kapiller</strong> (damar ağının
+    en ince uçları, teslimat noktaları), <strong>mitokondri</strong> (hücrenin enerji santrali) ve
+    <strong>miyoglobin</strong> (kas içinde oksijeni tutan protein).</p>
+    <p>Yani VO2max'ı artırmanın iki yolu vardır: <strong>daha iyi pompa</strong> ya da
+    <strong>daha iyi kullanan kas</strong>. İyi bir program ikisini birden çalıştırır.</p>
+    <h3>Saha testleri</h3>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Test</th><th>Kim için</th><th>Formül</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cooper 12 dk koşu</strong></td><td>Sağlıklı, koşabilen</td><td><code>(mesafe_m − 504.9) / 44.73</code></td></tr>
+      <tr><td><strong>Rockport 1 mil yürüyüş</strong></td><td>Sedanter, kilolu, yaşlı — en güvenlisi</td><td>Ağırlık, yaş, cinsiyet, süre, bitiş nabzı</td></tr>
+      <tr><td><strong>Queens College basamak</strong> (3 dk, 41 cm)</td><td>Genel popülasyon</td><td>E: <code>111.33 − (0.42 × nabız)</code><br>K: <code>65.81 − (0.1847 × nabız)</code></td></tr>
+      <tr><td><strong>20 m mekik (beep)</strong></td><td>Genç, sporcu, takım</td><td>Seviye/mekik tablosu</td></tr>
+      <tr><td><strong>YMCA bisiklet</strong></td><td>Eklem yükü olan</td><td>Submaksimal, kademeli</td></tr>
+    </tbody></table></div>
+
+  <div class="tool">
+    <div class="tool-hd"><h4>VO2max — Cooper ve basamak testi</h4><span class="hint">test sonrası 5 sn bekle, 15 sn say, ×4</span></div>
+    <div class="tool-bd">
+      <div class="fields">
+        <div class="field"><label for="vTest">Test</label>
+          <select id="vTest"><option value="cooper" selected>Cooper 12 dk</option><option value="step">Queens College basamak</option></select></div>
+        <div class="field"><label for="vSex">Cinsiyet</label>
+          <select id="vSex"><option value="f" selected>Kadın</option><option value="m">Erkek</option></select></div>
+        <div class="field" id="fDist"><label for="vDist">Mesafe (m)</label><input id="vDist" type="number" value="2000" min="400" max="6000"></div>
+        <div class="field" id="fHr" hidden><label for="vHr">Test sonu nabız</label><input id="vHr" type="number" value="150" min="80" max="220"></div>
+      </div>
+      <div class="out">
+        <div><span class="k">VO2max</span><span class="v" id="oVo2">–</span><span class="u">ml/kg/dk</span></div>
+        <div><span class="k">MET</span><span class="v" id="oMet">–</span></div>
+        <div><span class="k">Sınıf</span><span class="v" id="oClass" style="font-size:16px">–</span></div>
+      </div>
+      <div class="verdict" id="vVerdict"></div>
+    </div>
+  </div>
+
+  <div class="rail">
+    <h3>Nasıl geliştirilir?</h3>
+    <p>Antrenmanla artış <strong>%5–25</strong>; genetik payı ~%50 (HERITAGE çalışması). Aynı
+    programa "yüksek yanıt verenler" ve "düşük yanıt verenler" vardır — bunu danışanına baştan söyle.</p>
+    <div class="formula">En iyi belgelenmiş protokol — Norveç 4×4
+  4 × 4 dakika @ %90–95 HRmax
+  aralarda 3 dakika aktif toparlanma @ %70
+  haftada 2–3 gün
+  + altında yüksek hacimli Zon 2 tabanı (şart)</div>
+    <div class="note"><span class="lbl">Neden bu kadar önemli</span>
+      Kardiyorespiratuvar uygunluk, tüm nedenlere bağlı ölümün en güçlü tek yordayıcılarından biridir.
+      En büyük risk azalması <strong>en alt uygunluk diliminden bir üst dilime</strong> çıkarken görülür.
+      Yani en kazançlı danışan, hiç hareket etmeyen danışandır.</div>
+  </div>
+</section>
+
+<!-- ============ 8 ESNEKLIK ============ -->
+<section id="esneklik">
+  <div class="sechead"><div class="secnum">08</div><div>
+    <h2>Statik ve dinamik esneklik</h2>
+    <div class="sub">Dinamik dansa, statik yatağa</div></div></div>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th></th><th>Statik esneklik</th><th>Dinamik esneklik</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ne</strong></td><td>Eklemin pasif olarak ulaştığı maksimum açıklık</td><td>Hareket halinde, aktif kontrolle kullanılabilen açıklık</td></tr>
+      <tr><td><strong>Nasıl</strong></td><td>Pozisyona gir, 15–60 sn bekle</td><td>Kontrollü, giderek artan genlikte hareket</td></tr>
+      <tr><td><strong>Ne zaman</strong></td><td>Antrenman <strong>sonrası</strong>, ayrı seans, akşam</td><td>Antrenman <strong>öncesi</strong> ısınmada</td></tr>
+      <tr><td><strong>Doz</strong></td><td>10–30 sn (65+ yaş: 30–60 sn) × 2–4 tekrar, kas başına ~60 sn</td><td>5–10 dk, 8–10 hareket × 8–12 tekrar</td></tr>
+      <tr><td><strong>Kime</strong></td><td>Hipomobil/kısa kaslar, masa başı, 65+, rehabilitasyon, soğuma</td><td><strong>Herkes, her antrenman öncesi</strong></td></tr>
+    </tbody></table></div>
+
+  <div class="rail">
+    <div class="note warn"><span class="lbl">Kanıt — sınavda çıkar</span>
+      Antrenman öncesi <strong>60 saniyeyi aşan</strong> statik germe, kuvvet ve güç çıktısını
+      geçici olarak <strong>%3–5 düşürebilir</strong>. Ancak <strong>45 saniyenin altındaki</strong>
+      germeler, tam bir ısınmanın içinde yapıldığında bu etki pratikte kaybolur.
+      Kural: <strong>önce dinamik, sonra statik.</strong></div>
+    <p><strong>Esneklik ≠ Mobilite.</strong> Esneklik dokunun uzayabilmesidir (pasif). Mobilite,
+    o açıklığı kendi kas kontrolünle <em>kullanabilmektir</em> (aktif). Pasif 120° kalça fleksiyonu
+    olup aktif 80°'si olan biri vardır — aradaki boşluk, yaralanmanın adresidir.</p>
+
+    <div class="note bad"><span class="lbl">Hipermobil bireyde germe yok</span>
+      Zaten fazla olan açıklığı artırmak eklem instabilitesini büyütür. Bu kişide öncelik
+      <strong>stabilite, kuvvet ve nöromusküler kontrol</strong>: izometrikler, kontrollü açıklıkta
+      kuvvet, denge ve propriyosepsiyon. Şüphede Beighton skoru ve hekim değerlendirmesi.</div>
+
+    <h3>NASM Korrektif Egzersiz Zinciri</h3>
+  </div>
+  <figure>
+    <svg viewBox="0 0 640 132" role="img" aria-label="NASM korrektif egzersiz zinciri: inhibit, lengthen, activate, integrate">
+      <g font-family="Archivo, sans-serif">
+        <rect x="0" y="22" width="146" height="66" rx="5" fill="var(--surface-2)" stroke="var(--line)"/>
+        <rect x="164" y="22" width="146" height="66" rx="5" fill="var(--surface-2)" stroke="var(--line)"/>
+        <rect x="328" y="22" width="146" height="66" rx="5" fill="var(--surface-2)" stroke="var(--line)"/>
+        <rect x="492" y="22" width="146" height="66" rx="5" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="14" y="16" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--accent)">01</text>
+        <text x="178" y="16" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--accent)">02</text>
+        <text x="342" y="16" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--accent)">03</text>
+        <text x="506" y="16" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--accent)">04</text>
+        <text x="14" y="48" font-size="14" font-weight="700" fill="var(--ink)">INHIBIT</text>
+        <text x="178" y="48" font-size="14" font-weight="700" fill="var(--ink)">LENGTHEN</text>
+        <text x="342" y="48" font-size="14" font-weight="700" fill="var(--ink)">ACTIVATE</text>
+        <text x="506" y="48" font-size="14" font-weight="700" fill="var(--ink)">INTEGRATE</text>
+        <text x="14" y="68" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">SMR / foam roller</text>
+        <text x="14" y="82" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)">30–90 sn</text>
+        <text x="178" y="68" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">Statik germe</text>
+        <text x="178" y="82" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)">30 sn</text>
+        <text x="342" y="68" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">İzole kuvvetlendirme</text>
+        <text x="342" y="82" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)">10–15 tekrar, 4 sn izo</text>
+        <text x="506" y="68" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">Entegre dinamik hareket</text>
+        <text x="506" y="82" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)">10–15 tekrar</text>
+        <path d="M150 55 l10 0 m-4 -4 l4 4 -4 4" stroke="var(--accent)" stroke-width="1.6" fill="none"/>
+        <path d="M314 55 l10 0 m-4 -4 l4 4 -4 4" stroke="var(--accent)" stroke-width="1.6" fill="none"/>
+        <path d="M478 55 l10 0 m-4 -4 l4 4 -4 4" stroke="var(--accent)" stroke-width="1.6" fill="none"/>
+        <text x="0" y="116" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">Örnek — öne düşük omuz: pektoral/lat roller → kapı germesi → Y-T-W kaldırma → lastikli tek kol row + rotasyon</text>
+      </g>
+    </svg>
+    <figcaption>Kanca: <strong>İ-U-A-E</strong> — İnhibe et, Uzat, Aktive et, Entegre et.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 9 LAKTAT ============ -->
+<section id="laktat">
+  <div class="sechead"><div class="secnum">09</div><div>
+    <h2>Laktik asit birikimi</h2>
+    <div class="sub">Laktat yakıttır · DOMS mikrotravmadır · H⁺ suçludur</div></div></div>
+
+  <div class="rail">
+    <div class="note bad"><span class="lbl">Önce yanlışı sil</span>
+      ✗ "Kaslarım laktik asitten ağrıyor." &nbsp;✗ "Ertesi gün ağrıyorsa laktik asit birikmiştir."
+      &nbsp;✗ "Laktik asit atık maddedir."<br>
+      Üçü de yanlış. Bunları söylemeyen antrenör, söyleyenden bir adım öndedir.</div>
+    <p>Ne olduğunu adım adım kuralım. Şeker, enerjiye çevrilirken önce <strong>glikoliz</strong>
+    denen hızlı bir hattan geçer ve sonunda <strong>pirüvat</strong> adlı ara madde ortaya çıkar.
+    İşin geri kalanı hücrenin enerji santralinde, <strong>mitokondri</strong>de yapılır — ama
+    mitokondrinin bir işleme hızı vardır.</p>
+    <p>Sen çok sert çalışınca pirüvat, mitokondrinin işleyebileceğinden hızlı birikir. O anda
+    <strong>LDH</strong> adlı enzim devreye girip pirüvatı <strong>laktata</strong> çevirir.
+    Bunun amacı bir atık üretmek değil: dönüşüm sırasında <strong>NAD⁺</strong> adlı yardımcı
+    molekül geri kazanılır ve NAD⁺ olmadan glikoliz hattı tamamen durur. Yani
+    <strong>laktat üretimi, yüksek şiddette enerji üretiminin devam etmesini sağlayan çözümdür;
+    problemin kendisi değil.</strong></p>
+    <p>Peki o yanma hissi nereden geliyor? Kas kasılmak için ATP'yi parçalar ve bu parçalanmadan
+    <strong>hidrojen iyonu (H⁺)</strong> açığa çıkar. H⁺ birikince ortam asitlenir
+    (<strong>asidoz</strong>) ve kas düzgün kasılamaz. Suçlu laktat değil, H⁺'dır — üstelik
+    laktat oluşurken bir H⁺ harcanır, yani laktat asitlenmeyi <em>geciktirir</em>.</p>
+    <p>Üretilen laktat kana geçer ve orada bir yakıta dönüşür: kalp kası, yavaş kasılan kas lifleri
+    ve beyin onu doğrudan yakar. Bu taşınma-yeniden kullanma sistemine
+    <strong>laktat mekiği</strong> denir. Bir kısmı da karaciğere gidip yeniden şekere çevrilir ve
+    kana geri verilir; bu geri dönüşüm hattının adı <strong>Cori döngüsü</strong>dür.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 300" id="lacChart" role="img" aria-label="Şiddete göre kan laktat eğrisi ve LT1 ile LT2 eşiklerinin konumu"></svg>
+    <figcaption>LT1 (~2 mmol/L) aerobik eşik, LT2/OBLA (~4 mmol/L) anaerobik eşiktir. Antrenmanla eğri sağa kayar: aynı hızda daha az laktat üretilir, üretilen daha hızlı temizlenir.</figcaption>
+  </figure>
+
+  <div class="rail">
+    <h3>Birikimi azaltmanın 6 yolu</h3>
+    <ol>
+      <li><strong>Aerobik tabanı büyüt.</strong> En etkili yol. Zon 2 hacmi mitokondri sayısını ve
+        <strong>MCT1 laktat taşıyıcılarını</strong> artırır.</li>
+      <li><strong>Eşik antrenmanı.</strong> Tempo koşusu, cruise interval (4 × 8 dk eşik, 2 dk kolay).</li>
+      <li><strong>Aktif soğuma.</strong> 10–15 dk, %40–60 HRmax. Pasif dinlenmeye kıyasla temizleme
+        hızını yaklaşık <strong>iki katına</strong> çıkarır. Yatmak yerine yürü.</li>
+      <li><strong>Tempo yönetimi.</strong> Baştan hızlı çıkmak erken birikimdir; negatif split öğret.</li>
+      <li><strong>Tamponlama.</strong> Beta-alanin (karnozin, 4–6 hafta yükleme), sodyum bikarbonat
+        (akut). Bilgi olarak bil; kullanım sporcu ve hekim kararıdır.</li>
+      <li><strong>Karbonhidrat ve hidrasyon.</strong> Glikojeni boş sporcu erken yorulur;
+        dehidrasyon kan hacmini düşürür, temizlemeyi yavaşlatır.</li>
+    </ol>
+    <div class="note"><span class="lbl">DOMS ayrımı</span>
+      Laktat egzersizden sonra <strong>30–60 dakikada</strong> dinlenim seviyesine döner.
+      DOMS ise <strong>24–72 saatte</strong> zirve yapar; nedeni eksantrik kasılmaya bağlı
+      mikrotravma, inflamatuar yanıt ve doku onarımıdır.</div>
+  </div>
+</section>
+
+<!-- ============ 10 OPT ============ -->
+<section id="opt">
+  <div class="sechead"><div class="secnum">10</div><div>
+    <h2>Sedanter birey ve NASM OPT basamakları</h2>
+    <div class="sub">Faz atlanmaz · stabilizasyon önce</div></div></div>
+
+  <div class="rail">
+    <p><strong>Sedanter birey</strong> iki şekilde tanımlanır ve ikisi aynı şey değildir:
+    haftada <strong>150 dakikanın altında</strong> orta şiddetli aktivite yapan kişi (yetersiz aktivite);
+    ve uyanıkken <strong>≤1.5 MET</strong> davranışlarda çok zaman geçiren kişi (sedanter davranış).
+    Sabah 1 saat spor yapıp günün 10 saatini oturarak geçiren kişi "aktif" ama sedanter davranışı
+    yüksektir — bu bağımsız bir risk faktörüdür. Çözüm: <strong>oturmayı bölmek</strong>, saatte 3–5 dk ayağa kalkmak.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 270" role="img" aria-label="NASM OPT modeli piramidi: stabilizasyon, kuvvet ve güç seviyeleri, beş faz">
+      <text x="0" y="14" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">NASM OPT MODELİ · 3 SEVİYE / 5 FAZ</text>
+      <!-- power -->
+      <path d="M270 30 h100 l30 44 h-160 z" fill="var(--z5)"/>
+      <text x="320" y="58" font-family="Archivo, sans-serif" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">FAZ 5 · GÜÇ</text>
+      <!-- strength -->
+      <path d="M236 78 h168 l26 38 h-220 z" fill="var(--z4)"/>
+      <text x="320" y="103" font-family="Archivo, sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">FAZ 4 · MAKSİMAL KUVVET</text>
+      <path d="M206 120 h228 l26 38 h-280 z" fill="var(--z3)"/>
+      <text x="320" y="145" font-family="Archivo, sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">FAZ 3 · HİPERTROFİ</text>
+      <path d="M176 162 h288 l26 38 h-340 z" fill="var(--z2)"/>
+      <text x="320" y="187" font-family="Archivo, sans-serif" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">FAZ 2 · KUVVET DAYANIKLILIĞI</text>
+      <!-- stabilization -->
+      <path d="M146 204 h348 l26 40 h-400 z" fill="var(--accent)"/>
+      <text x="320" y="224" font-family="Archivo, sans-serif" font-size="13" font-weight="800" fill="var(--accent-ink)" text-anchor="middle">FAZ 1 · STABİLİZASYON DAYANIKLILIĞI</text>
+      <text x="320" y="239" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--accent-ink)" text-anchor="middle" opacity=".85">sedanter birey buradan başlar · en az 4 hafta</text>
+      <!-- labels -->
+      <text x="0" y="52" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)">GÜÇ</text>
+      <text x="0" y="142" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)">KUVVET</text>
+      <text x="0" y="228" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)">STABİLİZASYON</text>
+      <line x1="0" y1="30" x2="0" y2="244" stroke="var(--line)" stroke-width="1"/>
+      <text x="0" y="264" font-family="Source Serif 4, serif" font-size="12" fill="var(--ink-2)">OPT döngüseldir: 1 → 2 → 3 → (1) → 2 → 4 … Stabilizasyona periyodik dönüş hareket kalitesini korur.</text>
+    </svg>
+    <figcaption>"Bu danışan formda görünüyor" diyerek Faz 1'i atlamak, sedanter bireyde en sık görülen sakatlık nedenidir.</figcaption>
+  </figure>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Faz</th><th class="num">Tekrar</th><th class="num">Set</th><th class="num">%1RM</th><th class="num">Tempo</th><th class="num">Dinlenme</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 — Stabilizasyon Day.</strong></td><td class="num">12–20</td><td class="num">1–3</td><td class="num">50–70</td><td class="num">4/2/1</td><td class="num">0–90 sn</td></tr>
+      <tr><td><strong>2 — Kuvvet Dayanıklılığı</strong></td><td class="num">8–12</td><td class="num">2–4</td><td class="num">70–80</td><td class="num">2/0/2 + 4/2/1</td><td class="num">0–60 sn</td></tr>
+      <tr><td><strong>3 — Hipertrofi</strong></td><td class="num">6–12</td><td class="num">3–5</td><td class="num">75–85</td><td class="num">2/0/2</td><td class="num">0–60 sn</td></tr>
+      <tr><td><strong>4 — Maksimal Kuvvet</strong></td><td class="num">1–5</td><td class="num">4–6</td><td class="num">85–100</td><td class="num">X/X/X</td><td class="num">3–5 dk</td></tr>
+      <tr><td><strong>5 — Güç</strong></td><td class="num">1–5 + 8–10</td><td class="num">3–5</td><td class="num">85–100 + %10 VA</td><td class="num">X/X/X</td><td class="num">3–5 dk</td></tr>
+    </tbody></table></div>
+
+  <div class="rail">
+    <p><strong>Tempo notasyonu 4/2/1:</strong> 4 sn eksantrik (indirme) / 2 sn izometrik (durma) /
+    1 sn konsantrik (kaldırma). Yavaş eksantrik, sedanterde hareket kontrolünü ve bağ dokusu
+    adaptasyonunu geliştirir.</p>
+
+    <h3>Faz 1 seans şablonu — 30–45 dk</h3>
+    <div class="formula">1. SMR / foam roller        5 dk      30–90 sn / bölge
+2. Statik germe             5 dk      30 sn × 2, kısa bulunan kaslar
+3. Aktivasyon + core        5–8 dk    köprü, dead bug, plank, bird-dog
+4. Denge                    5 dk      tek ayak duruş, tek ayak abduksiyon
+5. Direnç (tam vücut)       15–20 dk  5–7 hareket, 1–3 set × 12–20, tempo 4/2/1
+6. Kardiyo — NASM Stage I   20–30 dk  %65–75 HRmax, kesintisiz hedefi
+7. Soğuma + statik germe    5 dk</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><span class="tag">NASM kardiyo basamakları</span><h4>Stage I → II → III</h4>
+      <p><strong>Stage I</strong> Zon 1, %65–75 HRmax, kesintisiz 30 dk hedefi — sedanter burada kalır.<br>
+      <strong>Stage II</strong> Zon 1–2, %76–85, interval.<br>
+      <strong>Stage III</strong> Zon 1–2–3, %86–95, piramit interval.</p></div>
+    <div class="card"><span class="tag">Faz 1'den çıkış kriterleri</span><h4>Süre değil, yeterlilik</h4>
+      <p>30 dk kesintisiz Stage I · 12–20 tekrarı hareket bozulmadan tamamlama ·
+      overhead squat telafilerinde azalma · 30 sn tek ayak dengesi · seans sonrası ağrı yok ve
+      devamlılık var.</p></div>
+  </div>
+
+  <div class="rail">
+    <div class="note"><span class="lbl">İlk 4 haftanın başarı ölçütü</span>
+      "Haftada 3 gün geldi mi?" sorusunun cevabı, kaç kilo verdiğinden önemlidir.
+      İlk hedef davranış, ikinci hedef fizyolojidir.</div>
+  </div>
+</section>
+
+<!-- ============ 11 ILK 60 DK ============ -->
+<section id="ilk60">
+  <div class="sechead"><div class="secnum">11</div><div>
+    <h2>Antrenörün ilk 60 dakikası</h2>
+    <div class="sub">Teoriyi ilk seansa çevirmek</div></div></div>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th class="num">Dakika</th><th>Ne yapılır</th></tr></thead>
+    <tbody>
+      <tr><td class="num">0–10</td><td>Tanışma, hedef, geçmiş, motivasyonel görüşme</td></tr>
+      <tr><td class="num">10–15</td><td><strong>PAR-Q+</strong> ve kırmızı bayrak taraması</td></tr>
+      <tr><td class="num">15–25</td><td>Antropometri: boy, kilo, bel, kalça, WHtR, (varsa) yağ oranı</td></tr>
+      <tr><td class="num">25–35</td><td>Statik duruş analizi ve <strong>Overhead Squat Assessment</strong></td></tr>
+      <tr><td class="num">35–45</td><td>Nabız: dinlenim, HRmax, Karvonen zonları, submaksimal kardiyo testi</td></tr>
+      <tr><td class="num">45–55</td><td>Hareket denemesi: sit-to-stand, itme, çekme, tek ayak denge</td></tr>
+      <tr><td class="num">55–60</td><td>Bulgu özeti + <strong>SMART hedef</strong> + ilk hafta planı</td></tr>
+    </tbody></table></div>
+
+  <div class="grid2">
+    <div class="card"><span class="tag">Durdur · hekime yönlendir</span><h4>Kırmızı bayraklar</h4>
+      <p>Göğüs ağrısı/baskı, çeneye-kola yayılan ağrı · olağandışı nefes darlığı, gece nefes darlığıyla
+      uyanma · baş dönmesi, bayılma · düzensiz çarpıntı · kontrolsüz hipertansiyon (≥180/110) ·
+      iki taraflı ayak bileği ödemi · eklemde ısı, kızarıklık, şişlik, kilitlenme ·
+      açıklanamayan kilo kaybı · yeni başlayan şiddetli baş ağrısı.</p></div>
+    <div class="card"><span class="tag">Her programın omurgası</span><h4>FITT-VP</h4>
+      <p><strong>F</strong>requency · <strong>I</strong>ntensity · <strong>T</strong>ime ·
+      <strong>T</strong>ype · <strong>V</strong>olume · <strong>P</strong>rogression.
+      Örnek: 3 gün/hafta · %65–75 HRmax · 30 dk · eliptik · 90 dk/hafta · +%10/hafta.</p></div>
+    <div class="card"><span class="tag">Nabız ölçemediğin her durumda</span><h4>Borg RPE</h4>
+      <p>6–20 skalasında <strong>12–14</strong> = orta–biraz zor = sedanterin çalışacağı yer.
+      Borg × 10 ≈ yaklaşık nabız (genç yetişkinde). Beta bloker kullananlarda RPE senin tek pusulandır.</p></div>
+    <div class="card"><span class="tag">Hedef yazımı</span><h4>SMART örneği</h4>
+      <p>✗ "Kilo vereceğim."<br>✓ "8 haftada bel çevremi 92 cm'den 87 cm'ye düşürmek; haftada 3 gün
+      antrenman, günde 8.000 adım, haftada 5 gün 1800 kcal. Ölçüm her pazartesi sabah."</p></div>
+  </div>
+</section>
+
+<!-- ============ SOZLUK ============ -->
+<section id="sozluk">
+  <div class="sechead"><div class="secnum">≡</div><div>
+    <h2>Terim sözlüğü</h2>
+    <div class="sub">Anlatamadığın terim, henüz senin değildir</div></div></div>
+  <div class="gsearch">
+    <input id="gq" type="search" placeholder="Terim ara — örn. visseral, insülin, eşik" aria-label="Terim ara">
+    <span class="cnt" id="gcnt"></span>
+  </div>
+  <div class="gfilters" id="gfilters"></div>
+  <div class="glist" id="glist"></div>
+</section>
+
+<!-- ============ KARTLAR ============ -->
+<section id="kartlar">
+  <div class="sechead"><div class="secnum">↺</div><div>
+    <h2>Hafıza kartları</h2>
+    <div class="sub">Karta dokun, çevir · tekrar: 1. gün → 3. gün → 7. gün → 21. gün</div></div></div>
+  <div class="deck" id="deck"></div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz">
+  <div class="sechead"><div class="secnum">✓</div><div>
+    <h2>Hafta 1 sınavı</h2>
+    <div class="sub">15 soru · her doğru 1 puan · geçme notu 12/15</div></div></div>
+  <div id="quizBox"></div>
+  <div class="qbar">
+    <button class="btn" id="qSubmit" type="button">Sınavı bitir</button>
+    <button class="btn ghost" id="qReset" type="button">Sıfırla</button>
+    <span class="score" id="qScore">0 / 15 cevaplandı</span>
+  </div>
+  <div class="verdict" id="qVerdict" hidden></div>
+</section>
+
+<!-- ============ CHECKLIST ============ -->
+<section id="gorevler">
+  <div class="sechead"><div class="secnum">☰</div><div>
+    <h2>Haftanın saha görevleri</h2>
+    <div class="sub">İşaretlerin bu tarayıcıda saklanır</div></div></div>
+  <div class="chk" id="chk"></div>
+  <div class="prog" id="chkProg"></div>
+</section>
+
+<!-- ============ GOLD ============ -->
+<section id="altin" style="border-bottom:none">
+  <div class="sechead"><div class="secnum">★</div><div>
+    <h2>Haftanın 12 altın cümlesi</h2>
+    <div class="sub">Sahada aklında kalması gereken tek sayfa</div></div></div>
+  <ol class="gold rail">
+    <li>Metabolizmanın motoru yağsız kütledir; formül bir tahmindir, gerçeği tartı ve mezura söyler.</li>
+    <li>Kas 1 kg = günde ~13 kcal, 100 değil. Kasın değeri yakımda değil, fonksiyonda ve glikoz deposunda.</li>
+    <li>Bel çevren boyunun yarısından az olsun.</li>
+    <li>Bölgesel yağ yakımı yoktur. Ne mekik göbeği, ne makineli hareket basenleri eritir.</li>
+    <li>Merkez yağlanma metabolik acildir; uzuv yağlanma sabır işidir.</li>
+    <li>1 kg kilo = her adımda dizden 3–4 kg yük.</li>
+    <li>Ağrı 4'ü geçmesin, ertesi güne sarkmasın.</li>
+    <li>Sıklık → Süre → Şiddet. Aynı anda ikisini artırma.</li>
+    <li>220−yaş'ı bırak, 208−(0.7×yaş) kullan; şiddeti Karvonen ile hesapla.</li>
+    <li>Yağ kaybını antrenmandaki yakıt değil, 24 saatlik enerji dengesi belirler.</li>
+    <li>Laktat atık değil yakıttır; DOMS laktat değildir; aktif soğuma temizliği ikiye katlar.</li>
+    <li>Dinamik ısınmada, statik soğumada. Sedanter Faz 1'den başlar, faz atlanmaz.</li>
+  </ol>
+</section>
+
+<footer>
+  Antrenör Gelişim Programı · Hafta 1 / 12 · Metabolizma, Nabız ve Antrenman Temelleri<br>
+  Kaynaklar: NASM Essentials of Personal Fitness Training · ACSM's Guidelines for Exercise Testing and
+  Prescription (11. baskı) · McArdle, Katch &amp; Katch, Exercise Physiology · Tanaka ve ark. 2001 ·
+  Brooks &amp; Mercier 1994 · WHO Physical Activity Guidelines 2020.<br><br>
+  Bu materyal antrenörlük eğitimi amaçlıdır; tıbbi tanı veya tedavi önerisi değildir.
+  Kırmızı bayrak bulguları, mevcut hastalık, gebelik, ilaç kullanımı ve yaralanma durumlarında
+  danışan hekime yönlendirilir.
+</footer>
+</div>
+
+<div id="sheet" role="dialog" aria-modal="false" aria-labelledby="sheetTitle" aria-hidden="true">
+  <div class="sheet-in">
+    <div class="sheet-hd">
+      <span class="g" id="sheetGroup"></span>
+      <h5 id="sheetTitle"></h5>
+      <button class="sheet-close" id="sheetClose" type="button" aria-label="Kapat">×</button>
+    </div>
+    <p class="d" id="sheetDef"></p>
+    <div class="x" id="sheetWhy" hidden></div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+var r1=function(n){return Math.round(n)};
+function num(el,d){var v=parseFloat(el.value);return isFinite(v)?v:d}
+
+/* ---------- theme ---------- */
+var tb=$("#themeBtn");
+function curTheme(){
+  var a=document.documentElement.getAttribute("data-theme");
+  if(a)return a;
+  return window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+}
+try{var st=localStorage.getItem("ad_theme");if(st)document.documentElement.setAttribute("data-theme",st)}catch(e){}
+tb.addEventListener("click",function(){
+  var n=curTheme()==="dark"?"light":"dark";
+  document.documentElement.setAttribute("data-theme",n);
+  try{localStorage.setItem("ad_theme",n)}catch(e){}
+  drawCharts();
+});
+
+/* ---------- BMR ---------- */
+function bmr(){
+  var sex=$("#bSex").value,age=num($("#bAge"),34),w=num($("#bW"),78),h=num($("#bH"),165),
+      bf=num($("#bBf"),NaN),act=parseFloat($("#bAct").value);
+  var mif=10*w+6.25*h-5*age+(sex==="m"?5:-161);
+  $("#oMif").textContent=r1(mif);
+  var kat=null;
+  if(isFinite(bf)&&bf>2&&bf<66){kat=370+21.6*(w*(1-bf/100));$("#oKat").textContent=r1(kat)}
+  else{$("#oKat").textContent="–"}
+  var tdee=mif*act;
+  $("#oTdee").textContent=r1(tdee);
+  $("#oCut").textContent=r1(tdee*0.8);
+  $("#oPro").textContent=r1(w*1.8)+" g";
+  var v=$("#bVerdict"),cut=tdee*0.8,floor=sex==="m"?1500:mif;
+  var wk=(tdee-cut)*7/7700;
+  var msg="Haftalık beklenen kayıp ≈ <b>"+wk.toFixed(2)+" kg</b> (%20 açıkta). ";
+  if(cut<floor){
+    v.className="verdict bad";
+    msg+="⚠ Bu hedef "+(sex==="m"?"1500 kcal":"BMR ("+r1(mif)+" kcal)")+" sınırının altında. Açığı %10–15'e çek ve aktiviteyi artır.";
+  }else if(kat&&Math.abs(kat-mif)>150){
+    v.className="verdict warn";
+    msg+="Mifflin ve Katch arasında "+r1(Math.abs(kat-mif))+" kcal fark var — yağ oranı ölçümünü doğrula, yağsız kütle tahmini şüpheli.";
+  }else{
+    v.className="verdict ok";
+    msg+="Aralık makul. 2 hafta uygula, tart, gerçek değişime göre kalibre et.";
+  }
+  v.innerHTML=msg;
+}
+["#bSex","#bAge","#bW","#bH","#bBf","#bAct"].forEach(function(s){
+  $(s).addEventListener("input",bmr);$(s).addEventListener("change",bmr)});
+
+/* ---------- waist ---------- */
+function waist(){
+  var sex=$("#wSex").value,wa=num($("#wWaist"),96),hi=num($("#wHip"),108),h=num($("#wH"),165);
+  var whtr=wa/h, whr=wa/hi;
+  $("#oWhtr").textContent=whtr.toFixed(2);
+  $("#oWhr").textContent=whr.toFixed(2);
+  var whrLim=sex==="m"?0.90:0.85, w1=sex==="m"?94:80, w2=sex==="m"?102:88;
+  var type = whr>=whrLim ? "Android" : (whr<=whrLim-0.08 ? "Gynoid" : "Karma");
+  $("#oType").textContent=type;
+  var v=$("#wVerdict"),msg="";
+  if(whtr>=0.6||wa>w2){v.className="verdict bad";msg="<b>Yüksek risk.</b> ";}
+  else if(whtr>=0.5||wa>w1){v.className="verdict warn";msg="<b>Risk artışı.</b> ";}
+  else{v.className="verdict ok";msg="<b>Düşük risk.</b> ";}
+  msg+="WHtR "+whtr.toFixed(2)+" (eşik 0.50), bel "+wa+" cm (eşikler "+w1+" / "+w2+" cm). ";
+  msg+= type==="Android"
+    ? "Merkez dağılım: öncelik kuvvet + Zon 2 hacmi + uyku ve kortizol yönetimi; takip bel çevresiyle yapılır."
+    : type==="Gynoid"
+      ? "Uzuv dağılımı: metabolik risk düşük. Öncelik uzun süreli Zon 2, düşük darbe ve ilk 6–8 hafta yüksek tekrarlı alt vücut."
+      : "Karma dağılım: toplam enerji açığı ve kuvvet tabanı üzerinden ilerle, 4 haftada bir yeniden ölç.";
+  v.innerHTML=msg;
+}
+["#wSex","#wWaist","#wHip","#wH"].forEach(function(s){
+  $(s).addEventListener("input",waist);$(s).addEventListener("change",waist)});
+
+/* ---------- Karvonen ---------- */
+var ZONES=[
+  {n:"Z1 Toparlanma",lo:.50,hi:.60,c:"--z1",s:"Şarkı söyleyebilir"},
+  {n:"Z2 Aerobik taban",lo:.60,hi:.70,c:"--z2",s:"Cümle kurabilir"},
+  {n:"Z3 Tempo",lo:.70,hi:.80,c:"--z3",s:"Kısa cümleler"},
+  {n:"Z4 Eşik",lo:.80,hi:.90,c:"--z4",s:"2–3 kelime"},
+  {n:"Z5 VO2max",lo:.90,hi:1.0,c:"--z5",s:"Konuşamaz"}
+];
+function hr(){
+  var age=num($("#hAge"),34),rest=num($("#hRest"),68),f=$("#hForm").value;
+  var max=f==="tanaka"?208-0.7*age:220-age;
+  var hrr=max-rest;
+  $("#oHrmax").textContent=r1(max);
+  $("#oHrr").textContent=r1(hrr);
+  var sc=$("#zscale"),lg=$("#zlegend");
+  sc.innerHTML="";lg.innerHTML="";
+  ZONES.forEach(function(z,i){
+    var lo=r1(hrr*z.lo+rest), hi=r1(hrr*z.hi+rest);
+    if(i===1)$("#oZ2").textContent=lo+"–"+hi;
+    var seg=document.createElement("span");
+    seg.style.background="var("+z.c+")";
+    seg.style.flex=(z.hi-z.lo)+" 1 0";
+    seg.textContent=z.n.split(" ")[0];
+    sc.appendChild(seg);
+    var row=document.createElement("div");
+    row.className="zrow";
+    row.innerHTML='<i class="dot" style="background:var('+z.c+')"></i><span>'+z.n+
+      '</span><span class="bpm">'+lo+"–"+hi+"</span>";
+    lg.appendChild(row);
+  });
+}
+["#hAge","#hRest","#hForm"].forEach(function(s){
+  $(s).addEventListener("input",hr);$(s).addEventListener("change",hr)});
+
+/* ---------- VO2 ---------- */
+var NORM={m:[35,39,45,53],f:[28,31,37,45]};
+function vo2(){
+  var t=$("#vTest").value,sex=$("#vSex").value;
+  $("#fDist").hidden=(t!=="cooper");
+  $("#fHr").hidden=(t==="cooper");
+  var v;
+  if(t==="cooper"){v=(num($("#vDist"),2000)-504.9)/44.73}
+  else{var p=num($("#vHr"),150);v=sex==="m"?111.33-0.42*p:65.81-0.1847*p}
+  if(!isFinite(v)||v<5)v=0;
+  $("#oVo2").textContent=v.toFixed(1);
+  $("#oMet").textContent=(v/3.5).toFixed(1);
+  var n=NORM[sex],cls,cl;
+  if(v<n[0]){cls="Zayıf";cl="bad"}
+  else if(v<n[1]){cls="Ortalamanın altı";cl="warn"}
+  else if(v<n[2]){cls="Ortalama";cl="warn"}
+  else if(v<n[3]){cls="İyi";cl="ok"}
+  else{cls="Çok iyi";cl="ok"}
+  $("#oClass").textContent=cls;
+  var vv=$("#vVerdict");vv.className="verdict "+cl;
+  vv.innerHTML="30–39 yaş "+(sex==="m"?"erkek":"kadın")+" normlarına göre <b>"+cls.toLowerCase()+
+    "</b>. "+(v/3.5).toFixed(1)+" MET ≈ "+((v/3.5)>=10?"merdiven ve yokuşu rahat kaldırır":
+    (v/3.5)>=7?"günlük yükleri karşılar, taban çalışması şart":"öncelik Zon 2 hacmi; interval henüz erken")+
+    ". Aynı testi <b>8 hafta sonra</b> tekrarla — tarihi şimdi takvime yaz.";
+}
+["#vTest","#vSex","#vDist","#vHr"].forEach(function(s){
+  $(s).addEventListener("input",vo2);$(s).addEventListener("change",vo2)});
+
+/* ---------- charts ---------- */
+function cssv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||"#888"}
+function el(t,a){var e=document.createElementNS("http://www.w3.org/2000/svg",t);
+  for(var k in a)e.setAttribute(k,a[k]);return e}
+function axis(svg,W,H,P,xl,yl,ticks){
+  var line=cssv("--line"),mut=cssv("--muted");
+  svg.appendChild(el("line",{x1:P.l,y1:H-P.b,x2:W-P.r,y2:H-P.b,stroke:line,"stroke-width":1}));
+  svg.appendChild(el("line",{x1:P.l,y1:P.t,x2:P.l,y2:H-P.b,stroke:line,"stroke-width":1}));
+  ticks.forEach(function(t){
+    var x=P.l+(W-P.l-P.r)*t.p;
+    svg.appendChild(el("line",{x1:x,y1:H-P.b,x2:x,y2:H-P.b+4,stroke:line,"stroke-width":1}));
+    var tx=el("text",{x:x,y:H-P.b+18,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace","font-size":"10",fill:mut});
+    tx.textContent=t.l;svg.appendChild(tx);
+  });
+  var a=el("text",{x:(P.l+W-P.r)/2,y:H-4,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace","font-size":"10",fill:mut});
+  a.textContent=xl;svg.appendChild(a);
+  var b=el("text",{x:12,y:P.t+2,"font-family":"IBM Plex Mono, monospace","font-size":"10",fill:mut,transform:"rotate(-90 12 "+(P.t+2)+")","text-anchor":"end"});
+  b.textContent=yl;svg.appendChild(b);
+}
+function path(pts){return pts.map(function(p,i){return (i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)}).join(" ")}
+
+function drawCross(){
+  var svg=$("#crossChart");if(!svg)return;svg.innerHTML="";
+  var W=640,H=300,P={l:44,r:152,t:24,b:44};
+  var iw=W-P.l-P.r, ih=H-P.t-P.b;
+  axis(svg,W,H,P,"EGZERSİZ ŞİDDETİ (% VO2max)","YAKIT KATKISI",
+    [{p:0,l:"25"},{p:.25,l:"40"},{p:.5,l:"55"},{p:.75,l:"70"},{p:1,l:"85+"}]);
+  var fat=[],cho=[],fatAbs=[];
+  for(var i=0;i<=60;i++){
+    var t=i/60;
+    var fPct=0.80/(1+Math.exp((t-0.45)*8.5))+0.06;
+    var x=P.l+iw*t;
+    fat.push([x,P.t+ih*(1-fPct)]);
+    cho.push([x,P.t+ih*(1-(1-fPct))]);
+    var total=0.25+t*0.95;
+    fatAbs.push([x,P.t+ih*(1-fPct*total*1.18)]);
+  }
+  svg.appendChild(el("path",{d:path(cho),fill:"none",stroke:cssv("--z4"),"stroke-width":2.2}));
+  svg.appendChild(el("path",{d:path(fat),fill:"none",stroke:cssv("--z2"),"stroke-width":2.2}));
+  svg.appendChild(el("path",{d:path(fatAbs),fill:"none",stroke:cssv("--accent"),"stroke-width":2.4,"stroke-dasharray":"5 4"}));
+  // fatmax marker
+  var best=0;for(var j=0;j<fatAbs.length;j++){if(fatAbs[j][1]<fatAbs[best][1])best=j}
+  var fx=fatAbs[best][0],fy=fatAbs[best][1];
+  svg.appendChild(el("line",{x1:fx,y1:fy,x2:fx,y2:H-P.b,stroke:cssv("--accent"),"stroke-width":1,"stroke-dasharray":"3 3"}));
+  svg.appendChild(el("circle",{cx:fx,cy:fy,r:4.5,fill:cssv("--accent")}));
+  var fl=el("text",{x:fx,y:fy-12,"text-anchor":"middle","font-family":"Archivo, sans-serif","font-size":"12","font-weight":"700",fill:cssv("--accent")});
+  fl.textContent="FATMAX";svg.appendChild(fl);
+  var fl2=el("text",{x:fx,y:H-P.b-8,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace","font-size":"10",fill:cssv("--muted")});
+  fl2.textContent="~%60–70 HRmax";svg.appendChild(fl2);
+  // legend
+  var L=[["--z2","Yağ katkısı %"],["--z4","Karbonhidrat %"],["--accent","Mutlak yağ g/dk"]];
+  L.forEach(function(it,k){
+    var y=P.t+16+k*22;
+    svg.appendChild(el("line",{x1:W-P.r+8,y1:y,x2:W-P.r+28,y2:y,stroke:cssv(it[0]),"stroke-width":2.4,
+      "stroke-dasharray":k===2?"5 4":"0"}));
+    var t=el("text",{x:W-P.r+34,y:y+4,"font-family":"IBM Plex Mono, monospace","font-size":"9.5",fill:cssv("--muted")});
+    t.textContent=it[1];svg.appendChild(t);
+  });
+}
+function drawLac(){
+  var svg=$("#lacChart");if(!svg)return;svg.innerHTML="";
+  var W=640,H=300,P={l:48,r:124,t:24,b:44};
+  var iw=W-P.l-P.r, ih=H-P.t-P.b, maxY=10;
+  axis(svg,W,H,P,"EGZERSİZ ŞİDDETİ (% VO2max)","KAN LAKTATI (mmol/L)",
+    [{p:0,l:"30"},{p:.25,l:"45"},{p:.5,l:"60"},{p:.75,l:"75"},{p:1,l:"90+"}]);
+  [2,4,6,8,10].forEach(function(v){
+    var y=P.t+ih*(1-v/maxY);
+    svg.appendChild(el("line",{x1:P.l,y1:y,x2:W-P.r,y2:y,stroke:cssv("--line-soft"),"stroke-width":1}));
+    var t=el("text",{x:P.l-8,y:y+4,"text-anchor":"end","font-family":"IBM Plex Mono, monospace","font-size":"10",fill:cssv("--muted")});
+    t.textContent=v;svg.appendChild(t);
+  });
+  function curve(shift,col,dash){
+    var pts=[];
+    for(var i=0;i<=60;i++){
+      var t=i/60;
+      var lac=1.0+8.6*Math.pow(Math.max(0,t-shift)/(1-shift),2.6);
+      if(lac>maxY)lac=maxY;
+      pts.push([P.l+iw*t,P.t+ih*(1-lac/maxY)]);
+    }
+    svg.appendChild(el("path",{d:path(pts),fill:"none",stroke:cssv(col),"stroke-width":2.4,"stroke-dasharray":dash||"0"}));
+    return pts;
+  }
+  curve(0.42,"--z1","6 4");
+  var p=curve(0.10,"--z5");
+  function mark(val,lab,col,side){
+    var y=P.t+ih*(1-val/maxY), x=null;
+    for(var i=1;i<p.length;i++){if(p[i][1]<=y){x=p[i][0];break}}
+    if(x===null)return;
+    svg.appendChild(el("line",{x1:x,y1:y,x2:x,y2:H-P.b,stroke:cssv(col),"stroke-width":1,"stroke-dasharray":"3 3"}));
+    svg.appendChild(el("circle",{cx:x,cy:y,r:4,fill:cssv(col)}));
+    var t=el("text",{x:side==="left"?x-9:x+9,y:y-9,"text-anchor":side==="left"?"end":"start",
+      "font-family":"Archivo, sans-serif","font-size":"11.5","font-weight":"700",fill:cssv(col)});
+    t.textContent=lab;svg.appendChild(t);
+  }
+  mark(2,"LT1 · aerobik eşik","--z3","left");
+  mark(4,"LT2 / OBLA · anaerobik eşik","--z4","right");
+  var L=[["--z5","Antrenmansız","0"],["--z1","Antrenmanlı","6 4"]];
+  L.forEach(function(it,k){
+    var y=P.t+16+k*22;
+    svg.appendChild(el("line",{x1:W-P.r+8,y1:y,x2:W-P.r+28,y2:y,stroke:cssv(it[0]),"stroke-width":2.4,"stroke-dasharray":it[2]}));
+    var t=el("text",{x:W-P.r+34,y:y+4,"font-family":"IBM Plex Mono, monospace","font-size":"9.5",fill:cssv("--muted")});
+    t.textContent=it[1];svg.appendChild(t);
+  });
+}
+function drawCharts(){drawCross();drawLac()}
+
+/* ---------- terim sözlüğü ---------- */
+/*TERMS_START*/var TERMS={"gruplar":{"yag":"Yağ dağılımı ve ölçüm","biyo":"Hücre, hormon ve biyokimya","enerji":"Enerji ve metabolizma","kalp":"Kalp, nabız ve dayanıklılık","antrenman":"Antrenman terimleri","klinik":"Klinik ve güvenlik"},"terimler":[{"k":"android","t":"Android (elma tip)","g":"yag","m":"android","d":"Yağın ağırlıklı olarak karın ve bel bölgesinde toplandığı dağılım biçimi. Adı \"erkeksi\" anlamına gelir, çünkü erkeklerde ve menopoz sonrası kadınlarda daha sık görülür.","x":"Halk dilinde \"elma tip\". Riskli olan kısmı, karın içindeki visseral yağdır."},{"k":"gynoid","t":"Gynoid (armut tip)","g":"yag","m":"gynoid","d":"Yağın ağırlıklı olarak kalça, basen ve uylukta toplandığı dağılım biçimi. Adı \"kadınsı\" anlamına gelir; östrojen hormonunun etkisiyle ilişkilidir.","x":"Halk dilinde \"armut tip\". Metabolik olarak daha güvenli bir dağılımdır."},{"k":"visseral","t":"Visseral yağ","g":"yag","m":"visseral","d":"Karın boşluğunun içinde, organların arasına dolan yağ. Derinin altında değil, kas duvarının arkasındadır; parmakla tutulamaz.","x":"Metabolik olarak aktif bir organ gibi davranır: hormon ve iltihap sinyali salgılar. Merkez yağlanmayı riskli kılan tam olarak budur."},{"k":"subkutan","t":"Subkutan yağ","g":"yag","m":"subkutan|deri ?altı","d":"Derinin hemen altındaki yağ tabakası. \"Sub\" = alt, \"kutan\" = deri. Parmakla tutup sıkabildiğin yağ budur.","x":"Kalça ve uylukta biriken yağın çoğu subkutandır ve visseral yağa göre çok daha az risklidir."},{"k":"gluteofemoral","t":"Gluteofemoral","g":"yag","m":"gluteofemoral","d":"\"Kalça (gluteus) ve uyluk (femur) bölgesi\" anlamına gelen tek kelimelik anatomik kısaltma.","x":"Gluteofemoral yağ, vücudun en geç boşalan yağ deposudur."},{"k":"santral","t":"Santral / periferik","g":"yag","m":"santral|periferik","d":"Santral = vücudun merkezinde (gövde, karın). Periferik = merkezden uzakta, uçlarda (kol, bacak).","x":"\"Merkez ağırlıklı yağlanma\" = santral, \"uzuv ağırlıklı yağlanma\" = periferik."},{"k":"antropometri","t":"Antropometri","g":"yag","m":"antropometri","d":"Vücudun ölçülmesi: boy, kilo, bel, kalça, kol ve uyluk çevresi, deri kıvrım kalınlığı.","x":"Antrenörün en ucuz ve en güvenilir veri kaynağı. Mezura, pahalı cihazdan daha çok iş görür."},{"k":"whr","t":"WHR (bel/kalça oranı)","g":"yag","m":"WHR","d":"Bel çevresinin kalça çevresine bölünmesi. Yağın merkeze mi uzuvlara mı toplandığını gösterir.","x":"Eşik: erkekte 0.90, kadında 0.85 üstü merkez ağırlıklı kabul edilir."},{"k":"whtr","t":"WHtR (bel/boy oranı)","g":"yag","m":"WHtR","d":"Bel çevresinin boya bölünmesi. Tek cümlelik karşılığı: \"belin, boyunun yarısından az olsun.\"","x":"Eşik 0.50. Cinsiyet ve etnik köken fark etmeksizin çalıştığı için en pratik tarama aracıdır."},{"k":"lipodem","t":"Lipödem","g":"yag","m":"lipödem","d":"Bacaklarda simetrik, dokunmakla ağrılı, kolay morarabilen ve diyete cevap vermeyen bir yağ dokusu hastalığı. Genelde ayaklar korunur, şişlik ayak bileğinde keskin bir sınırla biter.","x":"Bu bir antrenman sorunu değildir. Şüphelenirsen hekime yönlendir; \"daha çok çalış\" deme."},{"k":"lenfodem","t":"Lenfödem","g":"yag","m":"lenfödem","d":"Lenf sıvısının dokuda birikmesiyle oluşan şişlik. Lenf, damarların dışına sızan sıvıyı toplayıp dolaşıma geri veren temizlik sistemidir; tıkanırsa sıvı dokuda kalır.","x":"Çoğunlukla tek taraflıdır ve parmakla bastırınca çukur bırakır. Hekim işidir."},{"k":"gode","t":"Gode bırakan ödem","g":"yag","m":"gode","d":"Şiş bölgeye parmakla birkaç saniye bastırıldığında, parmak çekilince çukurun bir süre kalması.","x":"Yağ bastırınca çukur bırakmaz; sıvı bırakır. Bu basit test, yağ ile ödemi ayırmanı sağlar."},{"k":"portalven","t":"Portal ven","g":"biyo","m":"portal ven","d":"Bağırsak ve karın organlarından toplanan kanı, kalbe gitmeden önce doğrudan karaciğere taşıyan büyük toplardamar.","x":"Visseral yağın saldığı maddeler bu damarla doğrudan karaciğere gider — seyreltilmeden, ilk durak karaciğer. Merkez yağlanmanın karaciğeri ve kan şekerini bozmasının nedeni budur."},{"k":"ffa","t":"FFA (serbest yağ asidi)","g":"biyo","m":"FFA|serbest yağ asidi","d":"Yağ hücresinden kana salınan, yakıt olarak kullanılmaya hazır yağ molekülü. Depodaki yağın \"nakit\" hali.","x":"Normalde iyi bir yakıttır. Ama kanda sürekli yüksek kalırsa kas ve karaciğer hücrelerini insüline sağır hale getirir."},{"k":"sitokin","t":"Sitokin","g":"biyo","m":"sitokin","d":"Hücrelerin birbirine mesaj göndermek için salgıladığı küçük proteinler. Bağışıklık sisteminin telsiz konuşması gibi düşün.","x":"Bazıları \"alarm\" mesajı taşır (iltihap başlatır), bazıları \"sakin ol\" der."},{"k":"il6","t":"IL-6 (interlökin-6)","g":"biyo","m":"IL-6","d":"Bir sitokin, yani hücreler arası haberci protein. Bağışıklık sistemine \"burada bir sorun var\" sinyali gönderir.","x":"Yağ dokusu — özellikle visseral yağ — bu sinyali sürekli salgılar. Sonuç, vücutta hiç sönmeyen kısık bir alarm: kronik düşük dereceli iltihap."},{"k":"tnfa","t":"TNF-α (tümör nekroz faktörü alfa)","g":"biyo","m":"TNF-α|TNF-a","d":"Bir diğer haberci protein (sitokin). Adı ürkütücü ama görevi bağışıklık yanıtını başlatmaktır.","x":"Fazla salgılandığında insülinin hücre içindeki sinyal yolunu bozar. Yani doğrudan insülin direncine katkı verir."},{"k":"inflamasyon","t":"İnflamasyon (iltihap)","g":"biyo","m":"inflam\\w*|iltihap","d":"Vücudun bir tehdide verdiği savunma yanıtı: kızarıklık, şişlik, ısı artışı. Kısa süreli olduğunda iyileştiricidir.","x":"\"Kronik düşük dereceli inflamasyon\" ise aylarca süren, hissetmediğin ama damarları ve metabolizmayı yıpratan bir yangındır. Merkez yağlanmanın asıl zararı buradan gelir."},{"k":"insulin","t":"İnsülin","g":"biyo","m":"insülin(?!e? ?direnc)","d":"Pankreastan salgılanan hormon. Yemekten sonra kana giren şekeri hücrelerin içine sokar — kapıyı açan anahtar gibi.","x":"İnsülin aynı zamanda \"depola\" komutudur: yüksekken yağ yakımı yavaşlar."},{"k":"insulindirenci","t":"İnsülin direnci","g":"biyo","m":"insülin direnci","d":"Hücrelerin insüline kulak asmaması. Anahtar kapıya giriyor ama kapı zor açılıyor; pankreas daha çok insülin salgılayarak zorlamak zorunda kalıyor.","x":"Tip 2 diyabetin öncüsüdür. Kuvvet antrenmanı, kas kasılmasıyla kapıyı insülin olmadan da açabildiği için burada ilaç gibi çalışır."},{"k":"glut4","t":"GLUT4","g":"biyo","m":"GLUT4","d":"Kas ve yağ hücrelerinin içinde duran, şekeri hücreye taşıyan kapı. Normalde insülin bu kapıyı yüzeye çıkarır.","x":"Kas kasılması GLUT4'ü insülinden bağımsız olarak yüzeye çıkarır. İnsülin direnci olan bir bedende bile egzersizin kan şekerini düşürmesinin nedeni budur."},{"k":"glikojen","t":"Glikojen","g":"enerji","m":"glikojen","d":"Karbonhidratın kas ve karaciğerde depolanma biçimi. Şeker moleküllerinin birbirine bağlanmış hali.","x":"Kasta ~400 g, karaciğerde ~100 g civarı durur. Boşalınca yorgunluk (\"duvara toslama\") gelir."},{"k":"glikoliz","t":"Glikoliz","g":"enerji","m":"glikoliz","d":"Şekerin parçalanarak enerjiye çevrilmesinin ilk aşaması. Oksijen gerektirmez, çok hızlıdır.","x":"Kısa ve şiddetli işlerde (ağır set, 400 m, 60 sn interval) baskın enerji yolu budur."},{"k":"piruvat","t":"Pirüvat","g":"enerji","m":"pirüvat","d":"Glikolizin sonunda ortaya çıkan ara madde. Oksijen yeterliyse mitokondriye girip tamamen yakılır.","x":"Talep mitokondrinin kapasitesini aşarsa pirüvat laktata çevrilir. Yani laktat, bir tıkanıklığın sonucudur — bir atık değil."},{"k":"laktat","t":"Laktat","g":"enerji","m":"laktat(?! eşi| deh)","d":"Pirüvattan üretilen, kanda dolaşan bir yakıt molekülü. Kalp kası, yavaş kas lifleri ve beyin onu doğrudan yakar.","x":"\"Laktik asit yorgunluk yapar\" cümlesi yanlıştır. Laktat üretimi, yüksek şiddette enerji üretiminin devam etmesini sağlayan çözümdür."},{"k":"ldh","t":"LDH (laktat dehidrogenaz)","g":"enerji","m":"LDH|laktat dehidrogenaz","d":"Pirüvatı laktata çeviren enzim. Enzim = bir kimyasal tepkimeyi hızlandıran protein.","x":"Bu dönüşümün asıl amacı NAD+'yi geri kazanmaktır; NAD+ olmadan glikoliz durur."},{"k":"nad","t":"NAD⁺","g":"enerji","m":"NAD⁺|NAD\\+","d":"Hücrede elektron taşıyan bir yardımcı molekül. Glikolizin çalışabilmesi için sürekli \"boş\" hale dönmesi gerekir.","x":"Laktat üretimi NAD+'yi serbest bırakır ve enerji hattının tıkanmasını önler."},{"k":"asidoz","t":"Asidoz ve H⁺","g":"enerji","m":"asidoz|H⁺","d":"H⁺ = hidrojen iyonu; ortamın asitliğini belirleyen parçacık. Asidoz = pH'ın düşmesi, yani ortamın asitlenmesi.","x":"Kastaki yanma hissinin ve kasılma bozulmasının sorumlusu laktat değil, biriken H⁺'dır. Laktat oluşumu aslında bir H⁺ tüketerek asidozu geciktirir."},{"k":"mitokondri","t":"Mitokondri","g":"enerji","m":"mitokondri","d":"Hücrenin enerji santrali. Oksijen kullanarak yağ ve karbonhidrattan ATP üretir.","x":"Zon 2 antrenmanının asıl kazancı budur: mitokondri sayısı ve hacmi artar, aynı hızda daha az yorulursun."},{"k":"atp","t":"ATP","g":"enerji","m":"\\bATP\\b","d":"Hücrenin kullandığı tek geçerli enerji parası. Yediğin her şey sonunda ATP'ye çevrilir.","x":"Kas ancak ATP parçalanınca kasılır. Kasta depolanan ATP sadece 1–2 saniye yeter; gerisi sürekli üretilir."},{"k":"kreatinfosfat","t":"Kreatin fosfat (ATP-PC sistemi)","g":"enerji","m":"kreatin fosfat|ATP-PC|fosfojen","d":"Kasta hazır bekleyen, ATP'yi saniyeler içinde yeniden doldurabilen acil yakıt deposu.","x":"0–10 saniyelik işlerde baskındır: 1 tekrar maksimal kaldırış, sıçrama, kısa sprint."},{"k":"lpl","t":"LPL (lipoprotein lipaz)","g":"biyo","m":"LPL|lipoprotein lipaz","d":"Kandaki yağı parçalayıp yağ hücresinin içine sokan enzim. Yani \"depolama kapısında çalışan görevli\".","x":"Kalça ve uyluk yağ dokusunda LPL aktivitesi yüksektir — bu bölge depolamaya meyillidir."},{"k":"adrenerjik","t":"Alfa-2 ve beta adrenerjik reseptör","g":"biyo","m":"adrenerjik","d":"Yağ hücresinin yüzeyindeki, adrenalin sinyalini algılayan antenler. Beta reseptör \"yağı çöz ve sal\" der; alfa-2 reseptör \"dur, salma\" der.","x":"Kalça-uyluk yağında alfa-2 baskındır. Bu bölgenin en son incelmesinin biyolojik sebebi budur — inatçılık senin hatan değil."},{"k":"lipoliz","t":"Lipoliz","g":"biyo","m":"lipoliz","d":"Depodaki yağın parçalanıp kana salınması. \"Yağın çözülmesi\" aşaması.","x":"Lipoliz tek başına yağ kaybı demek değildir; salınan yağ yakılmazsa depoya geri döner."},{"k":"tasiyicilar","t":"CPT-1 ve FAT/CD36","g":"biyo","m":"CPT-1|FAT/CD36","d":"Yağ asidini önce hücrenin, sonra mitokondrinin içine taşıyan taşıyıcı proteinler. Yağ yakımının gümrük kapıları.","x":"Zon 2 antrenmanı bu kapıların sayısını artırır — vücut yağ yakmakta ustalaşır."},{"k":"mct1","t":"MCT1","g":"biyo","m":"MCT1","d":"Laktatı hücreden çıkaran ve başka hücrelere sokan taşıyıcı protein.","x":"Antrenmanla sayısı artar; üretilen laktat daha hızlı toplanıp yakılır. \"Laktat toleransı\" dediğimiz şeyin bir kısmı budur."},{"k":"cori","t":"Cori döngüsü","g":"biyo","m":"Cori","d":"Kasta üretilen laktatın karaciğere gidip yeniden şekere (glikoza) çevrilmesi ve kana geri verilmesi.","x":"Vücudun geri dönüşüm tesisi. Laktatın atık olmadığının en net kanıtı."},{"k":"kortizol","t":"Kortizol","g":"biyo","m":"kortizol","d":"Böbrek üstü bezinden salgılanan stres hormonu. Kan şekerini yükseltir, iltihabı baskılar, vücudu \"tehdit\" moduna sokar.","x":"Kronik yüksekliği karın bölgesinde yağ birikimini, iştah artışını ve uyku bozukluğunu besler. Uykusuz bir danışanda kalori açığı çalışmaz."},{"k":"ostrojen","t":"Östrojen","g":"biyo","m":"östrojen","d":"Başlıca kadınlık hormonu. Üreme sisteminin yanında yağ dağılımını, kemik yoğunluğunu ve damar sağlığını da etkiler.","x":"Yağı kalça-uyluğa yönlendirir. Menopozla düşünce dağılım karın bölgesine kayar — kadınlarda bel çevresinin menopoz sonrası artmasının sebebi budur."},{"k":"testosteron","t":"Testosteron","g":"biyo","m":"testosteron","d":"Kas yapımını ve kuvveti destekleyen hormon. Kadınlarda da üretilir, ama erkeklerin yaklaşık 15–20'de biri kadar.","x":"\"Ağırlık kaldırırsam kaslı görünürüm\" korkusunun cevabı burada: o hormonal ortam kadında yok."},{"k":"trigliserit","t":"Trigliserit","g":"biyo","m":"trigliserit","d":"Yağın kanda ve depoda taşındığı ana biçim. Üç yağ asidinin bir gliserol omurgasına bağlanmış hali.","x":"Kan tahlilinde yüksek çıkması, merkez yağlanma ve insülin direnci tablosunun klasik parçasıdır."},{"k":"hdl","t":"HDL","g":"biyo","m":"\\bHDL\\b","d":"Kolesterolü dokulardan toplayıp karaciğere geri götüren taşıyıcı. Halk dilinde \"iyi kolesterol\".","x":"Düşük HDL + yüksek trigliserit ikilisi, metabolik sendromun iki ölçütüdür."},{"k":"metaboliksendrom","t":"Metabolik sendrom","g":"klinik","m":"metabolik sendrom","d":"Tek başına ayrı bir hastalık değil, bir arada görülen risk kümesi: geniş bel çevresi, yüksek kan şekeri, yüksek trigliserit, düşük HDL, yüksek tansiyon.","x":"Beşinden üçü varsa tanı konur. Antrenörün işi tanı koymak değil; bu tabloyu fark edip hekime yönlendirmek ve doğru programı yazmak."},{"k":"termogenez","t":"Adaptif termogenez","g":"enerji","m":"adaptif termogenez","d":"Uzun süreli kalori kısıtlamasında vücudun harcamasını beklenenden fazla düşürmesi. \"Tasarruf moduna geçmek\".","x":"Tamamen bir efsane değil ama abartılır. Duraklamanın daha sık sebebi, farkında olmadan azalan hareket (NEAT) ve artan porsiyonlardır."},{"k":"bmr","t":"BMR / RMR","g":"enerji","m":"\\bBMR\\b|\\bRMR\\b","d":"BMR = tam dinlenme, açlık ve uyanıklık halinde harcanan minimum enerji. RMR = aynı şeyin gevşek koşullarda ölçülen hali; BMR'den %5–10 yüksektir.","x":"Sadece hayatta kalmak için: kalp atar, akciğer çalışır, beyin işler, hücre zarında pompalar döner."},{"k":"tdee","t":"TDEE","g":"enerji","m":"\\bTDEE\\b","d":"Günde harcanan toplam enerji. BMR + sindirim maliyeti + gündelik hareket + planlı antrenman.","x":"Kalori hedefi TDEE üzerinden yazılır, BMR üzerinden değil."},{"k":"tef","t":"TEF (besinin termik etkisi)","g":"enerji","m":"\\bTEF\\b","d":"Yediğini sindirmek, emmek ve işlemek için harcanan enerji. Yemek yemenin kendi maliyeti.","x":"Proteinde %20–30, karbonhidratta %5–10, yağda %0–3. Proteinin doyurucu ve \"pahalı\" olmasının bir sebebi budur."},{"k":"neat","t":"NEAT","g":"enerji","m":"\\bNEAT\\b","d":"Egzersiz dışı her hareketin enerjisi: yürümek, ayakta durmak, ev işi, kıpırdanmak, konuşurken el kol hareketi.","x":"Kişiler arasında günde 2000 kcal'e varan fark yaratabilir. Diyette duraklamanın 1 numaralı sebebi genelde NEAT'in sessizce düşmesidir."},{"k":"lbm","t":"LBM (yağsız vücut kütlesi)","g":"enerji","m":"\\bLBM\\b|yağsız kütle","d":"Vücudun yağ dışındaki her şeyi: kas, kemik, organlar, su.","x":"Metabolizmanın motoru budur. Kalori açığında korunması gereken şey de budur — bu yüzden protein ve kuvvet antrenmanı pazarlık konusu değildir."},{"k":"kalorimetre","t":"İndirekt kalorimetre","g":"enerji","m":"kalorimetre","d":"Ne kadar oksijen tükettiğini ve ne kadar karbondioksit ürettiğini ölçerek enerji harcamasını hesaplayan cihaz.","x":"BMR ölçümünün altın standardı. \"İndirekt\" çünkü ısıyı doğrudan değil, solunum üzerinden hesaplar."},{"k":"rer","t":"RER (solunum değişim oranı)","g":"enerji","m":"\\bRER\\b","d":"Üretilen karbondioksitin tüketilen oksijene oranı. O anda hangi yakıtı yaktığını söyler.","x":"0.70 = neredeyse tamamen yağ · 0.85 = yarı yarıya · 1.00 = neredeyse tamamen karbonhidrat."},{"k":"epoc","t":"EPOC","g":"enerji","m":"\\bEPOC\\b","d":"Egzersizden sonra vücudun normale dönmek için fazladan harcadığı oksijen ve enerji. Halk dilinde \"afterburn\".","x":"Gerçektir ama abartılır: tipik bir seansta toplam harcamanın %6–15'i kadardır. Şiddet arttıkça büyür."},{"k":"fatmax","t":"Fatmax ve crossover","g":"enerji","m":"Fatmax|crossover","d":"Fatmax = dakikada yakılan yağ miktarının en yüksek olduğu şiddet. Crossover = şiddet arttıkça yakıtın yağdan karbonhidrata geçtiği nokta.","x":"Fatmax'ta çalışmak \"en çok yağ yakan\" antrenman demek değildir; sadece o dakikada yağın payı en yüksektir. Belirleyici olan 24 saatlik enerji dengesidir."},{"k":"vo2max","t":"VO2max","g":"kalp","m":"VO2 ?max","d":"Vücudun bir dakikada kullanabileceği en fazla oksijen miktarı. Aerobik kapasitenin tavanı.","x":"ml/kg/dk olarak yazılır. Sağlıkla ilgili tek bir sayı seçmen gerekseydi bu olurdu."},{"k":"met","t":"MET","g":"kalp","m":"\\bMET\\b","d":"Dinlenirken harcadığın enerjinin birimi. 1 MET = oturup hiçbir şey yapmamak.","x":"1 MET = 3.5 ml/kg/dk. Tempolu yürüyüş 3–4 MET, merdiven 4–6 MET. \"4 MET'i kaldıramayan\" birine koşu yazılmaz."},{"k":"fick","t":"Fick denklemi","g":"kalp","m":"Fick","d":"VO2 = (kalp atım hızı × atım hacmi) × (a-v)O2 farkı. Yani: kalbin pompaladığı kan × kasın o kandan çektiği oksijen.","x":"VO2max'ı artırmanın iki yolu olduğunu gösterir: kalbi büyütmek (merkezi) veya kasın oksijen kullanma becerisini artırmak (periferik)."},{"k":"atimhacmi","t":"Atım hacmi ve kalp debisi","g":"kalp","m":"atım hacmi|kalp debisi","d":"Atım hacmi = kalbin her vuruşta pompaladığı kan miktarı. Kalp debisi = atım hacmi × dakikadaki vuruş sayısı.","x":"Antrenmanla en çok gelişen değişken atım hacmidir. Dinlenim nabzının düşmesinin sebebi budur: her vuruş daha çok iş yapar."},{"k":"avo2","t":"(a-v)O₂ farkı","g":"kalp","m":"\\(a-v\\)O2|a-v\\)O₂|arter−ven","d":"Atardamardaki oksijenle toplardamardaki oksijen arasındaki fark. Yani kasın o kandan ne kadar oksijen çektiği.","x":"Fark ne kadar büyükse, kas oksijeni o kadar iyi kullanıyor demektir."},{"k":"kapiller","t":"Kapiller","g":"kalp","m":"kapiller","d":"Damar ağının en ince uçları. Oksijen ve besinin kandan kas hücresine geçtiği yer burasıdır.","x":"Zon 2 antrenmanı kas başına düşen kapiller sayısını artırır — teslimat ağı genişler."},{"k":"miyoglobin","t":"Miyoglobin","g":"kalp","m":"myoglobin|miyoglobin","d":"Kas hücresinin içinde oksijeni tutan ve mitokondriye taşıyan protein. Kandaki hemoglobinin kas içindeki akrabası.","x":"Kırmızı etin rengini veren de budur. Dayanıklılık antrenmanıyla miktarı artar."},{"k":"hrmax","t":"HRmax / HRrest / HRR","g":"kalp","m":"HRmax|HRrest|\\bHRR\\b","d":"HRmax = ulaşabileceğin en yüksek nabız. HRrest = dinlenim nabzı. HRR = ikisi arasındaki fark, yani \"nabız rezervin\".","x":"Şiddet hesabı HRmax üzerinden değil, HRR üzerinden yapılırsa doğru olur. Yöntemin adı Karvonen."},{"k":"karvonen","t":"Karvonen yöntemi","g":"kalp","m":"Karvonen","d":"Hedef nabzı, dinlenim nabzını da hesaba katarak bulan formül: (HRmax − HRrest) × şiddet + HRrest.","x":"Formu iyi olan birinin dinlenim nabzı düşüktür; düz yüzde hesabı bu kişiyi olduğundan hafif çalıştırır."},{"k":"kardiyakdrift","t":"Kardiyak drift","g":"kalp","m":"kardiyak drift","d":"Aynı hızda devam etmene rağmen nabzın zamanla yükselmesi. Sıcak, terleme ve kan hacminin azalmasıyla olur.","x":"Uzun seansta \"nabzım neden çıkıyor?\" sorusunun cevabı genelde budur — daha hızlı gitmiyorsun, susuz kalıyorsun."},{"k":"esik","t":"Laktat eşiği (LT1, LT2, OBLA, MLSS)","g":"kalp","m":"LT1|LT2|OBLA|MLSS|laktat eşiği|anaerobik eşi\\w*|aerobik eşi\\w*","d":"LT1 (~2 mmol/L) = laktatın ilk belirgin yükselişi, aerobik eşik. LT2 / OBLA (~4 mmol/L) = laktatın birikmeye başladığı nokta, anaerobik eşik. MLSS = laktatın dengede kalabildiği en yüksek şiddet.","x":"Eşik sabit bir yüzde değildir: antrenmansızda %60–70 VO2max'ta, elit sporcuda %85–90'da olur."},{"k":"polarize","t":"Polarize (kutuplaşmış) antrenman","g":"kalp","m":"polarize|kutuplaş\\w*|80/20","d":"Haftalık hacmin ~%80'ini çok kolay, ~%20'sini çok zor yapmak; ortayı boş bırakmak.","x":"Amatörün en yaygın hatası her antrenmanı \"orta-zor\" yapmaktır. Kolay gün gerçekten kolay olmazsa zor gün gerçekten zor olamaz."},{"k":"rpe","t":"RPE / Borg skalası","g":"antrenman","m":"\\bRPE\\b|Borg","d":"Algılanan zorluk derecesi — kişinin eforu kendi hissiyle puanlaması. İki skalası vardır: 6–20 ve 0–10.","x":"Nabız ölçemediğin veya nabzın yalan söylediği her durumda (beta bloker, aritmi, stres) tek pusulan budur."},{"k":"doms","t":"DOMS (gecikmiş kas ağrısı)","g":"antrenman","m":"\\bDOMS\\b","d":"Antrenmandan 24–72 saat sonra zirve yapan kas ağrısı. Sebebi eksantrik kasılmaya bağlı mikro yırtıklar ve onarım sürecidir.","x":"Laktatla hiçbir ilgisi yoktur — laktat 30–60 dakikada temizlenir. Ayrıca DOMS antrenmanın iyi geçtiğinin kanıtı değildir."},{"k":"eksantrik","t":"Eksantrik / konsantrik / izometrik","g":"antrenman","m":"eksantrik|konsantrik|izometrik","d":"Konsantrik = kas kısalarak kuvvet üretir (ağırlığı kaldırma). Eksantrik = kas uzarken kuvvet üretir (ağırlığı kontrollü indirme). İzometrik = uzunluk değişmeden kasılma (plank, duvar oturuşu).","x":"DOMS'u en çok eksantrik yaratır. İzometrik ise ağrılı eklemde ağrıyı azaltan tek güvenli başlangıçtır."},{"k":"hipertrofi","t":"Hipertrofi","g":"antrenman","m":"hipertrofi","d":"Kas liflerinin kalınlaşması, yani kas kütlesinin artması.","x":"Yıllar süren, kalori fazlası ve planlı yüklenme isteyen bir süreçtir. \"Bir ayda istemeden kaslandım\" diye bir şey yok."},{"k":"asiriyukleme","t":"Progresif aşırı yükleme","g":"antrenman","m":"progresif|aşırı yükleme","d":"Vücuda zamanla kademeli olarak daha fazlasını sormak: daha çok tekrar, daha çok set, daha ağır, daha kontrollü, daha az dinlenme.","x":"Antrenmanın tek zorunlu kanunu. Aynı programı aynı yükle tekrar etmek, bir süre sonra sadece bakım yapar."},{"k":"deload","t":"Deload","g":"antrenman","m":"deload","d":"Planlı hafifletme haftası: hacmi %40–50 düşürüp vücuda toparlanma fırsatı vermek.","x":"Gelişme antrenmanda değil, antrenmandan sonraki toparlanmada olur. 4–6 haftada bir deload, ilerlemenin parçasıdır."},{"k":"periyodizasyon","t":"Periyodizasyon","g":"antrenman","m":"periyodizasyon","d":"Antrenmanı haftalara ve aylara bölüp her dönemde farklı bir özelliğe öncelik vermek.","x":"NASM OPT modeli bunun bir uygulamasıdır: önce stabilizasyon, sonra kuvvet, sonra güç."},{"k":"smr","t":"SMR (foam roller)","g":"antrenman","m":"\\bSMR\\b|foam roller","d":"Öz miyofasyal gevşetme: silindir veya topla kasa basınç uygulayıp gerginliği azaltma.","x":"Bölge başına 30–90 saniye. NASM korrektif zincirinin ilk adımıdır: önce sustur, sonra uzat."},{"k":"pnf","t":"PNF germe","g":"antrenman","m":"\\bPNF\\b","d":"Kasın önce kasılıp sonra gevşetilerek gerildiği germe yöntemi (hold-relax / contract-relax).","x":"En çok açıklık kazandıran yöntemdir ama partner gerektirir ve başlangıç seviyesi için uygun değildir."},{"k":"rom","t":"ROM (eklem hareket açıklığı)","g":"antrenman","m":"\\bROM\\b|hareket açıklığı","d":"Bir eklemin gidebildiği hareket aralığı. Range of Motion.","x":"\"Ağrısız ROM içinde çalış\" cümlesi, eklem sorunlu danışanda en sık kuracağın cümledir."},{"k":"propriyosepsiyon","t":"Propriyosepsiyon","g":"antrenman","m":"propriyosepsiyon","d":"Vücudun, gözünü kapatsan bile kolunun ve bacağının nerede olduğunu bilmesi. Eklem ve kastaki alıcılardan gelen konum duyusu.","x":"Denge çalışmasının geliştirdiği şey budur. Burkulma sonrası en çok bozulan ve en çok çalışılması gereken beceridir."},{"k":"kapalizincir","t":"Kapalı ve açık zincir","g":"antrenman","m":"kapalı zincir|açık zincir","d":"Kapalı zincir = ayak veya el sabit bir yüzeye basar (squat, şınav, sandalyeden kalkma). Açık zincir = uç serbesttir (bacak ekstansiyon makinesi, biceps curl).","x":"Kapalı zincir, yükü eklem boyunca dağıttığı için diz sorunlu bireyde genelde daha güvenlidir."},{"k":"valgus","t":"Diz valgusu","g":"klinik","m":"valgus","d":"Dizlerin içe doğru düşmesi — squat veya adımlamada \"X bacak\" görüntüsü.","x":"Genelde kalça dış döndürücülerinin (gluteus medius) zayıflığından gelir. Overhead squat testinde en sık gördüğün telafidir."},{"k":"hipermobil","t":"Hipermobilite / Beighton skoru","g":"klinik","m":"hipermobil|Beighton","d":"Eklemlerin normalden fazla açılması. Beighton skoru, 9 puanlık basit bir esneklik testidir.","x":"Bu kişilere germe verilmez — verilecek şey stabilite ve kuvvettir. Fazla açıklık, korunmamış açıklıktır."},{"k":"osteoartrit","t":"Osteoartrit (kireçlenme)","g":"klinik","m":"osteoartrit|\\bOA\\b|kireçlenme","d":"Eklem kıkırdağının zamanla incelmesi ve eklemin yapısının değişmesi. Halk dilinde kireçlenme.","x":"Egzersiz yasak değildir; tam tersine birinci basamak tedavidir. Yanlış olan egzersiz yapmak değil, yanlış dozda yapmaktır."},{"k":"parq","t":"PAR-Q+","g":"klinik","m":"PAR-Q","d":"Egzersize başlamadan önce doldurulan standart güvenlik anketi. Kalp, akciğer, metabolik ve kas-iskelet riskini tarar.","x":"Ücretsizdir, 5 dakika sürer ve atlanmaz. Antrenörün ilk savunma hattıdır."},{"k":"kontrendike","t":"Kontrendike / kontrendikasyon","g":"klinik","m":"kontrendike|kontrendikasyon","d":"Bir uygulamanın belirli bir kişide sakıncalı, yapılmaması gereken olması.","x":"\"Egzersiz diz osteoartritinde kontrendike değildir\" = yasak değildir, tersine önerilir."},{"k":"betabloker","t":"Beta bloker","g":"klinik","m":"beta bloker","d":"Tansiyon ve kalp hastalıklarında kullanılan ilaç grubu. Adrenalinin kalpteki etkisini bloke eder, nabzı yavaşlatır.","x":"Bu kişide yaşa göre hesaplanan hedef nabız geçersizdir. Şiddeti RPE ve konuşma testiyle yönet."},{"k":"sedanter","t":"Sedanter","g":"klinik","m":"sedanter","d":"İki anlamı var: (1) haftada 150 dakikadan az orta şiddetli aktivite yapan kişi; (2) uyanıkken çoğunlukla oturan/uzanan davranış biçimi.","x":"İkisi aynı şey değil. Sabah 1 saat spor yapıp 10 saat oturan kişi \"aktif\" ama sedanter davranışı yüksektir ve bu bağımsız bir risktir."},{"k":"pliometri","t":"Pliometri","g":"antrenman","m":"pliometri|plyometri","d":"Sıçrama, sekme, derinlik atlayışı gibi hızlı esne-fırla hareketleri. Kasın önce gerilip hemen ardından patlayıcı kasılması.","x":"Eklem yükü yüksektir. Kilolu veya eklem sorunlu bireyde kriterler karşılanmadan asla verilmez."},{"k":"valsalva","t":"Valsalva manevrası","g":"klinik","m":"Valsalva","d":"Nefesi tutup ıkınarak karın içi basıncı artırmak. Ağır kaldırışta omurgayı stabilize eder ama tansiyonu ani ve sert yükseltir.","x":"Hipertansiyonu veya kalp hastalığı olan danışanda kaçınılır; nefes verme kaldırışa denk getirilir."},{"k":"relaksin","t":"Relaksin","g":"klinik","m":"relaksin","d":"Gebelikte salgılanan, bağ dokusunu ve eklem bağlarını gevşeten hormon.","x":"Eklemler daha oynak hale gelir. Gebelikte germe son noktaya zorlanmaz; hissettiğin esneklik yanıltıcıdır."},{"k":"kompresyon","t":"Kompresyon kuvveti","g":"klinik","m":"kompresyon","d":"Bir eklemin yüzeylerini birbirine bastıran, sıkıştıran kuvvet.","x":"Yürürken dizde vücut ağırlığının 3–4 katı kompresyon oluşur. 1 kg kilo kaybı, her adımda dizden 3–4 kg yükün kalkması demektir."},{"k":"osteoporoz","t":"Osteoporoz","g":"klinik","m":"osteoporoz","d":"Kemik yoğunluğunun azalması, kemiğin gözenekli ve kırılgan hale gelmesi.","x":"Kuvvet ve darbeli antrenman koruyucudur; ancak ileri osteoporozda zorlamalı gövde öne eğilme ve rotasyon hareketlerinden kaçınılır."}]};/*TERMS_END*/
+var TMAP={};TERMS.terimler.forEach(function(t){TMAP[t.k]=t});
+
+var sheet=$("#sheet");
+function openTerm(k){
+  var t=TMAP[k];if(!t)return;
+  $("#sheetGroup").textContent=TERMS.gruplar[t.g]||"";
+  $("#sheetTitle").textContent=t.t;
+  $("#sheetDef").textContent=t.d;
+  var w=$("#sheetWhy");
+  if(t.x){w.hidden=false;w.innerHTML='<b>Neden önemli</b>'+t.x}else{w.hidden=true}
+  sheet.classList.add("open");sheet.setAttribute("aria-hidden","false");
+}
+function closeTerm(){sheet.classList.remove("open");sheet.setAttribute("aria-hidden","true")}
+$("#sheetClose").addEventListener("click",closeTerm);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeTerm()});
+document.addEventListener("click",function(e){
+  var b=e.target.closest?e.target.closest(".term"):null;
+  if(b){e.preventDefault();openTerm(b.dataset.t);return}
+  if(sheet.classList.contains("open")&&!e.target.closest("#sheet"))closeTerm();
+});
+
+/* metindeki terimleri ilk geçtikleri yerde işaretle */
+(function autolink(){
+  var pats=TERMS.terimler.filter(function(t){return t.m}).map(function(t){
+    // Türkçe ekleri de işaretin içinde bırak: "sitokinler", "insüline", "mitokondrinin"
+    return {k:t.k,re:new RegExp("(^|[^\\wçğıöşüÇĞİÖŞÜ])("+t.m+"[a-zçğıöşü]*)","i"),used:0};
+  }).sort(function(a,b){return b.re.source.length-a.re.source.length});
+  var SKIP=/^(SCRIPT|STYLE|BUTTON|CODE|H1|H2|H3|H4|H5|TEXT|svg|SVG|INPUT|LABEL|OPTION)$/;
+  var hosts=document.querySelectorAll("section p, section li, .card p, figcaption");
+  hosts.forEach(function(host){
+    if(host.closest(".formula")||host.closest("#sozluk")||host.closest("#quizBox"))return;
+    var walker=document.createTreeWalker(host,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var pn=n.parentNode;
+      while(pn&&pn!==host){if(SKIP.test(pn.nodeName)||pn.classList&&pn.classList.contains("term"))
+        return NodeFilter.FILTER_REJECT;pn=pn.parentNode}
+      return n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }});
+    var nodes=[],n;while((n=walker.nextNode()))nodes.push(n);
+    nodes.forEach(function(node){
+      for(var i=0;i<pats.length;i++){
+        var pt=pats[i];if(pt.used>=2)continue;
+        var m=pt.re.exec(node.nodeValue);
+        if(!m)continue;
+        var start=m.index+m[1].length, end=start+m[2].length;
+        var after=node.splitText(start);
+        after.splitText(end-start);
+        var b=document.createElement("button");
+        b.className="term";b.type="button";b.dataset.t=pt.k;
+        b.setAttribute("aria-label",TMAP[pt.k].t+" — tanımı aç");
+        b.textContent=after.nodeValue;
+        after.parentNode.replaceChild(b,after);
+        pt.used++;
+        return;
+      }
+    });
+  });
+})();
+
+/* sözlük listesi */
+(function glossary(){
+  var list=$("#glist"),cnt=$("#gcnt"),q=$("#gq"),fb=$("#gfilters"),active="hepsi";
+  var groups=Object.keys(TERMS.gruplar);
+  function chip(id,label){
+    var b=document.createElement("button");b.type="button";b.textContent=label;
+    b.setAttribute("aria-pressed",id===active?"true":"false");
+    b.addEventListener("click",function(){
+      active=id;
+      fb.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+      render();
+    });
+    fb.appendChild(b);
+  }
+  chip("hepsi","Hepsi");
+  groups.forEach(function(g){chip(g,TERMS.gruplar[g])});
+  function render(){
+    var term=(q.value||"").toLocaleLowerCase("tr").trim();
+    var items=TERMS.terimler.filter(function(t){
+      if(active!=="hepsi"&&t.g!==active)return false;
+      if(!term)return true;
+      return (t.t+" "+t.d+" "+(t.x||"")).toLocaleLowerCase("tr").indexOf(term)>=0;
+    }).sort(function(a,b){return a.t.localeCompare(b.t,"tr")});
+    list.innerHTML="";
+    if(!items.length){list.innerHTML='<div class="gempty">Eşleşen terim yok. Başka bir kelime dene.</div>'}
+    items.forEach(function(t){
+      var d=document.createElement("div");d.className="gi";
+      d.innerHTML='<span class="g">'+TERMS.gruplar[t.g]+'</span><h4></h4><p></p>'+
+        (t.x?'<p class="x"></p>':'');
+      d.querySelector("h4").textContent=t.t;
+      d.querySelector("p").textContent=t.d;
+      if(t.x)d.querySelector(".x").textContent=t.x;
+      list.appendChild(d);
+    });
+    cnt.textContent=items.length+" / "+TERMS.terimler.length+" terim";
+  }
+  q.addEventListener("input",render);
+  render();
+})();
+
+/* ---------- flashcards ---------- */
+var CARDS=[
+  ["Mifflin-St Jeor · kadın","(10×kg)+(6.25×cm)−(5×yaş)−161"],
+  ["Mifflin-St Jeor · erkek","(10×kg)+(6.25×cm)−(5×yaş)+5"],
+  ["Katch-McArdle","370 + (21.6 × LBM_kg)"],
+  ["HRmax — Tanaka","208 − (0.7 × yaş)"],
+  ["Karvonen hedef nabız","((HRmax − HRrest) × %) + HRrest"],
+  ["Cooper 12 dk testi","(mesafe_m − 504.9) / 44.73"],
+  ["1 MET kaç ml/kg/dk?","3.5 ml/kg/dk"],
+  ["WHtR eşiği","bel ÷ boy · eşik 0.50 (iki cinsiyette de)"],
+  ["1 kg kilo kaybı = dizde?","Her adımda 3–4 kg daha az yük"],
+  ["Ağrı kuralı","≤4/10 · 24 saatte başlangıca dönmeli"],
+  ["NASM korrektif zinciri","Inhibit → Lengthen → Activate → Integrate"],
+  ["NASM Faz 1 reçetesi","12–20 tekrar · 1–3 set · %50–70 · 4/2/1 · 0–90 sn"]
+];
+(function(){
+  var d=$("#deck");
+  CARDS.forEach(function(c,i){
+    var b=document.createElement("button");
+    b.className="fc";b.type="button";b.setAttribute("aria-pressed","false");
+    b.innerHTML='<span class="fc-in"><span class="fc-f"><span class="n">Kart '+
+      String(i+1).padStart(2,"0")+'</span><span class="q">'+c[0]+'</span></span>'+
+      '<span class="fc-b"><span class="a">'+c[1]+'</span></span></span>';
+    b.addEventListener("click",function(){
+      b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true")});
+    d.appendChild(b);
+  });
+})();
+
+/* ---------- quiz ---------- */
+var QS=[
+ {q:"38 yaş, 72 kg, 168 cm bir kadının Mifflin-St Jeor BMR'si yaklaşık kaçtır?",
+  o:["1.359 kcal","1.419 kcal","1.580 kcal","1.685 kcal"],a:1,
+  e:"720 + 1050 − 190 − 161 = 1419 kcal."},
+ {q:"1 kg kas dokusu dinlenimde günde yaklaşık kaç kalori yakar?",
+  o:["4–5 kcal","13 kcal","50 kcal","100 kcal"],a:1,
+  e:"1 kg kas ≈ 13 kcal/gün, 1 kg yağ ≈ 4.5 kcal. '100 kcal' efsanedir."},
+ {q:"Bel/boy oranı (WHtR) için genel risk eşiği nedir?",
+  o:["0.40","0.50","0.65","Cinsiyete göre değişir"],a:1,
+  e:"WHtR > 0.50 → risk. Cinsiyet ve etnik kökenden bağımsız çalışması avantajıdır."},
+ {q:"45 yaşında bir bireyin Tanaka formülüne göre HRmax'ı kaçtır?",
+  o:["175","176.5","180","185"],a:1,
+  e:"208 − (0.7 × 45) = 176.5. 220−yaş olsaydı 175 derdi."},
+ {q:"HRrest 62, HRmax 185 olan birinin Karvonen ile %70 hedef nabzı kaçtır?",
+  o:["129","138","148","156"],a:2,
+  e:"HRR = 123 → (123 × 0.70) + 62 = 148."},
+ {q:"Antrenmansız bir bireyde Fatmax kabaca hangi aralıktadır?",
+  o:["%30–40 HRmax","%60–70 HRmax","%80–85 HRmax","%90–95 HRmax"],a:1,
+  e:"Antrenmansızda ~%45–55 VO2max ≈ %60–70 HRmax, yani Zon 2. Antrenmanlıda yukarı kayar."},
+ {q:"Fick denklemine göre VO2max'ın merkezi belirleyicisi hangisidir?",
+  o:["Kapiller yoğunluk","Mitokondri sayısı","Atım hacmi","Myoglobin"],a:2,
+  e:"VO2 = (HR × Atım Hacmi) × (a-v)O2 farkı. Diğerleri periferik faktörlerdir."},
+ {q:"Antrenman ÖNCESİ 60 saniyeyi aşan statik germe ile ilgili doğru olan?",
+  o:["Kuvveti artırır","Kuvvet/gücü geçici olarak %3–5 azaltabilir","Sakatlığı yarıya indirir","Hiçbir etkisi yoktur"],a:1,
+  e:"45 sn altındaki germeler tam bir ısınmanın içinde yapıldığında bu etki pratikte kaybolur."},
+ {q:"NASM Korrektif Egzersiz Zincirinin doğru sırası nedir?",
+  o:["Aktive → Uzat → İnhibe → Entegre","Uzat → İnhibe → Entegre → Aktive","İnhibe → Uzat → Aktive → Entegre","Entegre → Aktive → Uzat → İnhibe"],a:2,
+  e:"SMR → statik germe → izole kuvvetlendirme → entegre dinamik hareket."},
+ {q:"DOMS'un (gecikmiş kas ağrısı) temel nedeni nedir?",
+  o:["Kaslarda kalan laktik asit","Eksantrik mikrotravma ve inflamatuar yanıt","Dehidratasyon","Glikojen tükenmesi"],a:1,
+  e:"Laktat 30–60 dakikada temizlenir; DOMS 24–72 saatte zirve yapar."},
+ {q:"Anaerobik eşik (LT2/OBLA) yaklaşık hangi laktat değerinde kabul edilir?",
+  o:["1 mmol/L","2 mmol/L","4 mmol/L","8 mmol/L"],a:2,
+  e:"LT1 (aerobik eşik) ≈ 2 mmol/L, LT2/OBLA ≈ 4 mmol/L."},
+ {q:"NASM OPT Faz 1 için doğru reçete hangisidir?",
+  o:["1–5 tekrar, %85–100, 3–5 dk dinlenme","6–12 tekrar, %75–85, 0–60 sn","12–20 tekrar, %50–70, 4/2/1, 0–90 sn","8–12 tekrar, %70–80, süperset"],a:2,
+  e:"Faz 1 = Stabilizasyon Dayanıklılığı. Sedanter birey buradan başlar, en az 4 hafta."},
+ {q:"Beta bloker kullanan bir danışanda şiddeti belirlemenin en uygun yolu nedir?",
+  o:["%HRmax hedef aralığı","Karvonen yöntemi","Borg RPE ve konuşma testi","220−yaş formülü"],a:2,
+  e:"Beta bloker kalp hızını baskılar; yaşa göre tahmin edilen HRmax geçersizdir."},
+ {q:"Egzersiz sonrası laktat temizlenmesini en çok hızlandıran nedir?",
+  o:["Oturarak dinlenme","10–15 dk aktif soğuma (%40–60 HRmax)","Statik germe","Soğuk su banyosu"],a:1,
+  e:"Aktif toparlanma, pasif dinlenmeye kıyasla temizleme hızını yaklaşık iki katına çıkarır."},
+ {q:"Eklem yükü olan kilolu bireyde ilerleme sırası nasıl olmalıdır?",
+  o:["Şiddet → Süre → Sıklık","Süre → Şiddet → Sıklık","Sıklık → Süre → Şiddet","Üçü aynı anda artırılır"],a:2,
+  e:"Önce alışkanlık (sıklık), sonra hacim (süre), en son yük (şiddet). Haftalık artış tavanı %10."}
+];
+(function(){
+  var box=$("#quizBox");
+  QS.forEach(function(item,i){
+    var d=document.createElement("div");d.className="q";d.id="q"+i;
+    var h='<div class="qh"><span class="qn">'+String(i+1).padStart(2,"0")+
+      '</span><span class="qt">'+item.q+'</span></div><div class="opts">';
+    item.o.forEach(function(o,k){
+      h+='<label class="opt" data-i="'+i+'" data-k="'+k+'"><input type="radio" name="q'+i+
+         '" id="q'+i+'o'+k+'" value="'+k+'"><span>'+o+'</span></label>';
+    });
+    h+='</div>';
+    d.innerHTML=h;box.appendChild(d);
+  });
+  box.addEventListener("change",count);
+  function count(){
+    var n=0;QS.forEach(function(_,i){if(box.querySelector('input[name="q'+i+'"]:checked'))n++});
+    $("#qScore").textContent=n+" / "+QS.length+" cevaplandı";
+  }
+  $("#qSubmit").addEventListener("click",function(){
+    var s=0;
+    QS.forEach(function(item,i){
+      var wrap=$("#q"+i);
+      var sel=wrap.querySelector('input[name="q'+i+'"]:checked');
+      wrap.querySelectorAll(".opt").forEach(function(l){l.classList.remove("correct","wrong")});
+      var old=wrap.querySelector(".qexp");if(old)old.remove();
+      wrap.querySelectorAll(".opt").forEach(function(l){
+        var k=+l.dataset.k;
+        if(k===item.a)l.classList.add("correct");
+        else if(sel&&+sel.value===k)l.classList.add("wrong");
+      });
+      if(sel&&+sel.value===item.a)s++;
+      var ex=document.createElement("div");ex.className="qexp";ex.textContent=item.e;
+      wrap.appendChild(ex);
+    });
+    var v=$("#qVerdict");v.hidden=false;
+    v.className="verdict "+(s>=13?"ok":s>=12?"ok":s>=10?"warn":"bad");
+    v.innerHTML="<b>"+s+" / "+QS.length+"</b> — "+
+      (s>=14?"Mükemmel. Hafta 2'ye geç.":
+       s>=12?"Geçtin. Yanlışlarını hata defterine yaz, Hafta 2'ye geç.":
+       s>=10?"Sınırda. Yanlış olduğun modülleri tekrar oku, 2 gün sonra tekrar çöz.":
+       "Hafta tekrar edilir. Atlanan temel, 6 hafta sonra sakatlık olarak geri döner.");
+    $("#qScore").textContent="Puan: "+s+" / "+QS.length;
+    v.scrollIntoView({behavior:"smooth",block:"center"});
+  });
+  $("#qReset").addEventListener("click",function(){
+    QS.forEach(function(_,i){
+      var wrap=$("#q"+i);
+      wrap.querySelectorAll("input").forEach(function(x){x.checked=false});
+      wrap.querySelectorAll(".opt").forEach(function(l){l.classList.remove("correct","wrong")});
+      var old=wrap.querySelector(".qexp");if(old)old.remove();
+    });
+    $("#qVerdict").hidden=true;count();
+  });
+  count();
+})();
+
+/* ---------- checklist ---------- */
+var TASKS=[
+ ["Gün 1","BMR'ni üç yöntemle hesapla, TDEE ve kalori hedefini belirle"],
+ ["Gün 2","Kendin dahil en az 3 kişide bel/kalça/boy ölç, WHtR ve tipi yorumla"],
+ ["Gün 3","3 sabah dinlenim nabzı say, Karvonen zon kartını çıkar ve sahada doğrula"],
+ ["Gün 4","Basamak veya Cooper testiyle VO2max'ını ölç, 8 hafta sonrasını takvime yaz"],
+ ["Gün 5","Dinamik ısınma + statik soğuma protokolü yaz, overhead squat kaydı al"],
+ ["Gün 6","Aktif ve pasif toparlanma deneyi yap, nabız düşüş eğrilerini karşılaştır"],
+ ["Gün 7","41 yaş, diz OA'lı vaka için tam bir NASM Faz 1 seansı yaz ve kendinde dene"],
+ ["Sınav","15 soruluk sınavı çöz, 12/15 üstü hedefle"],
+ ["Rapor","Hafta raporunu ve hata defterini doldur"]
+];
+(function(){
+  var c=$("#chk"),KEY="ad_w1_tasks",state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){state={}}
+  TASKS.forEach(function(t,i){
+    var l=document.createElement("label");
+    l.innerHTML='<input type="checkbox" id="task'+i+'"><span><span class="d">'+t[0]+'</span>'+t[1]+'</span>';
+    var cb=l.querySelector("input");
+    cb.checked=!!state["t"+i];
+    cb.addEventListener("change",function(){
+      state["t"+i]=cb.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+      prog();
+    });
+    c.appendChild(l);
+  });
+  function prog(){
+    var n=0;TASKS.forEach(function(_,i){if($("#task"+i).checked)n++});
+    $("#chkProg").textContent="Tamamlanan: "+n+" / "+TASKS.length+
+      "  ·  "+Math.round(n/TASKS.length*100)+"%";
+  }
+  prog();
+})();
+
+/* ---------- init ---------- */
+bmr();waist();hr();vo2();drawCharts();
+if(window.matchMedia){
+  var mq=window.matchMedia("(prefers-color-scheme: dark)");
+  if(mq.addEventListener)mq.addEventListener("change",drawCharts);
+}
+})();
+</script>
