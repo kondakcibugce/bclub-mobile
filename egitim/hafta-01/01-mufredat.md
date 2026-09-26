@@ -6,6 +6,10 @@
 
 **Süre:** 7 gün · **Modül sayısı:** 11 · **Sınav:** 100 puan, geçme 80
 
+> 📖 **Takıldığın terim mi var?** Metinde geçen 89 teknik terimin günlük dildeki karşılığı
+> [`../terimler-sozlugu.md`](../terimler-sozlugu.md) dosyasında. Kitapçıkta ise terimlerin
+> üstüne dokunman yeterli.
+
 ---
 
 ## İçindekiler
@@ -147,13 +151,49 @@ Bu kavram 6. modülde tekrar karşına çıkacak.
 
 ### Tanıma
 
-**Android / santral / "elma" tip:** Yağ karın bölgesinde, bel çevresinde, göbek içi (visseral) ve
-üst gövdede toplanır. Erkeklerde ve menopoz sonrası kadınlarda baskındır.
+**Android / santral / "elma" tip:** Yağ karın bölgesinde, bel çevresinde ve üst gövdede toplanır.
+Erkeklerde ve menopoz sonrası kadınlarda baskındır.
 
-**Neden önemli:** Visseral yağ metabolik olarak aktif bir organ gibi davranır. Portal ven yoluyla
-doğrudan karaciğere serbest yağ asidi ve inflamatuar sitokin (IL-6, TNF-α) gönderir. Sonuç:
-insülin direnci, yüksek trigliserit, düşük HDL, hipertansiyon, kronik düşük dereceli inflamasyon.
-Bu bir estetik konusu değil, **metabolik risk konusudur**.
+Karındaki yağın iki ayrı türü vardır ve ikisi aynı şey değildir:
+
+| | **Subkutan yağ** | **Visseral yağ** |
+|---|---|---|
+| Nerede | Derinin hemen altında | Karın kaslarının arkasında, organların arasında |
+| Tutabilir misin | Evet, parmakla sıkabilirsin | Hayır |
+| Riski | Düşük | **Yüksek** |
+
+*Subkutan* = "deri altı" (sub: alt, kutan: deri). *Visseral* = "organlara ait"
+(viscera: iç organlar). Merkez yağlanmayı riskli kılan, ikincisidir.
+
+**Neden önemli — mekanizmayı adım adım kur:**
+
+Visseral yağ pasif bir depo değildir; hormon salgılayan bir organ gibi davranır. Karın
+organlarından toplanan kan, kalbe uğramadan önce **portal ven** adlı büyük toplardamarla
+**doğrudan karaciğere** gider. Yani visseral yağın saldığı her şey, seyrelmeden karaciğerin
+kapısına düşer. İki şey salar:
+
+1. **Serbest yağ asidi (FFA — free fatty acid).** Depodaki yağın kana salınmış, yakılmaya hazır
+   hali; yağın "nakit" biçimi. Normalde iyi bir yakıttır. Ama kanda sürekli yüksek kalırsa kas ve
+   karaciğer hücreleri insüline sağırlaşır.
+2. **İltihap habercisi proteinler (sitokinler).** *Sitokin*, hücrelerin birbirine mesaj yollamak
+   için salgıladığı küçük proteindir — bağışıklık sisteminin telsiz konuşması gibi düşün. En çok
+   adı geçen ikisi:
+   - **IL-6 (interlökin-6):** bağışıklığa "burada bir sorun var" sinyali gönderir.
+   - **TNF-α (tümör nekroz faktörü alfa):** adı ürkütücü ama görevi de aynı — savunmayı başlatmak.
+     Fazla salgılandığında insülinin hücre içindeki sinyal hattını doğrudan bozar.
+
+   Yağ dokusu bu mesajları durmadan yollayınca, vücutta hiç sönmeyen kısık bir alarm kurulur:
+   **kronik düşük dereceli inflamasyon** (inflamasyon = iltihap, vücudun savunma yanıtı).
+   Kısa süreli iltihap iyileştiricidir; aylarca süren, hissetmediğin bu hali ise damarları ve
+   metabolizmayı yıpratır.
+
+**Sonuç zinciri:** İnsülin, yemekten sonra kandaki şekeri hücrelerin içine sokan hormondur —
+kapıyı açan anahtar gibi. Yukarıdaki iki mekanizma kapıyı paslandırır; buna **insülin direnci**
+denir. Pankreas daha çok insülin salgılayarak zorlamak zorunda kalır. Zamanla kan yağları bozulur
+(**trigliserit** yükselir, "iyi kolesterol" **HDL** düşer) ve tansiyon artar. Bu bulgular bir arada
+görüldüğünde tabloya **metabolik sendrom** denir.
+
+Yani merkez yağlanma bir estetik konusu değil, **metabolik risk konusudur**.
 
 ### Ölçüm ve sınırlar (ezberlenecek)
 
@@ -226,9 +266,20 @@ Merkez yağlanmada oyun planı **enerji açığı + insülin duyarlılığı + k
 **Gynoid / periferik / "armut" tip:** Yağ kalça, basen, uyluk ve üst kolda, deri altında
 (subkutan) toplanır. Premenopozal kadınlarda baskındır, östrojen etkisiyle ilişkilidir.
 
-**Fizyolojisi neden inatçı:** Gluteofemoral yağ dokusunda **lipoprotein lipaz (LPL)** aktivitesi
-yüksek (yağ depolamaya meyilli), **alfa-2 adrenerjik reseptörler** baskın (lipolizi frenler),
-beta-adrenerjik reseptör yoğunluğu düşük. Yani bu bölge biyolojik olarak "son boşalan depo"dur.
+*Gluteofemoral* = kalça (gluteus) + uyluk (femur) bölgesi. *Subkutan* = derinin hemen altı.
+
+**Fizyolojisi neden inatçı — iki mekanizma:**
+
+1. **Depolama kapısı geniş.** Kandaki yağı parçalayıp yağ hücresinin içine sokan enzime
+   **LPL (lipoprotein lipaz)** denir; depolama kapısındaki görevli gibi düşün. Kalça-uyluk yağ
+   dokusunda bu enzim çok aktiftir — bölge depolamaya meyillidir.
+2. **Yakım freni sıkı.** Yağ hücresinin yüzeyinde adrenalini algılayan antenler vardır; adları
+   **adrenerjik reseptör**dür. **Beta** tipi anten "yağı çöz ve kana sal" der (bu çözülme işleminin
+   adı **lipoliz**tir); **alfa-2** tipi anten "dur, salma" der. Kalça-uyluk yağında alfa-2 baskın,
+   beta seyrektir. Yani fren, gazdan güçlüdür.
+
+Bu iki sebeple gluteofemoral yağ, biyolojik olarak vücudun **son boşalan deposudur**.
+Bu senin çabanla ilgili değildir; danışanına bunu söylemek, onu suçluluktan kurtarır.
 
 > **İyi haber, danışana mutlaka söyle:** Gluteofemoral yağ metabolik olarak **koruyucudur**.
 > Aynı vücut yağ oranında armut tip, elma tipe göre daha düşük kardiyometabolik risk taşır.
@@ -521,10 +572,20 @@ VO2 = Kalp Debisi × (a-v)O2 farkı
     = (Kalp Atım Hızı × Atım Hacmi) × (arter-ven oksijen farkı)
 ```
 
-- **Merkezi faktör:** Atım hacmi (sol ventrikül dolumu, kalp kası) → antrenmanla artar,
-  VO2max gelişiminin en büyük payı buradan gelir.
-- **Periferik faktör:** Kasın oksijeni çekip kullanma kapasitesi — kapiller yoğunluk,
-  mitokondri, myoglobin, oksidatif enzimler.
+**Denklemin düz Türkçesi:** *kalbinin pompaladığı kan* × *kasının o kandan çekebildiği oksijen*.
+
+- **Merkezi faktör — kalp tarafı.** **Atım hacmi**, kalbin her vuruşta pompaladığı kan miktarıdır.
+  Antrenmanla en çok gelişen değişken budur; VO2max artışının en büyük payı buradan gelir.
+  Dinlenim nabzının zamanla düşmesinin sebebi de aynıdır: her vuruş daha çok iş yapar.
+- **Periferik faktör — kas tarafı.** Kasın oksijeni çekip kullanma kapasitesi:
+  **kapiller** (damar ağının en ince uçları; oksijenin kandan kasa geçtiği teslimat noktaları),
+  **mitokondri** (hücrenin enerji santrali), **miyoglobin** (kas içinde oksijeni tutan protein)
+  ve oksidatif enzimler.
+- **(a-v)O₂ farkı** ise atardamardaki oksijenle toplardamardaki oksijen arasındaki farktır —
+  yani kasın o kandan ne kadar oksijen çektiği. Fark büyükse kas oksijeni iyi kullanıyordur.
+
+Yani VO2max'ı artırmanın iki yolu vardır: **daha iyi pompa** ya da **daha iyi kullanan kas**.
+İyi bir program ikisini birden çalıştırır.
 
 ### Ölçüm
 
@@ -682,19 +743,34 @@ dilime çıkarken görülür. Yani **en kazançlı danışan, hiç hareket etmey
 
 ### Doğru fizyoloji
 
-Glikoliz sonunda **pirüvat** oluşur. Enerji talebi, mitokondrinin pirüvatı işleme hızını aştığında
-**laktat dehidrogenaz (LDH)** enzimi pirüvatı **laktata** çevirir. Bunun amacı NAD⁺'yi geri
-kazanmaktır — NAD⁺ olmadan glikoliz durur. Yani **laktat üretimi, yüksek şiddette enerji
-üretiminin devam etmesini sağlayan çözümdür, problemin kendisi değil.**
+**Adım 1 — Şeker nasıl enerjiye dönüşür?**
+Şeker, enerjiye çevrilirken önce **glikoliz** denen hızlı bir hattan geçer. Glikoliz oksijen
+gerektirmez ve sonunda **pirüvat** adlı ara madde ortaya çıkar. İşin geri kalanı hücrenin enerji
+santralinde, **mitokondri**de yapılır — ama mitokondrinin bir işleme hızı vardır.
 
-**Asitliği ne yapar?** ATP hidrolizinden açığa çıkan **hidrojen iyonları (H⁺)**, tamponlama
-kapasitesini aştığında pH düşer (asidoz) ve kasılma performansı bozulur. Laktat oluşumu aslında
-bir H⁺ **tüketir** — yani asidozu geciktirir. Suçlu laktat değil, H⁺ birikimidir.
+**Adım 2 — Laktat neden üretilir?**
+Sen çok sert çalışınca pirüvat, mitokondrinin işleyebileceğinden daha hızlı birikir. O anda
+**laktat dehidrogenaz (LDH)** adlı enzim devreye girip pirüvatı **laktata** çevirir.
+*Enzim*, bir kimyasal tepkimeyi hızlandıran proteindir.
 
-**Laktat bir yakıttır.** *Lactate shuttle* (Brooks): üretilen laktat kana geçer ve
-kalp kası, yavaş kasılan lifler ve beyin tarafından **yakıt olarak oksitlenir**; karaciğerde
-**Cori döngüsü** ile glikoza geri çevrilir. Laktat ayrıca bir sinyal molekülüdür
-(mitokondri biyogenezini tetikler).
+Bunun amacı atık üretmek değildir: dönüşüm sırasında **NAD⁺** adlı yardımcı molekül geri kazanılır.
+NAD⁺, glikoliz hattında elektron taşıyan bir mekik gibidir ve sürekli "boşalması" gerekir;
+boşalmazsa glikoliz tamamen durur. Yani **laktat üretimi, yüksek şiddette enerji üretiminin devam
+etmesini sağlayan çözümdür — problemin kendisi değil.**
+
+**Adım 3 — O zaman o yanma hissi nedir?**
+Kas kasılmak için **ATP**'yi (hücrenin enerji parası) parçalar ve bu parçalanmadan
+**hidrojen iyonu (H⁺)** açığa çıkar. H⁺, ortamın asitliğini belirleyen parçacıktır. Vücudun
+bir tamponlama (nötrleştirme) kapasitesi vardır; H⁺ bunu aşarsa pH düşer, ortam asitlenir
+(**asidoz**) ve kas düzgün kasılamaz. **Suçlu laktat değil, H⁺'dır.** Üstelik laktat oluşurken
+bir H⁺ harcanır — yani laktat asitlenmeyi *geciktirir*.
+
+**Adım 4 — Laktat nereye gider? Bir yakıttır.**
+Üretilen laktat kana geçer ve kalp kası, yavaş kasılan kas lifleri ve beyin tarafından doğrudan
+**yakıt olarak yakılır**. Bu taşınma-yeniden kullanma sistemine **laktat mekiği**
+(*lactate shuttle*, Brooks) denir. Bir kısmı karaciğere gider, orada yeniden şekere (glikoza)
+çevrilip kana geri verilir; bu geri dönüşüm hattının adı **Cori döngüsü**dür.
+Laktat ayrıca bir sinyal molekülüdür: mitokondri üretimini tetikler.
 
 **DOMS (gecikmiş kas ağrısı) laktat değildir.** Laktat egzersizden sonra **30–60 dakikada**
 dinlenim seviyesine döner. DOMS ise 24–72 saatte zirve yapar ve nedeni eksantrik kasılmaya bağlı

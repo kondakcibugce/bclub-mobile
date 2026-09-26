@@ -171,6 +171,48 @@ figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);line-height
 
 footer{padding-block:34px 44px;font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.7}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+/* terim işaretleme + tanım paneli */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0 1px;margin:0;cursor:help;
+  border-bottom:1.5px dotted var(--accent);text-underline-offset:2px}
+.term:hover,.term:focus-visible{background:var(--accent-soft);border-bottom-style:solid}
+.term::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;
+  background:var(--accent);vertical-align:super;margin-left:2px;opacity:.6}
+#sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(110%);
+  transition:transform .28s cubic-bezier(.3,.9,.3,1);pointer-events:none}
+#sheet.open{transform:translateY(0);pointer-events:auto}
+@media (prefers-reduced-motion:reduce){#sheet{transition:none}}
+.sheet-in{max-width:700px;margin:0 auto;background:var(--surface);border:1px solid var(--line);
+  border-bottom:0;border-radius:11px 11px 0 0;padding:17px 18px calc(17px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 -6px 40px -10px rgba(15,26,33,.35)}
+.sheet-hd{display:flex;align-items:flex-start;gap:12px;margin-bottom:9px}
+.sheet-hd h5{font-family:var(--sans);font-size:16px;font-weight:700;margin:0;letter-spacing:-.01em;flex:1}
+.sheet-hd .g{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:3px 6px;flex:none;margin-top:2px}
+.sheet-close{flex:none;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);
+  border-radius:5px;width:28px;height:28px;font-size:15px;line-height:1;cursor:pointer;font-family:var(--sans)}
+.sheet-close:hover{color:var(--accent);border-color:var(--accent)}
+.sheet-in .d{font-size:15.5px;margin:0}
+.sheet-in .x{font-size:14px;color:var(--ink-2);border-left:3px solid var(--accent);background:var(--sunken);
+  padding:9px 12px;border-radius:0 4px 4px 0;margin:11px 0 0}
+.sheet-in .x b{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:3px}
+/* sözlük */
+.gsearch{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.gsearch input{flex:1 1 220px;font-family:var(--mono);font-size:14px;padding:9px 12px;
+  border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.gsearch .cnt{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.gfilters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.gfilters button{font-family:var(--mono);font-size:11px;border:1px solid var(--line);background:var(--surface);
+  color:var(--muted);border-radius:100px;padding:5px 11px;cursor:pointer}
+.gfilters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:11px}
+.gi{border:1px solid var(--line);border-radius:7px;background:var(--surface);padding:14px 15px;box-shadow:var(--shadow)}
+.gi h4{font-size:14.5px;font-weight:700;margin-bottom:6px}
+.gi .g{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);
+  display:block;margin-bottom:6px}
+.gi p{font-size:14px;margin:0;color:var(--ink-2)}
+.gi .x{font-size:13px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft)}
+.gempty{font-family:var(--mono);font-size:13px;color:var(--muted);padding:18px 0}
 .gold{counter-reset:g;list-style:none;padding:0;margin:0;display:grid;gap:9px}
 .gold li{counter-increment:g;display:flex;gap:12px;font-size:15px;border-bottom:1px solid var(--line-soft);padding-bottom:9px;margin:0}
 .gold li::before{content:counter(g,decimal-leading-zero);font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);flex:none;padding-top:4px}
@@ -183,7 +225,7 @@ footer{padding-block:34px 44px;font-family:var(--mono);font-size:11.5px;color:va
       <a href="#bmr">BMR</a><a href="#android">Merkez yağ</a><a href="#gynoid">Uzuv yağ</a>
       <a href="#eklem">Eklem yükü</a><a href="#nabiz">Nabız zonları</a><a href="#fatmax">Fatmax</a>
       <a href="#vo2">VO2max</a><a href="#esneklik">Esneklik</a><a href="#laktat">Laktat</a>
-      <a href="#opt">OPT modeli</a><a href="#kartlar">Kartlar</a><a href="#quiz">Sınav</a>
+      <a href="#opt">OPT modeli</a><a href="#sozluk">Sözlük</a><a href="#kartlar">Kartlar</a><a href="#quiz">Sınav</a>
     </nav>
     <button class="themebtn" id="themeBtn" type="button">tema</button>
   </div>
@@ -200,10 +242,15 @@ footer{padding-block:34px 44px;font-family:var(--mono);font-size:11.5px;color:va
   <div class="facts">
     <span class="fact"><b>11</b> modül</span>
     <span class="fact"><b>3</b> hesap makinesi</span>
+    <span class="fact"><b>89</b> terim sözlüğü</span>
     <span class="fact"><b>12</b> hafıza kartı</span>
     <span class="fact"><b>15</b> soruluk sınav</span>
     <span class="fact">Geçme notu <b>80</b></span>
   </div>
+  <div class="note" style="margin-top:22px"><span class="lbl">Nasıl okunur</span>
+    Metinde <button class="term" data-t="visseral">altı noktalı</button> görünen her kelime bir
+    teknik terimdir — üstüne dokun, günlük dildeki karşılığı açılır. Hepsini bir arada görmek
+    istersen <a href="#sozluk">Terim Sözlüğü</a> bölümüne git.</div>
 </div>
 
 <!-- ============ 1 BMR ============ -->
@@ -300,6 +347,31 @@ TDEE = BMR × aktivite katsayısı
     <h2>Merkez ağırlıklı yağlanma</h2>
     <div class="sub">Android · elma tip · visseral · metabolik acil</div></div></div>
 
+  <div class="rail">
+    <p><strong>Android</strong> ("elma tip") yağlanmada yağ karında ve belde toplanır. Bunun bir
+    kısmı derinin altındadır, parmakla tutabilirsin — buna <strong>subkutan</strong> yağ denir.
+    Asıl mesele diğer kısmıdır: karın kaslarının arkasında, organların arasına dolan
+    <strong>visseral</strong> yağ. Onu tutamazsın ama metabolizmanı o yönetir.</p>
+    <p>Visseral yağ pasif bir depo değil, hormon salgılayan bir organ gibi davranır. Karın
+    organlarından toplanan kan, kalbe uğramadan önce <strong>portal ven</strong> denen damarla
+    doğrudan karaciğere gider. Yani visseral yağın saldığı her şey, seyrelmeden karaciğerin
+    kapısına düşer. İki şey salar:</p>
+    <ul>
+      <li><strong>Serbest yağ asidi (FFA)</strong> — depodaki yağın kana salınmış, yakılmaya hazır
+        hali. Kanda sürekli yüksek kalırsa kas ve karaciğer hücreleri insüline sağırlaşır.</li>
+      <li><strong>İltihap habercisi proteinler (sitokinler)</strong> — hücrelerin birbirine mesaj
+        yollamak için kullandığı moleküller. Bunların en bilinen ikisi <strong>IL-6</strong> ve
+        <strong>TNF-α</strong>'dır. Görevleri bağışıklık sistemine "burada bir sorun var" demektir.
+        Yağ dokusu bu mesajı durmadan yollayınca, vücutta hiç sönmeyen kısık bir alarm kurulur:
+        <strong>kronik düşük dereceli iltihap</strong>. TNF-α ayrıca insülinin hücre içindeki
+        sinyal hattını doğrudan bozar.</li>
+    </ul>
+    <p>Sonuç zinciri: <strong>insülin direnci</strong> (şekeri hücreye sokan anahtar kapıyı zor
+    açar) → pankreas daha çok insülin salgılar → kan yağları bozulur, tansiyon yükselir.
+    Bu tabloya birlikte görüldüğünde <strong>metabolik sendrom</strong> denir. Yani merkez yağlanma
+    bir estetik konusu değil, <strong>metabolik risk konusudur</strong>.</p>
+  </div>
+
   <figure>
     <svg viewBox="0 0 640 230" role="img" aria-label="Android ve gynoid yağ dağılımının karşılaştırmalı şeması">
       <!-- android -->
@@ -322,11 +394,11 @@ TDEE = BMR × aktivite katsayısı
       <!-- compare -->
       <line x1="300" y1="28" x2="300" y2="214" stroke="var(--line)" stroke-width="1"/>
       <text x="322" y="46" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--z5)">● ANDROID</text>
-      <text x="322" y="66" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Portal vene FFA + IL-6, TNF-α salar</text>
-      <text x="322" y="84" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">→ insülin direnci, metabolik sendrom</text>
+      <text x="322" y="66" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Karaciğere doğrudan yağ ve iltihap sinyali</text>
+      <text x="322" y="84" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">gönderir → kan şekeri kontrolü bozulur</text>
       <text x="322" y="102" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Öncelik: kuvvet + Zon 2 + uyku/kortizol</text>
       <text x="322" y="138" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--z2)">● GYNOID</text>
-      <text x="322" y="158" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Yüksek LPL, baskın α2 reseptör</text>
+      <text x="322" y="158" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Depolama kapısı geniş, yakım freni sıkı</text>
       <text x="322" y="176" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">→ son boşalan depo, metabolik koruyucu</text>
       <text x="322" y="194" font-family="Source Serif 4, serif" font-size="12.5" fill="var(--ink-2)">Öncelik: süre + düşük darbe + sabır</text>
     </svg>
@@ -391,10 +463,22 @@ TDEE = BMR × aktivite katsayısı
     <h2>Uzuv ağırlıklı yağlanma</h2>
     <div class="sub">Gynoid · armut tip · gluteofemoral · sabır işi</div></div></div>
   <div class="rail">
-    <p>Gluteofemoral yağ dokusunda <strong>lipoprotein lipaz aktivitesi yüksektir</strong>
-    (depolamaya meyilli) ve <strong>alfa-2 adrenerjik reseptörler baskındır</strong> (lipolizi
-    frenler). Yani bu bölge biyolojik olarak "son boşalan depo"dur. Bu bir hastalık değil,
-    bir dağılım biçimidir — ve metabolik olarak <em>koruyucudur</em>.</p>
+    <p><strong>Gynoid</strong> ("armut tip") yağlanmada yağ kalça, basen ve uylukta, derinin
+    hemen altında (<strong>subkutan</strong>) toplanır. Anatomide bu bölgenin tek kelimelik adı
+    <strong>gluteofemoral</strong>dir: kalça + uyluk.</p>
+    <p>Bu bölgenin neden inatçı olduğunu iki mekanizma açıklar — ikisi de senin çabanla ilgili değil:</p>
+    <ul>
+      <li><strong>Depolama kapısı geniş.</strong> Kandaki yağı parçalayıp hücrenin içine sokan enzime
+        <strong>LPL (lipoprotein lipaz)</strong> denir. Kalça-uyluk yağ dokusunda bu enzim çok
+        aktiftir, yani bölge depolamaya meyillidir.</li>
+      <li><strong>Yakım freni sıkı.</strong> Yağ hücresinin yüzeyinde adrenalini algılayan antenler
+        vardır (<strong>adrenerjik reseptörler</strong>). Beta tipi anten "yağı çöz ve sal" der;
+        <strong>alfa-2</strong> tipi anten "dur, salma" der. Kalça-uyluk yağında alfa-2 baskındır.
+        Yani fren, gazdan güçlüdür.</li>
+    </ul>
+    <p>Bu yüzden gluteofemoral yağ vücudun <strong>son boşalan deposudur</strong>. Ama bu bir
+    hastalık değil, bir dağılım biçimidir — ve metabolik olarak <em>koruyucudur</em>: aynı yağ
+    oranında armut tip, elma tipe göre daha düşük kalp-damar ve şeker riski taşır.</p>
 
     <div class="note bad"><span class="lbl">Ayırıcı tanı — kaçırma</span>
       Bacaklarda simetrik, orantısız, <strong>dokunmakla ağrılı</strong>, kolay morarabilen,
@@ -602,6 +686,14 @@ Karvonen (Nabız Rezervi)
   Periferik faktör : Kapiller yoğunluk, mitokondri, myoglobin, oksidatif enzimler
 
 1 MET = 3.5 ml/kg/dk</div>
+    <p>Denklemin düz Türkçesi: <strong>kalbinin pompaladığı kan</strong> çarpı
+    <strong>kasının o kandan çekebildiği oksijen</strong>. İlk yarısı kalple ilgilidir —
+    <strong>atım hacmi</strong>, kalbin her vuruşta gönderdiği kan miktarıdır ve antrenmanla en çok
+    gelişen değişken budur. İkinci yarısı kasla ilgilidir: <strong>kapiller</strong> (damar ağının
+    en ince uçları, teslimat noktaları), <strong>mitokondri</strong> (hücrenin enerji santrali) ve
+    <strong>miyoglobin</strong> (kas içinde oksijeni tutan protein).</p>
+    <p>Yani VO2max'ı artırmanın iki yolu vardır: <strong>daha iyi pompa</strong> ya da
+    <strong>daha iyi kullanan kas</strong>. İyi bir program ikisini birden çalıştırır.</p>
     <h3>Saha testleri</h3>
   </div>
   <div class="tablewrap"><table>
@@ -727,15 +819,24 @@ Karvonen (Nabız Rezervi)
       ✗ "Kaslarım laktik asitten ağrıyor." &nbsp;✗ "Ertesi gün ağrıyorsa laktik asit birikmiştir."
       &nbsp;✗ "Laktik asit atık maddedir."<br>
       Üçü de yanlış. Bunları söylemeyen antrenör, söyleyenden bir adım öndedir.</div>
-    <p>Glikoliz sonunda <strong>pirüvat</strong> oluşur. Enerji talebi mitokondrinin işleme hızını
-    aştığında <strong>LDH</strong> enzimi pirüvatı laktata çevirir — amaç NAD⁺'yi geri kazanmaktır,
-    çünkü NAD⁺ olmadan glikoliz durur. Yani <strong>laktat üretimi, yüksek şiddette enerji üretiminin
-    devam etmesini sağlayan çözümdür; problemin kendisi değil.</strong></p>
-    <p>Asitliği yapan, ATP hidrolizinden çıkan <strong>H⁺ iyonlarının</strong> tamponlama kapasitesini
-    aşmasıdır. Laktat oluşumu aslında bir H⁺ <em>tüketir</em> — yani asidozu geciktirir.
-    Üretilen laktat kana geçer ve kalp kası, yavaş lifler ve beyin tarafından
-    <strong>yakıt olarak oksitlenir</strong> (lactate shuttle); karaciğerde Cori döngüsüyle
-    glikoza döner.</p>
+    <p>Ne olduğunu adım adım kuralım. Şeker, enerjiye çevrilirken önce <strong>glikoliz</strong>
+    denen hızlı bir hattan geçer ve sonunda <strong>pirüvat</strong> adlı ara madde ortaya çıkar.
+    İşin geri kalanı hücrenin enerji santralinde, <strong>mitokondri</strong>de yapılır — ama
+    mitokondrinin bir işleme hızı vardır.</p>
+    <p>Sen çok sert çalışınca pirüvat, mitokondrinin işleyebileceğinden hızlı birikir. O anda
+    <strong>LDH</strong> adlı enzim devreye girip pirüvatı <strong>laktata</strong> çevirir.
+    Bunun amacı bir atık üretmek değil: dönüşüm sırasında <strong>NAD⁺</strong> adlı yardımcı
+    molekül geri kazanılır ve NAD⁺ olmadan glikoliz hattı tamamen durur. Yani
+    <strong>laktat üretimi, yüksek şiddette enerji üretiminin devam etmesini sağlayan çözümdür;
+    problemin kendisi değil.</strong></p>
+    <p>Peki o yanma hissi nereden geliyor? Kas kasılmak için ATP'yi parçalar ve bu parçalanmadan
+    <strong>hidrojen iyonu (H⁺)</strong> açığa çıkar. H⁺ birikince ortam asitlenir
+    (<strong>asidoz</strong>) ve kas düzgün kasılamaz. Suçlu laktat değil, H⁺'dır — üstelik
+    laktat oluşurken bir H⁺ harcanır, yani laktat asitlenmeyi <em>geciktirir</em>.</p>
+    <p>Üretilen laktat kana geçer ve orada bir yakıta dönüşür: kalp kası, yavaş kasılan kas lifleri
+    ve beyin onu doğrudan yakar. Bu taşınma-yeniden kullanma sistemine
+    <strong>laktat mekiği</strong> denir. Bir kısmı da karaciğere gidip yeniden şekere çevrilir ve
+    kana geri verilir; bu geri dönüşüm hattının adı <strong>Cori döngüsü</strong>dür.</p>
   </div>
 
   <figure>
@@ -885,6 +986,19 @@ Karvonen (Nabız Rezervi)
   </div>
 </section>
 
+<!-- ============ SOZLUK ============ -->
+<section id="sozluk">
+  <div class="sechead"><div class="secnum">≡</div><div>
+    <h2>Terim sözlüğü</h2>
+    <div class="sub">Anlatamadığın terim, henüz senin değildir</div></div></div>
+  <div class="gsearch">
+    <input id="gq" type="search" placeholder="Terim ara — örn. visseral, insülin, eşik" aria-label="Terim ara">
+    <span class="cnt" id="gcnt"></span>
+  </div>
+  <div class="gfilters" id="gfilters"></div>
+  <div class="glist" id="glist"></div>
+</section>
+
 <!-- ============ KARTLAR ============ -->
 <section id="kartlar">
   <div class="sechead"><div class="secnum">↺</div><div>
@@ -946,6 +1060,18 @@ Karvonen (Nabız Rezervi)
   Kırmızı bayrak bulguları, mevcut hastalık, gebelik, ilaç kullanımı ve yaralanma durumlarında
   danışan hekime yönlendirilir.
 </footer>
+</div>
+
+<div id="sheet" role="dialog" aria-modal="false" aria-labelledby="sheetTitle" aria-hidden="true">
+  <div class="sheet-in">
+    <div class="sheet-hd">
+      <span class="g" id="sheetGroup"></span>
+      <h5 id="sheetTitle"></h5>
+      <button class="sheet-close" id="sheetClose" type="button" aria-label="Kapat">×</button>
+    </div>
+    <p class="d" id="sheetDef"></p>
+    <div class="x" id="sheetWhy" hidden></div>
+  </div>
 </div>
 
 <script>
@@ -1192,6 +1318,106 @@ function drawLac(){
   });
 }
 function drawCharts(){drawCross();drawLac()}
+
+/* ---------- terim sözlüğü ---------- */
+/*TERMS_START*/var TERMS={"gruplar":{"yag":"Yağ dağılımı ve ölçüm","biyo":"Hücre, hormon ve biyokimya","enerji":"Enerji ve metabolizma","kalp":"Kalp, nabız ve dayanıklılık","antrenman":"Antrenman terimleri","klinik":"Klinik ve güvenlik"},"terimler":[{"k":"android","t":"Android (elma tip)","g":"yag","m":"android","d":"Yağın ağırlıklı olarak karın ve bel bölgesinde toplandığı dağılım biçimi. Adı \"erkeksi\" anlamına gelir, çünkü erkeklerde ve menopoz sonrası kadınlarda daha sık görülür.","x":"Halk dilinde \"elma tip\". Riskli olan kısmı, karın içindeki visseral yağdır."},{"k":"gynoid","t":"Gynoid (armut tip)","g":"yag","m":"gynoid","d":"Yağın ağırlıklı olarak kalça, basen ve uylukta toplandığı dağılım biçimi. Adı \"kadınsı\" anlamına gelir; östrojen hormonunun etkisiyle ilişkilidir.","x":"Halk dilinde \"armut tip\". Metabolik olarak daha güvenli bir dağılımdır."},{"k":"visseral","t":"Visseral yağ","g":"yag","m":"visseral","d":"Karın boşluğunun içinde, organların arasına dolan yağ. Derinin altında değil, kas duvarının arkasındadır; parmakla tutulamaz.","x":"Metabolik olarak aktif bir organ gibi davranır: hormon ve iltihap sinyali salgılar. Merkez yağlanmayı riskli kılan tam olarak budur."},{"k":"subkutan","t":"Subkutan yağ","g":"yag","m":"subkutan|deri ?altı","d":"Derinin hemen altındaki yağ tabakası. \"Sub\" = alt, \"kutan\" = deri. Parmakla tutup sıkabildiğin yağ budur.","x":"Kalça ve uylukta biriken yağın çoğu subkutandır ve visseral yağa göre çok daha az risklidir."},{"k":"gluteofemoral","t":"Gluteofemoral","g":"yag","m":"gluteofemoral","d":"\"Kalça (gluteus) ve uyluk (femur) bölgesi\" anlamına gelen tek kelimelik anatomik kısaltma.","x":"Gluteofemoral yağ, vücudun en geç boşalan yağ deposudur."},{"k":"santral","t":"Santral / periferik","g":"yag","m":"santral|periferik","d":"Santral = vücudun merkezinde (gövde, karın). Periferik = merkezden uzakta, uçlarda (kol, bacak).","x":"\"Merkez ağırlıklı yağlanma\" = santral, \"uzuv ağırlıklı yağlanma\" = periferik."},{"k":"antropometri","t":"Antropometri","g":"yag","m":"antropometri","d":"Vücudun ölçülmesi: boy, kilo, bel, kalça, kol ve uyluk çevresi, deri kıvrım kalınlığı.","x":"Antrenörün en ucuz ve en güvenilir veri kaynağı. Mezura, pahalı cihazdan daha çok iş görür."},{"k":"whr","t":"WHR (bel/kalça oranı)","g":"yag","m":"WHR","d":"Bel çevresinin kalça çevresine bölünmesi. Yağın merkeze mi uzuvlara mı toplandığını gösterir.","x":"Eşik: erkekte 0.90, kadında 0.85 üstü merkez ağırlıklı kabul edilir."},{"k":"whtr","t":"WHtR (bel/boy oranı)","g":"yag","m":"WHtR","d":"Bel çevresinin boya bölünmesi. Tek cümlelik karşılığı: \"belin, boyunun yarısından az olsun.\"","x":"Eşik 0.50. Cinsiyet ve etnik köken fark etmeksizin çalıştığı için en pratik tarama aracıdır."},{"k":"lipodem","t":"Lipödem","g":"yag","m":"lipödem","d":"Bacaklarda simetrik, dokunmakla ağrılı, kolay morarabilen ve diyete cevap vermeyen bir yağ dokusu hastalığı. Genelde ayaklar korunur, şişlik ayak bileğinde keskin bir sınırla biter.","x":"Bu bir antrenman sorunu değildir. Şüphelenirsen hekime yönlendir; \"daha çok çalış\" deme."},{"k":"lenfodem","t":"Lenfödem","g":"yag","m":"lenfödem","d":"Lenf sıvısının dokuda birikmesiyle oluşan şişlik. Lenf, damarların dışına sızan sıvıyı toplayıp dolaşıma geri veren temizlik sistemidir; tıkanırsa sıvı dokuda kalır.","x":"Çoğunlukla tek taraflıdır ve parmakla bastırınca çukur bırakır. Hekim işidir."},{"k":"gode","t":"Gode bırakan ödem","g":"yag","m":"gode","d":"Şiş bölgeye parmakla birkaç saniye bastırıldığında, parmak çekilince çukurun bir süre kalması.","x":"Yağ bastırınca çukur bırakmaz; sıvı bırakır. Bu basit test, yağ ile ödemi ayırmanı sağlar."},{"k":"portalven","t":"Portal ven","g":"biyo","m":"portal ven","d":"Bağırsak ve karın organlarından toplanan kanı, kalbe gitmeden önce doğrudan karaciğere taşıyan büyük toplardamar.","x":"Visseral yağın saldığı maddeler bu damarla doğrudan karaciğere gider — seyreltilmeden, ilk durak karaciğer. Merkez yağlanmanın karaciğeri ve kan şekerini bozmasının nedeni budur."},{"k":"ffa","t":"FFA (serbest yağ asidi)","g":"biyo","m":"FFA|serbest yağ asidi","d":"Yağ hücresinden kana salınan, yakıt olarak kullanılmaya hazır yağ molekülü. Depodaki yağın \"nakit\" hali.","x":"Normalde iyi bir yakıttır. Ama kanda sürekli yüksek kalırsa kas ve karaciğer hücrelerini insüline sağır hale getirir."},{"k":"sitokin","t":"Sitokin","g":"biyo","m":"sitokin","d":"Hücrelerin birbirine mesaj göndermek için salgıladığı küçük proteinler. Bağışıklık sisteminin telsiz konuşması gibi düşün.","x":"Bazıları \"alarm\" mesajı taşır (iltihap başlatır), bazıları \"sakin ol\" der."},{"k":"il6","t":"IL-6 (interlökin-6)","g":"biyo","m":"IL-6","d":"Bir sitokin, yani hücreler arası haberci protein. Bağışıklık sistemine \"burada bir sorun var\" sinyali gönderir.","x":"Yağ dokusu — özellikle visseral yağ — bu sinyali sürekli salgılar. Sonuç, vücutta hiç sönmeyen kısık bir alarm: kronik düşük dereceli iltihap."},{"k":"tnfa","t":"TNF-α (tümör nekroz faktörü alfa)","g":"biyo","m":"TNF-α|TNF-a","d":"Bir diğer haberci protein (sitokin). Adı ürkütücü ama görevi bağışıklık yanıtını başlatmaktır.","x":"Fazla salgılandığında insülinin hücre içindeki sinyal yolunu bozar. Yani doğrudan insülin direncine katkı verir."},{"k":"inflamasyon","t":"İnflamasyon (iltihap)","g":"biyo","m":"inflam\\w*|iltihap","d":"Vücudun bir tehdide verdiği savunma yanıtı: kızarıklık, şişlik, ısı artışı. Kısa süreli olduğunda iyileştiricidir.","x":"\"Kronik düşük dereceli inflamasyon\" ise aylarca süren, hissetmediğin ama damarları ve metabolizmayı yıpratan bir yangındır. Merkez yağlanmanın asıl zararı buradan gelir."},{"k":"insulin","t":"İnsülin","g":"biyo","m":"insülin(?!e? ?direnc)","d":"Pankreastan salgılanan hormon. Yemekten sonra kana giren şekeri hücrelerin içine sokar — kapıyı açan anahtar gibi.","x":"İnsülin aynı zamanda \"depola\" komutudur: yüksekken yağ yakımı yavaşlar."},{"k":"insulindirenci","t":"İnsülin direnci","g":"biyo","m":"insülin direnci","d":"Hücrelerin insüline kulak asmaması. Anahtar kapıya giriyor ama kapı zor açılıyor; pankreas daha çok insülin salgılayarak zorlamak zorunda kalıyor.","x":"Tip 2 diyabetin öncüsüdür. Kuvvet antrenmanı, kas kasılmasıyla kapıyı insülin olmadan da açabildiği için burada ilaç gibi çalışır."},{"k":"glut4","t":"GLUT4","g":"biyo","m":"GLUT4","d":"Kas ve yağ hücrelerinin içinde duran, şekeri hücreye taşıyan kapı. Normalde insülin bu kapıyı yüzeye çıkarır.","x":"Kas kasılması GLUT4'ü insülinden bağımsız olarak yüzeye çıkarır. İnsülin direnci olan bir bedende bile egzersizin kan şekerini düşürmesinin nedeni budur."},{"k":"glikojen","t":"Glikojen","g":"enerji","m":"glikojen","d":"Karbonhidratın kas ve karaciğerde depolanma biçimi. Şeker moleküllerinin birbirine bağlanmış hali.","x":"Kasta ~400 g, karaciğerde ~100 g civarı durur. Boşalınca yorgunluk (\"duvara toslama\") gelir."},{"k":"glikoliz","t":"Glikoliz","g":"enerji","m":"glikoliz","d":"Şekerin parçalanarak enerjiye çevrilmesinin ilk aşaması. Oksijen gerektirmez, çok hızlıdır.","x":"Kısa ve şiddetli işlerde (ağır set, 400 m, 60 sn interval) baskın enerji yolu budur."},{"k":"piruvat","t":"Pirüvat","g":"enerji","m":"pirüvat","d":"Glikolizin sonunda ortaya çıkan ara madde. Oksijen yeterliyse mitokondriye girip tamamen yakılır.","x":"Talep mitokondrinin kapasitesini aşarsa pirüvat laktata çevrilir. Yani laktat, bir tıkanıklığın sonucudur — bir atık değil."},{"k":"laktat","t":"Laktat","g":"enerji","m":"laktat(?! eşi| deh)","d":"Pirüvattan üretilen, kanda dolaşan bir yakıt molekülü. Kalp kası, yavaş kas lifleri ve beyin onu doğrudan yakar.","x":"\"Laktik asit yorgunluk yapar\" cümlesi yanlıştır. Laktat üretimi, yüksek şiddette enerji üretiminin devam etmesini sağlayan çözümdür."},{"k":"ldh","t":"LDH (laktat dehidrogenaz)","g":"enerji","m":"LDH|laktat dehidrogenaz","d":"Pirüvatı laktata çeviren enzim. Enzim = bir kimyasal tepkimeyi hızlandıran protein.","x":"Bu dönüşümün asıl amacı NAD+'yi geri kazanmaktır; NAD+ olmadan glikoliz durur."},{"k":"nad","t":"NAD⁺","g":"enerji","m":"NAD⁺|NAD\\+","d":"Hücrede elektron taşıyan bir yardımcı molekül. Glikolizin çalışabilmesi için sürekli \"boş\" hale dönmesi gerekir.","x":"Laktat üretimi NAD+'yi serbest bırakır ve enerji hattının tıkanmasını önler."},{"k":"asidoz","t":"Asidoz ve H⁺","g":"enerji","m":"asidoz|H⁺","d":"H⁺ = hidrojen iyonu; ortamın asitliğini belirleyen parçacık. Asidoz = pH'ın düşmesi, yani ortamın asitlenmesi.","x":"Kastaki yanma hissinin ve kasılma bozulmasının sorumlusu laktat değil, biriken H⁺'dır. Laktat oluşumu aslında bir H⁺ tüketerek asidozu geciktirir."},{"k":"mitokondri","t":"Mitokondri","g":"enerji","m":"mitokondri","d":"Hücrenin enerji santrali. Oksijen kullanarak yağ ve karbonhidrattan ATP üretir.","x":"Zon 2 antrenmanının asıl kazancı budur: mitokondri sayısı ve hacmi artar, aynı hızda daha az yorulursun."},{"k":"atp","t":"ATP","g":"enerji","m":"\\bATP\\b","d":"Hücrenin kullandığı tek geçerli enerji parası. Yediğin her şey sonunda ATP'ye çevrilir.","x":"Kas ancak ATP parçalanınca kasılır. Kasta depolanan ATP sadece 1–2 saniye yeter; gerisi sürekli üretilir."},{"k":"kreatinfosfat","t":"Kreatin fosfat (ATP-PC sistemi)","g":"enerji","m":"kreatin fosfat|ATP-PC|fosfojen","d":"Kasta hazır bekleyen, ATP'yi saniyeler içinde yeniden doldurabilen acil yakıt deposu.","x":"0–10 saniyelik işlerde baskındır: 1 tekrar maksimal kaldırış, sıçrama, kısa sprint."},{"k":"lpl","t":"LPL (lipoprotein lipaz)","g":"biyo","m":"LPL|lipoprotein lipaz","d":"Kandaki yağı parçalayıp yağ hücresinin içine sokan enzim. Yani \"depolama kapısında çalışan görevli\".","x":"Kalça ve uyluk yağ dokusunda LPL aktivitesi yüksektir — bu bölge depolamaya meyillidir."},{"k":"adrenerjik","t":"Alfa-2 ve beta adrenerjik reseptör","g":"biyo","m":"adrenerjik","d":"Yağ hücresinin yüzeyindeki, adrenalin sinyalini algılayan antenler. Beta reseptör \"yağı çöz ve sal\" der; alfa-2 reseptör \"dur, salma\" der.","x":"Kalça-uyluk yağında alfa-2 baskındır. Bu bölgenin en son incelmesinin biyolojik sebebi budur — inatçılık senin hatan değil."},{"k":"lipoliz","t":"Lipoliz","g":"biyo","m":"lipoliz","d":"Depodaki yağın parçalanıp kana salınması. \"Yağın çözülmesi\" aşaması.","x":"Lipoliz tek başına yağ kaybı demek değildir; salınan yağ yakılmazsa depoya geri döner."},{"k":"tasiyicilar","t":"CPT-1 ve FAT/CD36","g":"biyo","m":"CPT-1|FAT/CD36","d":"Yağ asidini önce hücrenin, sonra mitokondrinin içine taşıyan taşıyıcı proteinler. Yağ yakımının gümrük kapıları.","x":"Zon 2 antrenmanı bu kapıların sayısını artırır — vücut yağ yakmakta ustalaşır."},{"k":"mct1","t":"MCT1","g":"biyo","m":"MCT1","d":"Laktatı hücreden çıkaran ve başka hücrelere sokan taşıyıcı protein.","x":"Antrenmanla sayısı artar; üretilen laktat daha hızlı toplanıp yakılır. \"Laktat toleransı\" dediğimiz şeyin bir kısmı budur."},{"k":"cori","t":"Cori döngüsü","g":"biyo","m":"Cori","d":"Kasta üretilen laktatın karaciğere gidip yeniden şekere (glikoza) çevrilmesi ve kana geri verilmesi.","x":"Vücudun geri dönüşüm tesisi. Laktatın atık olmadığının en net kanıtı."},{"k":"kortizol","t":"Kortizol","g":"biyo","m":"kortizol","d":"Böbrek üstü bezinden salgılanan stres hormonu. Kan şekerini yükseltir, iltihabı baskılar, vücudu \"tehdit\" moduna sokar.","x":"Kronik yüksekliği karın bölgesinde yağ birikimini, iştah artışını ve uyku bozukluğunu besler. Uykusuz bir danışanda kalori açığı çalışmaz."},{"k":"ostrojen","t":"Östrojen","g":"biyo","m":"östrojen","d":"Başlıca kadınlık hormonu. Üreme sisteminin yanında yağ dağılımını, kemik yoğunluğunu ve damar sağlığını da etkiler.","x":"Yağı kalça-uyluğa yönlendirir. Menopozla düşünce dağılım karın bölgesine kayar — kadınlarda bel çevresinin menopoz sonrası artmasının sebebi budur."},{"k":"testosteron","t":"Testosteron","g":"biyo","m":"testosteron","d":"Kas yapımını ve kuvveti destekleyen hormon. Kadınlarda da üretilir, ama erkeklerin yaklaşık 15–20'de biri kadar.","x":"\"Ağırlık kaldırırsam kaslı görünürüm\" korkusunun cevabı burada: o hormonal ortam kadında yok."},{"k":"trigliserit","t":"Trigliserit","g":"biyo","m":"trigliserit","d":"Yağın kanda ve depoda taşındığı ana biçim. Üç yağ asidinin bir gliserol omurgasına bağlanmış hali.","x":"Kan tahlilinde yüksek çıkması, merkez yağlanma ve insülin direnci tablosunun klasik parçasıdır."},{"k":"hdl","t":"HDL","g":"biyo","m":"\\bHDL\\b","d":"Kolesterolü dokulardan toplayıp karaciğere geri götüren taşıyıcı. Halk dilinde \"iyi kolesterol\".","x":"Düşük HDL + yüksek trigliserit ikilisi, metabolik sendromun iki ölçütüdür."},{"k":"metaboliksendrom","t":"Metabolik sendrom","g":"klinik","m":"metabolik sendrom","d":"Tek başına ayrı bir hastalık değil, bir arada görülen risk kümesi: geniş bel çevresi, yüksek kan şekeri, yüksek trigliserit, düşük HDL, yüksek tansiyon.","x":"Beşinden üçü varsa tanı konur. Antrenörün işi tanı koymak değil; bu tabloyu fark edip hekime yönlendirmek ve doğru programı yazmak."},{"k":"termogenez","t":"Adaptif termogenez","g":"enerji","m":"adaptif termogenez","d":"Uzun süreli kalori kısıtlamasında vücudun harcamasını beklenenden fazla düşürmesi. \"Tasarruf moduna geçmek\".","x":"Tamamen bir efsane değil ama abartılır. Duraklamanın daha sık sebebi, farkında olmadan azalan hareket (NEAT) ve artan porsiyonlardır."},{"k":"bmr","t":"BMR / RMR","g":"enerji","m":"\\bBMR\\b|\\bRMR\\b","d":"BMR = tam dinlenme, açlık ve uyanıklık halinde harcanan minimum enerji. RMR = aynı şeyin gevşek koşullarda ölçülen hali; BMR'den %5–10 yüksektir.","x":"Sadece hayatta kalmak için: kalp atar, akciğer çalışır, beyin işler, hücre zarında pompalar döner."},{"k":"tdee","t":"TDEE","g":"enerji","m":"\\bTDEE\\b","d":"Günde harcanan toplam enerji. BMR + sindirim maliyeti + gündelik hareket + planlı antrenman.","x":"Kalori hedefi TDEE üzerinden yazılır, BMR üzerinden değil."},{"k":"tef","t":"TEF (besinin termik etkisi)","g":"enerji","m":"\\bTEF\\b","d":"Yediğini sindirmek, emmek ve işlemek için harcanan enerji. Yemek yemenin kendi maliyeti.","x":"Proteinde %20–30, karbonhidratta %5–10, yağda %0–3. Proteinin doyurucu ve \"pahalı\" olmasının bir sebebi budur."},{"k":"neat","t":"NEAT","g":"enerji","m":"\\bNEAT\\b","d":"Egzersiz dışı her hareketin enerjisi: yürümek, ayakta durmak, ev işi, kıpırdanmak, konuşurken el kol hareketi.","x":"Kişiler arasında günde 2000 kcal'e varan fark yaratabilir. Diyette duraklamanın 1 numaralı sebebi genelde NEAT'in sessizce düşmesidir."},{"k":"lbm","t":"LBM (yağsız vücut kütlesi)","g":"enerji","m":"\\bLBM\\b|yağsız kütle","d":"Vücudun yağ dışındaki her şeyi: kas, kemik, organlar, su.","x":"Metabolizmanın motoru budur. Kalori açığında korunması gereken şey de budur — bu yüzden protein ve kuvvet antrenmanı pazarlık konusu değildir."},{"k":"kalorimetre","t":"İndirekt kalorimetre","g":"enerji","m":"kalorimetre","d":"Ne kadar oksijen tükettiğini ve ne kadar karbondioksit ürettiğini ölçerek enerji harcamasını hesaplayan cihaz.","x":"BMR ölçümünün altın standardı. \"İndirekt\" çünkü ısıyı doğrudan değil, solunum üzerinden hesaplar."},{"k":"rer","t":"RER (solunum değişim oranı)","g":"enerji","m":"\\bRER\\b","d":"Üretilen karbondioksitin tüketilen oksijene oranı. O anda hangi yakıtı yaktığını söyler.","x":"0.70 = neredeyse tamamen yağ · 0.85 = yarı yarıya · 1.00 = neredeyse tamamen karbonhidrat."},{"k":"epoc","t":"EPOC","g":"enerji","m":"\\bEPOC\\b","d":"Egzersizden sonra vücudun normale dönmek için fazladan harcadığı oksijen ve enerji. Halk dilinde \"afterburn\".","x":"Gerçektir ama abartılır: tipik bir seansta toplam harcamanın %6–15'i kadardır. Şiddet arttıkça büyür."},{"k":"fatmax","t":"Fatmax ve crossover","g":"enerji","m":"Fatmax|crossover","d":"Fatmax = dakikada yakılan yağ miktarının en yüksek olduğu şiddet. Crossover = şiddet arttıkça yakıtın yağdan karbonhidrata geçtiği nokta.","x":"Fatmax'ta çalışmak \"en çok yağ yakan\" antrenman demek değildir; sadece o dakikada yağın payı en yüksektir. Belirleyici olan 24 saatlik enerji dengesidir."},{"k":"vo2max","t":"VO2max","g":"kalp","m":"VO2 ?max","d":"Vücudun bir dakikada kullanabileceği en fazla oksijen miktarı. Aerobik kapasitenin tavanı.","x":"ml/kg/dk olarak yazılır. Sağlıkla ilgili tek bir sayı seçmen gerekseydi bu olurdu."},{"k":"met","t":"MET","g":"kalp","m":"\\bMET\\b","d":"Dinlenirken harcadığın enerjinin birimi. 1 MET = oturup hiçbir şey yapmamak.","x":"1 MET = 3.5 ml/kg/dk. Tempolu yürüyüş 3–4 MET, merdiven 4–6 MET. \"4 MET'i kaldıramayan\" birine koşu yazılmaz."},{"k":"fick","t":"Fick denklemi","g":"kalp","m":"Fick","d":"VO2 = (kalp atım hızı × atım hacmi) × (a-v)O2 farkı. Yani: kalbin pompaladığı kan × kasın o kandan çektiği oksijen.","x":"VO2max'ı artırmanın iki yolu olduğunu gösterir: kalbi büyütmek (merkezi) veya kasın oksijen kullanma becerisini artırmak (periferik)."},{"k":"atimhacmi","t":"Atım hacmi ve kalp debisi","g":"kalp","m":"atım hacmi|kalp debisi","d":"Atım hacmi = kalbin her vuruşta pompaladığı kan miktarı. Kalp debisi = atım hacmi × dakikadaki vuruş sayısı.","x":"Antrenmanla en çok gelişen değişken atım hacmidir. Dinlenim nabzının düşmesinin sebebi budur: her vuruş daha çok iş yapar."},{"k":"avo2","t":"(a-v)O₂ farkı","g":"kalp","m":"\\(a-v\\)O2|a-v\\)O₂|arter−ven","d":"Atardamardaki oksijenle toplardamardaki oksijen arasındaki fark. Yani kasın o kandan ne kadar oksijen çektiği.","x":"Fark ne kadar büyükse, kas oksijeni o kadar iyi kullanıyor demektir."},{"k":"kapiller","t":"Kapiller","g":"kalp","m":"kapiller","d":"Damar ağının en ince uçları. Oksijen ve besinin kandan kas hücresine geçtiği yer burasıdır.","x":"Zon 2 antrenmanı kas başına düşen kapiller sayısını artırır — teslimat ağı genişler."},{"k":"miyoglobin","t":"Miyoglobin","g":"kalp","m":"myoglobin|miyoglobin","d":"Kas hücresinin içinde oksijeni tutan ve mitokondriye taşıyan protein. Kandaki hemoglobinin kas içindeki akrabası.","x":"Kırmızı etin rengini veren de budur. Dayanıklılık antrenmanıyla miktarı artar."},{"k":"hrmax","t":"HRmax / HRrest / HRR","g":"kalp","m":"HRmax|HRrest|\\bHRR\\b","d":"HRmax = ulaşabileceğin en yüksek nabız. HRrest = dinlenim nabzı. HRR = ikisi arasındaki fark, yani \"nabız rezervin\".","x":"Şiddet hesabı HRmax üzerinden değil, HRR üzerinden yapılırsa doğru olur. Yöntemin adı Karvonen."},{"k":"karvonen","t":"Karvonen yöntemi","g":"kalp","m":"Karvonen","d":"Hedef nabzı, dinlenim nabzını da hesaba katarak bulan formül: (HRmax − HRrest) × şiddet + HRrest.","x":"Formu iyi olan birinin dinlenim nabzı düşüktür; düz yüzde hesabı bu kişiyi olduğundan hafif çalıştırır."},{"k":"kardiyakdrift","t":"Kardiyak drift","g":"kalp","m":"kardiyak drift","d":"Aynı hızda devam etmene rağmen nabzın zamanla yükselmesi. Sıcak, terleme ve kan hacminin azalmasıyla olur.","x":"Uzun seansta \"nabzım neden çıkıyor?\" sorusunun cevabı genelde budur — daha hızlı gitmiyorsun, susuz kalıyorsun."},{"k":"esik","t":"Laktat eşiği (LT1, LT2, OBLA, MLSS)","g":"kalp","m":"LT1|LT2|OBLA|MLSS|laktat eşiği|anaerobik eşi\\w*|aerobik eşi\\w*","d":"LT1 (~2 mmol/L) = laktatın ilk belirgin yükselişi, aerobik eşik. LT2 / OBLA (~4 mmol/L) = laktatın birikmeye başladığı nokta, anaerobik eşik. MLSS = laktatın dengede kalabildiği en yüksek şiddet.","x":"Eşik sabit bir yüzde değildir: antrenmansızda %60–70 VO2max'ta, elit sporcuda %85–90'da olur."},{"k":"polarize","t":"Polarize (kutuplaşmış) antrenman","g":"kalp","m":"polarize|kutuplaş\\w*|80/20","d":"Haftalık hacmin ~%80'ini çok kolay, ~%20'sini çok zor yapmak; ortayı boş bırakmak.","x":"Amatörün en yaygın hatası her antrenmanı \"orta-zor\" yapmaktır. Kolay gün gerçekten kolay olmazsa zor gün gerçekten zor olamaz."},{"k":"rpe","t":"RPE / Borg skalası","g":"antrenman","m":"\\bRPE\\b|Borg","d":"Algılanan zorluk derecesi — kişinin eforu kendi hissiyle puanlaması. İki skalası vardır: 6–20 ve 0–10.","x":"Nabız ölçemediğin veya nabzın yalan söylediği her durumda (beta bloker, aritmi, stres) tek pusulan budur."},{"k":"doms","t":"DOMS (gecikmiş kas ağrısı)","g":"antrenman","m":"\\bDOMS\\b","d":"Antrenmandan 24–72 saat sonra zirve yapan kas ağrısı. Sebebi eksantrik kasılmaya bağlı mikro yırtıklar ve onarım sürecidir.","x":"Laktatla hiçbir ilgisi yoktur — laktat 30–60 dakikada temizlenir. Ayrıca DOMS antrenmanın iyi geçtiğinin kanıtı değildir."},{"k":"eksantrik","t":"Eksantrik / konsantrik / izometrik","g":"antrenman","m":"eksantrik|konsantrik|izometrik","d":"Konsantrik = kas kısalarak kuvvet üretir (ağırlığı kaldırma). Eksantrik = kas uzarken kuvvet üretir (ağırlığı kontrollü indirme). İzometrik = uzunluk değişmeden kasılma (plank, duvar oturuşu).","x":"DOMS'u en çok eksantrik yaratır. İzometrik ise ağrılı eklemde ağrıyı azaltan tek güvenli başlangıçtır."},{"k":"hipertrofi","t":"Hipertrofi","g":"antrenman","m":"hipertrofi","d":"Kas liflerinin kalınlaşması, yani kas kütlesinin artması.","x":"Yıllar süren, kalori fazlası ve planlı yüklenme isteyen bir süreçtir. \"Bir ayda istemeden kaslandım\" diye bir şey yok."},{"k":"asiriyukleme","t":"Progresif aşırı yükleme","g":"antrenman","m":"progresif|aşırı yükleme","d":"Vücuda zamanla kademeli olarak daha fazlasını sormak: daha çok tekrar, daha çok set, daha ağır, daha kontrollü, daha az dinlenme.","x":"Antrenmanın tek zorunlu kanunu. Aynı programı aynı yükle tekrar etmek, bir süre sonra sadece bakım yapar."},{"k":"deload","t":"Deload","g":"antrenman","m":"deload","d":"Planlı hafifletme haftası: hacmi %40–50 düşürüp vücuda toparlanma fırsatı vermek.","x":"Gelişme antrenmanda değil, antrenmandan sonraki toparlanmada olur. 4–6 haftada bir deload, ilerlemenin parçasıdır."},{"k":"periyodizasyon","t":"Periyodizasyon","g":"antrenman","m":"periyodizasyon","d":"Antrenmanı haftalara ve aylara bölüp her dönemde farklı bir özelliğe öncelik vermek.","x":"NASM OPT modeli bunun bir uygulamasıdır: önce stabilizasyon, sonra kuvvet, sonra güç."},{"k":"smr","t":"SMR (foam roller)","g":"antrenman","m":"\\bSMR\\b|foam roller","d":"Öz miyofasyal gevşetme: silindir veya topla kasa basınç uygulayıp gerginliği azaltma.","x":"Bölge başına 30–90 saniye. NASM korrektif zincirinin ilk adımıdır: önce sustur, sonra uzat."},{"k":"pnf","t":"PNF germe","g":"antrenman","m":"\\bPNF\\b","d":"Kasın önce kasılıp sonra gevşetilerek gerildiği germe yöntemi (hold-relax / contract-relax).","x":"En çok açıklık kazandıran yöntemdir ama partner gerektirir ve başlangıç seviyesi için uygun değildir."},{"k":"rom","t":"ROM (eklem hareket açıklığı)","g":"antrenman","m":"\\bROM\\b|hareket açıklığı","d":"Bir eklemin gidebildiği hareket aralığı. Range of Motion.","x":"\"Ağrısız ROM içinde çalış\" cümlesi, eklem sorunlu danışanda en sık kuracağın cümledir."},{"k":"propriyosepsiyon","t":"Propriyosepsiyon","g":"antrenman","m":"propriyosepsiyon","d":"Vücudun, gözünü kapatsan bile kolunun ve bacağının nerede olduğunu bilmesi. Eklem ve kastaki alıcılardan gelen konum duyusu.","x":"Denge çalışmasının geliştirdiği şey budur. Burkulma sonrası en çok bozulan ve en çok çalışılması gereken beceridir."},{"k":"kapalizincir","t":"Kapalı ve açık zincir","g":"antrenman","m":"kapalı zincir|açık zincir","d":"Kapalı zincir = ayak veya el sabit bir yüzeye basar (squat, şınav, sandalyeden kalkma). Açık zincir = uç serbesttir (bacak ekstansiyon makinesi, biceps curl).","x":"Kapalı zincir, yükü eklem boyunca dağıttığı için diz sorunlu bireyde genelde daha güvenlidir."},{"k":"valgus","t":"Diz valgusu","g":"klinik","m":"valgus","d":"Dizlerin içe doğru düşmesi — squat veya adımlamada \"X bacak\" görüntüsü.","x":"Genelde kalça dış döndürücülerinin (gluteus medius) zayıflığından gelir. Overhead squat testinde en sık gördüğün telafidir."},{"k":"hipermobil","t":"Hipermobilite / Beighton skoru","g":"klinik","m":"hipermobil|Beighton","d":"Eklemlerin normalden fazla açılması. Beighton skoru, 9 puanlık basit bir esneklik testidir.","x":"Bu kişilere germe verilmez — verilecek şey stabilite ve kuvvettir. Fazla açıklık, korunmamış açıklıktır."},{"k":"osteoartrit","t":"Osteoartrit (kireçlenme)","g":"klinik","m":"osteoartrit|\\bOA\\b|kireçlenme","d":"Eklem kıkırdağının zamanla incelmesi ve eklemin yapısının değişmesi. Halk dilinde kireçlenme.","x":"Egzersiz yasak değildir; tam tersine birinci basamak tedavidir. Yanlış olan egzersiz yapmak değil, yanlış dozda yapmaktır."},{"k":"parq","t":"PAR-Q+","g":"klinik","m":"PAR-Q","d":"Egzersize başlamadan önce doldurulan standart güvenlik anketi. Kalp, akciğer, metabolik ve kas-iskelet riskini tarar.","x":"Ücretsizdir, 5 dakika sürer ve atlanmaz. Antrenörün ilk savunma hattıdır."},{"k":"kontrendike","t":"Kontrendike / kontrendikasyon","g":"klinik","m":"kontrendike|kontrendikasyon","d":"Bir uygulamanın belirli bir kişide sakıncalı, yapılmaması gereken olması.","x":"\"Egzersiz diz osteoartritinde kontrendike değildir\" = yasak değildir, tersine önerilir."},{"k":"betabloker","t":"Beta bloker","g":"klinik","m":"beta bloker","d":"Tansiyon ve kalp hastalıklarında kullanılan ilaç grubu. Adrenalinin kalpteki etkisini bloke eder, nabzı yavaşlatır.","x":"Bu kişide yaşa göre hesaplanan hedef nabız geçersizdir. Şiddeti RPE ve konuşma testiyle yönet."},{"k":"sedanter","t":"Sedanter","g":"klinik","m":"sedanter","d":"İki anlamı var: (1) haftada 150 dakikadan az orta şiddetli aktivite yapan kişi; (2) uyanıkken çoğunlukla oturan/uzanan davranış biçimi.","x":"İkisi aynı şey değil. Sabah 1 saat spor yapıp 10 saat oturan kişi \"aktif\" ama sedanter davranışı yüksektir ve bu bağımsız bir risktir."},{"k":"pliometri","t":"Pliometri","g":"antrenman","m":"pliometri|plyometri","d":"Sıçrama, sekme, derinlik atlayışı gibi hızlı esne-fırla hareketleri. Kasın önce gerilip hemen ardından patlayıcı kasılması.","x":"Eklem yükü yüksektir. Kilolu veya eklem sorunlu bireyde kriterler karşılanmadan asla verilmez."},{"k":"valsalva","t":"Valsalva manevrası","g":"klinik","m":"Valsalva","d":"Nefesi tutup ıkınarak karın içi basıncı artırmak. Ağır kaldırışta omurgayı stabilize eder ama tansiyonu ani ve sert yükseltir.","x":"Hipertansiyonu veya kalp hastalığı olan danışanda kaçınılır; nefes verme kaldırışa denk getirilir."},{"k":"relaksin","t":"Relaksin","g":"klinik","m":"relaksin","d":"Gebelikte salgılanan, bağ dokusunu ve eklem bağlarını gevşeten hormon.","x":"Eklemler daha oynak hale gelir. Gebelikte germe son noktaya zorlanmaz; hissettiğin esneklik yanıltıcıdır."},{"k":"kompresyon","t":"Kompresyon kuvveti","g":"klinik","m":"kompresyon","d":"Bir eklemin yüzeylerini birbirine bastıran, sıkıştıran kuvvet.","x":"Yürürken dizde vücut ağırlığının 3–4 katı kompresyon oluşur. 1 kg kilo kaybı, her adımda dizden 3–4 kg yükün kalkması demektir."},{"k":"osteoporoz","t":"Osteoporoz","g":"klinik","m":"osteoporoz","d":"Kemik yoğunluğunun azalması, kemiğin gözenekli ve kırılgan hale gelmesi.","x":"Kuvvet ve darbeli antrenman koruyucudur; ancak ileri osteoporozda zorlamalı gövde öne eğilme ve rotasyon hareketlerinden kaçınılır."}]};/*TERMS_END*/
+var TMAP={};TERMS.terimler.forEach(function(t){TMAP[t.k]=t});
+
+var sheet=$("#sheet");
+function openTerm(k){
+  var t=TMAP[k];if(!t)return;
+  $("#sheetGroup").textContent=TERMS.gruplar[t.g]||"";
+  $("#sheetTitle").textContent=t.t;
+  $("#sheetDef").textContent=t.d;
+  var w=$("#sheetWhy");
+  if(t.x){w.hidden=false;w.innerHTML='<b>Neden önemli</b>'+t.x}else{w.hidden=true}
+  sheet.classList.add("open");sheet.setAttribute("aria-hidden","false");
+}
+function closeTerm(){sheet.classList.remove("open");sheet.setAttribute("aria-hidden","true")}
+$("#sheetClose").addEventListener("click",closeTerm);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeTerm()});
+document.addEventListener("click",function(e){
+  var b=e.target.closest?e.target.closest(".term"):null;
+  if(b){e.preventDefault();openTerm(b.dataset.t);return}
+  if(sheet.classList.contains("open")&&!e.target.closest("#sheet"))closeTerm();
+});
+
+/* metindeki terimleri ilk geçtikleri yerde işaretle */
+(function autolink(){
+  var pats=TERMS.terimler.filter(function(t){return t.m}).map(function(t){
+    // Türkçe ekleri de işaretin içinde bırak: "sitokinler", "insüline", "mitokondrinin"
+    return {k:t.k,re:new RegExp("(^|[^\\wçğıöşüÇĞİÖŞÜ])("+t.m+"[a-zçğıöşü]*)","i"),used:0};
+  }).sort(function(a,b){return b.re.source.length-a.re.source.length});
+  var SKIP=/^(SCRIPT|STYLE|BUTTON|CODE|H1|H2|H3|H4|H5|TEXT|svg|SVG|INPUT|LABEL|OPTION)$/;
+  var hosts=document.querySelectorAll("section p, section li, .card p, figcaption");
+  hosts.forEach(function(host){
+    if(host.closest(".formula")||host.closest("#sozluk")||host.closest("#quizBox"))return;
+    var walker=document.createTreeWalker(host,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var pn=n.parentNode;
+      while(pn&&pn!==host){if(SKIP.test(pn.nodeName)||pn.classList&&pn.classList.contains("term"))
+        return NodeFilter.FILTER_REJECT;pn=pn.parentNode}
+      return n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }});
+    var nodes=[],n;while((n=walker.nextNode()))nodes.push(n);
+    nodes.forEach(function(node){
+      for(var i=0;i<pats.length;i++){
+        var pt=pats[i];if(pt.used>=2)continue;
+        var m=pt.re.exec(node.nodeValue);
+        if(!m)continue;
+        var start=m.index+m[1].length, end=start+m[2].length;
+        var after=node.splitText(start);
+        after.splitText(end-start);
+        var b=document.createElement("button");
+        b.className="term";b.type="button";b.dataset.t=pt.k;
+        b.setAttribute("aria-label",TMAP[pt.k].t+" — tanımı aç");
+        b.textContent=after.nodeValue;
+        after.parentNode.replaceChild(b,after);
+        pt.used++;
+        return;
+      }
+    });
+  });
+})();
+
+/* sözlük listesi */
+(function glossary(){
+  var list=$("#glist"),cnt=$("#gcnt"),q=$("#gq"),fb=$("#gfilters"),active="hepsi";
+  var groups=Object.keys(TERMS.gruplar);
+  function chip(id,label){
+    var b=document.createElement("button");b.type="button";b.textContent=label;
+    b.setAttribute("aria-pressed",id===active?"true":"false");
+    b.addEventListener("click",function(){
+      active=id;
+      fb.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+      render();
+    });
+    fb.appendChild(b);
+  }
+  chip("hepsi","Hepsi");
+  groups.forEach(function(g){chip(g,TERMS.gruplar[g])});
+  function render(){
+    var term=(q.value||"").toLocaleLowerCase("tr").trim();
+    var items=TERMS.terimler.filter(function(t){
+      if(active!=="hepsi"&&t.g!==active)return false;
+      if(!term)return true;
+      return (t.t+" "+t.d+" "+(t.x||"")).toLocaleLowerCase("tr").indexOf(term)>=0;
+    }).sort(function(a,b){return a.t.localeCompare(b.t,"tr")});
+    list.innerHTML="";
+    if(!items.length){list.innerHTML='<div class="gempty">Eşleşen terim yok. Başka bir kelime dene.</div>'}
+    items.forEach(function(t){
+      var d=document.createElement("div");d.className="gi";
+      d.innerHTML='<span class="g">'+TERMS.gruplar[t.g]+'</span><h4></h4><p></p>'+
+        (t.x?'<p class="x"></p>':'');
+      d.querySelector("h4").textContent=t.t;
+      d.querySelector("p").textContent=t.d;
+      if(t.x)d.querySelector(".x").textContent=t.x;
+      list.appendChild(d);
+    });
+    cnt.textContent=items.length+" / "+TERMS.terimler.length+" terim";
+  }
+  q.addEventListener("input",render);
+  render();
+})();
 
 /* ---------- flashcards ---------- */
 var CARDS=[

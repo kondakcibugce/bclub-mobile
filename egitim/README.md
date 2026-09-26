@@ -47,6 +47,19 @@ Her hafta 4 parçadan oluşur:
 - [`hafta-01/kitapcik.html`](hafta-01/kitapcik.html) — İnteraktif kitapçık (hesap makineleri, grafikler, quiz)
 - [`kaynaklar.md`](kaynaklar.md) — Kaynakça ve video listesi
 
+## Terim sözlüğü
+
+Müfredattaki her teknik terimin günlük dildeki karşılığı
+[`terimler-sozlugu.md`](terimler-sozlugu.md) dosyasındadır (89 terim, 6 başlık).
+Kitapçıkta terimlerin üstüne dokunarak da açabilirsin.
+
+Sözlüğün tek kaynağı `terimler.json`'dur. Yeni terim eklendiğinde hem markdown sözlük
+hem de kitapçıktaki veri şu komutla yenilenir:
+
+```bash
+node egitim/scripts/terimler-uret.mjs
+```
+
 ## Not
 
 Bu materyal antrenörlük eğitimi içindir. Tanı koymaz, tedavi önermez.
